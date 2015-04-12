@@ -1,2 +1,5 @@
-# albiorix
-CS 3733 Sixes Wild
+# Team Albiorix
+CS 3733 - D15 Sixes' Wild West
+
+
+
