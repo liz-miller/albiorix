@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class selectionMenu {
+public class SelectionMenu {
 
 	private JFrame frame;
 
@@ -24,7 +24,7 @@ public class selectionMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					selectionMenu window = new selectionMenu();
+					SelectionMenu window = new SelectionMenu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class selectionMenu {
 	/**
 	 * Create the application.
 	 */
-	public selectionMenu() {
+	public SelectionMenu() {
 		initialize();
 	}
 

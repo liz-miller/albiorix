@@ -14,8 +14,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- *
- * @author www.ThePCWizard.in
+ * Original code written by www.ThePCWizard.in
+ * Modified on 4/14/15 by for Sixes Wild West by Liz Miller
  */
 public class SplashDemo {
 public static SplashScreen loadingScreen;
