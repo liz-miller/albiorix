@@ -54,6 +54,7 @@ public class SelectionMenuLevel extends javax.swing.JFrame{
 		frame.getContentPane().setFont(new Font("Stencil Std", Font.PLAIN, 17));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JLabel lblSixesWildWest = new JLabel("SIXES WILD WEST");
 		lblSixesWildWest.setFont(new Font("Stencil Std", Font.PLAIN, 17));
 		
