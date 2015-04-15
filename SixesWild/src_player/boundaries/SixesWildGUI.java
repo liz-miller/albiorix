@@ -32,8 +32,8 @@ import java.awt.event.ActionEvent;
 
 public class SixesWildGUI extends JFrame {
  public static JLabel scoreBoard;
- public static int windowH = 600;
- public static int windowW = 1000;
+ public static int windowH = 700;
+ public static int windowW = 700;
  public static int boardHW = 9;
  public static int tileSize = 60;
  public static int count = 0;
@@ -45,6 +45,7 @@ public class SixesWildGUI extends JFrame {
  public static JLabel allTiles[];
  public static Stack<JLabel> swipedTiles;
  public static JPanel contentPane;
+ public static int topCorner = 40;
  
  public static JButton btnEliminateTile;
  public static int eliminateTilesLeft = 3;
@@ -96,11 +97,11 @@ public class SixesWildGUI extends JFrame {
    
   
   allTiles[i] = NewTile(randomGenerator.nextInt(6) + 1,
-		  6 + (i % boardHW)*tileSize, 6 + tileSize*(i/boardHW));//, randomGenerator.nextInt(3) + 1);
+		  topCorner + (i % boardHW)*tileSize, topCorner + tileSize*(i/boardHW));//, randomGenerator.nextInt(3) + 1);
   }
   
   scoreBoard = new JLabel("Score: "+ point+", Moves Left: "+ movesLeft);
-  scoreBoard.setBounds(windowW-400, 6, 400, 30);
+  scoreBoard.setBounds(6, 6, 400, 30);
   contentPane.add(scoreBoard);
   
   JButton btnResetBoard = new JButton("Reset Board");
@@ -113,11 +114,11 @@ public class SixesWildGUI extends JFrame {
     for(int i = 0; i < boardHW*boardHW; i++){
     allTiles[i].setVisible(false);
     allTiles[i] = NewTile(randomGenerator.nextInt(6) + 1,
-    		6 + (i % boardHW)*tileSize, 6 + tileSize*(i/boardHW));//, randomGenerator.nextInt(3) + 1);
+    		topCorner + (i % boardHW)*tileSize, topCorner + tileSize*(i/boardHW));//, randomGenerator.nextInt(3) + 1);
     }
     }
   });
-  btnResetBoard.setBounds(windowW-110, 50, 110, 29);
+  btnResetBoard.setBounds(186, 6, 110, 29);
   contentPane.add(btnResetBoard);
   
   btnEliminateTile = new JButton("Eliminate Tile ("+eliminateTilesLeft+" left)");
@@ -131,7 +132,7 @@ public class SixesWildGUI extends JFrame {
     	 }
     }
   });
-  btnEliminateTile.setBounds(windowW-200, 100, 200, 29);
+  btnEliminateTile.setBounds(286, 6, 200, 29);
   contentPane.add(btnEliminateTile);
   
   btnSwapTile = new JButton("Swap Tiles ("+swapTilesLeft+" left)");
@@ -144,10 +145,16 @@ public class SixesWildGUI extends JFrame {
     }
     }
   });
-  btnSwapTile.setBounds(windowW-200, 150, 200, 29);
+  btnSwapTile.setBounds(476, 6, 200, 29);
   contentPane.add(btnSwapTile);
 
-
+  JLabel starLabel = new JLabel("\u2606 \u2606 \u2606");
+  starLabel.setForeground(Color.BLACK);
+  starLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+  
+  starLabel.setBounds(590, 40, 200, 29);
+  
+  contentPane.add(starLabel);
   
  }
  
@@ -155,9 +162,9 @@ public class SixesWildGUI extends JFrame {
  
  public static int findIndex(int xcoord, int ycoord){
   for(int i = 0; i < boardHW; i++){
-  if((xcoord-6)/tileSize == i){
+  if((xcoord-topCorner)/tileSize == i){
    for(int j = 0; j < boardHW; j++){
-   if((ycoord-6)/tileSize == j){
+   if((ycoord-topCorner)/tileSize == j){
     return boardHW*j+i;}
    
    }
