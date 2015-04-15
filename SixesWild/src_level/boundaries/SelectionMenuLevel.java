@@ -1,16 +1,15 @@
 package boundaries;
 
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class selectionMenuLevel {
+public class SelectionMenuLevel extends javax.swing.JFrame{
 
 	private JFrame frame;
 
@@ -21,7 +20,7 @@ public class selectionMenuLevel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					selectionMenuLevel window = new selectionMenuLevel();
+					SelectionMenuLevel window = new SelectionMenuLevel();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +32,7 @@ public class selectionMenuLevel {
 	/**
 	 * Create the application.
 	 */
-	public selectionMenuLevel() {
+	public SelectionMenuLevel() {
 		initialize();
 	}
 
@@ -41,9 +40,18 @@ public class selectionMenuLevel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		// Set the window's bounds, centering the window
+		int width = 1000;
+		int height = 600;
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (screen.width-width)/2;
+		int y = (screen.height-height)/2;
+		setBounds(x,y,width,height);
+		 
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(244, 164, 96));
 		frame.getContentPane().setFont(new Font("Stencil Std", Font.PLAIN, 17));
-		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblSixesWildWest = new JLabel("SIXES WILD WEST");
