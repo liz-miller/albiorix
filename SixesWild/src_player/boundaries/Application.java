@@ -1,34 +1,28 @@
 package boundaries;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-import oval.model.Model;
-import oval.view.OvalPanel;
-
-public class Application extends JFrame {
-	SelectionMenu smp;
+public class Application {
 	
+	private JFrame frame;
 
-	public Application() {
-
-	}
-
+public static void main(String[] args) {
+	EventQueue.invokeLater(new Runnable() {
+		public void run() {
+			try {
+				selectLevel window = new selectLevel();
+				window.frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	});
 }
-
-
-Model model;
-OvalPanel panel;
-
-public Application(Model m) {
-	super ("Oval Drawer");
+}
 	
-	this.model = m;
-	
-	setSize(400, 400);
-	panel = new OvalPanel(model);
-	add(panel);
-}
-
-OvalPanel getPanel() { return panel; }
-
-}
