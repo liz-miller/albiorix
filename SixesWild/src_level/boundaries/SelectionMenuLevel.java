@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class SelectionMenuLevel extends javax.swing.JFrame{
+public class SelectionMenuLevel extends JFrame{
 
 	private JFrame frame;
 
@@ -18,6 +18,7 @@ public class SelectionMenuLevel extends javax.swing.JFrame{
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					SelectionMenuLevel window = new SelectionMenuLevel();
@@ -42,17 +43,21 @@ public class SelectionMenuLevel extends javax.swing.JFrame{
 	private void initialize() {
 		
 		// Set the window's bounds, centering the window
-		int width = 1000;
-		int height = 600;
-		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (screen.width-width)/2;
-		int y = (screen.height-height)/2;
-		setBounds(x,y,width,height);
+//		int width = 1000;
+//		int height = 600;
+//		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+//		int x = (screen.width-width)/2;
+//		int y = (screen.height-height)/2;
+//		setBounds(x,y,width,height);
+		
+		
 		 
 		frame = new JFrame();
+		frame.setBounds(500, 300,1000,600);
 		frame.getContentPane().setBackground(new Color(244, 164, 96));
 		frame.getContentPane().setFont(new Font("Stencil Std", Font.PLAIN, 17));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JLabel lblSixesWildWest = new JLabel("SIXES WILD WEST");
 		lblSixesWildWest.setFont(new Font("Stencil Std", Font.PLAIN, 17));
