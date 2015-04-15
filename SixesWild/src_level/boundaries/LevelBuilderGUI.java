@@ -46,6 +46,9 @@ public class LevelBuilderGUI extends JFrame {
 	 private JTextField textField_6;
 	 private JTextField textField_7;
 	 private static JButton btnSetAsRelease;
+	 private JTextField textField_8;
+	 private JTextField textField_9;
+	 private JTextField textField_10;
 
 	/**
 	 * Launch the application.
@@ -221,6 +224,37 @@ public class LevelBuilderGUI extends JFrame {
 		 btnSetAsRelease.setBounds(415, 607, 150, 29);
 		 btnSetAsRelease.setEnabled(false);
 		 contentPane.add(btnSetAsRelease);
+		 
+		 JLabel lblSetStarRequirements = new JLabel("Set Star Requirements:\n");
+		 lblSetStarRequirements.setBounds(425, 11, 150, 16);
+		 contentPane.add(lblSetStarRequirements);
+		 
+		 JLabel lblPoitsNeededFor = new JLabel("Points needed for: 1");
+		 lblPoitsNeededFor.setBounds(270, 33, 130, 16);
+		 contentPane.add(lblPoitsNeededFor);
+		 
+		 textField_8 = new JTextField();
+		 textField_8.setBounds(400, 33, 65, 28);
+		 contentPane.add(textField_8);
+		 textField_8.setColumns(10);
+		 
+		 JLabel label_7 = new JLabel("2");
+		 label_7.setBounds(474, 33, 25, 16);
+		 contentPane.add(label_7);
+		 
+		 textField_9 = new JTextField();
+		 textField_9.setColumns(10);
+		 textField_9.setBounds(484, 33, 65, 28);
+		 contentPane.add(textField_9);
+		 
+		 JLabel label_8 = new JLabel("3");
+		 label_8.setBounds(561, 33, 25, 16);
+		 contentPane.add(label_8);
+		 
+		 textField_10 = new JTextField();
+		 textField_10.setColumns(10);
+		 textField_10.setBounds(571, 33, 65, 28);
+		 contentPane.add(textField_10);
 		 
 		 
 		  allTiles = new JLabel[boardHW*boardHW];
