@@ -4,19 +4,29 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+
+import controllers.LoadLevelController;
+
+
 import java.awt.Font;
+import model.Model;
 
 public class SelectionMenu {
 
 	private JFrame frame;
-
+	JButton btnChooseLevel;
+	JPanel contentPane = new JPanel();
+	Model model;             /** Model */
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,21 +46,23 @@ public class SelectionMenu {
 	/**
 	 * Create the application.
 	 */
-	public SelectionMenu() {
-		initialize();
-	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public JButton btnChooseLevel() {
+		return btnChooseLevel;
+	}
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		JButton btnCampaignMode = new JButton("Campaign Mode");
 		
-		JButton btnChooseLevel = new JButton("Choose Level");
+		btnChooseLevel = new JButton("Choose Level");
+		contentPane.add(btnChooseLevel);
 		
 		JButton btnViewAchievements = new JButton("View Achievements");
 		
@@ -96,5 +108,7 @@ public class SelectionMenu {
 					.addGap(48))
 		);
 		frame.getContentPane().setLayout(groupLayout);
+		// install controller.
+
 	}
 }
