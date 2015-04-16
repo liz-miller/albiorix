@@ -9,6 +9,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import boundaries.*;
 
 public class SelectionMenuLevel extends JFrame{
 
@@ -33,6 +36,12 @@ public class SelectionMenuLevel extends JFrame{
   JButton btnLoadLevel = new JButton("Load Level");
   
   JButton btnNewLevel = new JButton("New Level");
+  btnNewLevel.addActionListener(
+    new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+     //LevelBuilderGUI frame = new LevelBuilderGUI();
+     //frame.setVisible(true); 
+    }});
   
   JLabel lblLevelBuilder = new JLabel("Level Builder");
   GroupLayout groupLayout = new GroupLayout(panel);
