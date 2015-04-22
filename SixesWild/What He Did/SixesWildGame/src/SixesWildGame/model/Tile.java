@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 
 
 public class Tile {
+	// I wrote this, but most of it will have to be scrapped
 
 	private int value;
 	private int row;

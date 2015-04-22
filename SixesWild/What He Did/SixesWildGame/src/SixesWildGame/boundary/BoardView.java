@@ -9,13 +9,14 @@ import SixesWildGame.model.Board;
 import SixesWildGame.model.Tile;
 
 public class BoardView extends JPanel {
+	// The GUI class for the board
 	Board board;
 
 	public BoardView (Board b) {
 		super();
 		this.board = b;
 	}
-
+	//This will paint onto the JPanel
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -38,7 +39,7 @@ public class BoardView extends JPanel {
 
 		// do the for loop and iterate over all the tiles and show them on the screen.
 	}
-
+	// All this function does is determine the tile color
 	public Color getColor(int num) {
 		if(num == 1){
 			return Color.RED;

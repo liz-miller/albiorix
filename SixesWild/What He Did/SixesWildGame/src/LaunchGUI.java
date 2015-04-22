@@ -7,6 +7,7 @@ import SixesWildGame.model.Model;
 
 
 public class LaunchGUI {
+	//All this should do is launch a game object
 	public static void main(String[] args) {
 		Model m = new Model();
 		

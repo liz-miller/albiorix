@@ -5,7 +5,7 @@ import java.awt.event.*;
 import SixesWildGame.boundary.Application;
 import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.model.Board;
-
+	// He just made this its empty, it will help us deal with all the mouse calls
 public class MouseController implements MouseListener, MouseMotionListener {
 
 	private Application app;

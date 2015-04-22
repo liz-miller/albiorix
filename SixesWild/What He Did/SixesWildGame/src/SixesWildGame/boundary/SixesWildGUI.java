@@ -38,6 +38,8 @@ import java.awt.event.ActionEvent;
 
 
 public class SixesWildGUI extends JPanel {
+	// The vast majority of this info will have to leave this class, in the end this ought
+	// to be just the GUI element
 	private  JLabel scoreBoard;
 	private  int windowH = 700;
 	private  int windowW = 700;
@@ -79,8 +81,8 @@ public class SixesWildGUI extends JPanel {
 
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		//setContentPane(contentPane);
-
-		swipedTiles = new Stack<Tile>();
+		
+		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were swiped
 		setLayout(null);
 		scoreBoard = new JLabel("Score: "+ point+", Moves Left: "+ movesLeft);
 		scoreBoard.setBounds(33, 15, 150, 16);
@@ -111,6 +113,9 @@ public class SixesWildGUI extends JPanel {
 		add(btnBack);
 
 		btnEliminateTile = new JButton("Eliminate Tile ("+eliminateTilesLeft+" left)");
+		
+		// This listener will have to go into a separate class
+		// Theoretically, we could have a TileGUI class, that might our "art" a little easier
 		btnEliminateTile.addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -125,10 +130,12 @@ public class SixesWildGUI extends JPanel {
 		add(btnEliminateTile);
 
 		btnSwapTile = new JButton("Swap Tiles ("+swapTilesLeft+" left)");
+		// and this one
 		btnSwapTile.addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if(swapTilesLeft > 0){
+							// I used these booleans to control the state of the program
 							eliminateTileState = false;
 							swapTileState = true;
 						}
@@ -137,6 +144,8 @@ public class SixesWildGUI extends JPanel {
 		btnSwapTile.setBounds(43, 43, 155, 29);
 		add(btnSwapTile);
 
+		
+		// our "stars"
 		JLabel starLabel = new JLabel("\u2606 \u2606 \u2606");
 		starLabel.setForeground(Color.BLACK);
 		starLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
