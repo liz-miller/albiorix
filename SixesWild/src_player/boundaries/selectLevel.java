@@ -17,6 +17,7 @@ public class selectLevel {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					selectLevel window = new selectLevel();
@@ -54,6 +55,7 @@ public class selectLevel {
 		
 		JButton button = new JButton("2");
 		button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -74,6 +76,7 @@ public class selectLevel {
 		
 		JButton button_4 = new JButton("6");
 		button_4.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -90,6 +93,7 @@ public class selectLevel {
 		
 		JButton button_7 = new JButton("9");
 		button_7.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -102,6 +106,7 @@ public class selectLevel {
 		
 		JButton button_9 = new JButton("10");
 		button_9.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
