@@ -29,44 +29,37 @@ import java.util.Stack;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
-
-
-
-
-
-
-
 public class SixesWildGUI extends JPanel {
-	// The vast majority of this info will have to leave this class, in the end this ought
+	// The vast majority of this info will have to leave this class, in the end
+	// this ought
 	// to be just the GUI element
-	private  JLabel scoreBoard;
-	private  int windowH = 700;
-	private  int windowW = 700;
+	private JLabel scoreBoard;
+	private int windowH = 700;
+	private int windowW = 700;
 	public final static int boardHW = 9;
-	private  int tileSize = 60;
-	private  int count = 0;
-	//public static int pointMult = 1;
-	private  boolean dragging = false;
-	private  int numClicked = 0;
-	private  int movesLeft = 20;
-	private  int point = 0;
-	private  Tile allTiles[];
-	private  Stack<Tile> swipedTiles;
-	private  int topCorner = 40;
+	private int tileSize = 60;
+	private int count = 0;
+	// public static int pointMult = 1;
+	private boolean dragging = false;
+	private int numClicked = 0;
+	private int movesLeft = 20;
+	private int point = 0;
+	private Tile allTiles[];
+	private Stack<Tile> swipedTiles;
+	private int topCorner = 40;
 
-	private  JButton btnEliminateTile;
-	private  int eliminateTilesLeft = 3;
-	private  boolean eliminateTileState = false;
+	private JButton btnEliminateTile;
+	private int eliminateTilesLeft = 3;
+	private boolean eliminateTileState = false;
 
-	private  JButton btnSwapTile;
-	private  int swapTilesLeft = 3;
-	private  boolean swapTileState = false;
+	private JButton btnSwapTile;
+	private int swapTilesLeft = 3;
+	private boolean swapTileState = false;
 
 	Board board;
 	Application app;
 
-	public SixesWildGUI (Application app, Board b) {
+	public SixesWildGUI(Application app, Board b) {
 		super();
 		this.board = b;
 		this.app = app;
@@ -74,77 +67,76 @@ public class SixesWildGUI extends JPanel {
 		initialize();
 	}
 
-
 	void initialize() {
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, windowW, windowH);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setBounds(100, 100, windowW, windowH);
 
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-		//setContentPane(contentPane);
-		
-		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were swiped
+		// setContentPane(contentPane);
+
+		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were
+											// swiped
 		setLayout(null);
-		scoreBoard = new JLabel("Score: "+ point+", Moves Left: "+ movesLeft);
+		scoreBoard = new JLabel("Score: " + point + ", Moves Left: "
+				+ movesLeft);
 		scoreBoard.setBounds(33, 15, 150, 16);
 		add(scoreBoard);
 
 		JButton btnResetBoard = new JButton("Reset Board");
-		btnResetBoard.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						movesLeft--;
-						scoreBoard.setText("Score: "+ point+", Moves Left: "+ movesLeft);
+		btnResetBoard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				movesLeft--;
+				scoreBoard.setText("Score: " + point + ", Moves Left: "
+						+ movesLeft);
 
-					}
-				});
+			}
+		});
 		btnResetBoard.setBounds(244, 10, 117, 29);
 		add(btnResetBoard);
 
 		JButton btnBack = new JButton("Back to Main Menu");
-		btnBack.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-						app.toMenu(1);
+				app.toMenu(1);
 
-					}
-				});
+			}
+		});
 		btnBack.setBounds(21, 348, 162, 29);
 		add(btnBack);
 
-		btnEliminateTile = new JButton("Eliminate Tile ("+eliminateTilesLeft+" left)");
-		
-		// This listener will have to go into a separate class
-		// Theoretically, we could have a TileGUI class, that might our "art" a little easier
-		btnEliminateTile.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		btnEliminateTile = new JButton("Eliminate Tile (" + eliminateTilesLeft
+				+ " left)");
 
-						if(eliminateTilesLeft > 0){
-							eliminateTileState = true;
-							swapTileState = false;
-						}
-					}
-				});
+		// This listener will have to go into a separate class
+		// Theoretically, we could have a TileGUI class, that might our "art" a
+		// little easier
+		btnEliminateTile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (eliminateTilesLeft > 0) {
+					eliminateTileState = true;
+					swapTileState = false;
+				}
+			}
+		});
 		btnEliminateTile.setBounds(404, 11, 174, 29);
 		add(btnEliminateTile);
 
-		btnSwapTile = new JButton("Swap Tiles ("+swapTilesLeft+" left)");
+		btnSwapTile = new JButton("Swap Tiles (" + swapTilesLeft + " left)");
 		// and this one
-		btnSwapTile.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if(swapTilesLeft > 0){
-							// I used these booleans to control the state of the program
-							eliminateTileState = false;
-							swapTileState = true;
-						}
-					}
-				});
+		btnSwapTile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (swapTilesLeft > 0) {
+					// I used these booleans to control the state of the program
+					eliminateTileState = false;
+					swapTileState = true;
+				}
+			}
+		});
 		btnSwapTile.setBounds(43, 43, 155, 29);
 		add(btnSwapTile);
 
-		
 		// our "stars"
 		JLabel starLabel = new JLabel("\u2606 \u2606 \u2606");
 		starLabel.setForeground(Color.BLACK);
@@ -158,12 +150,8 @@ public class SixesWildGUI extends JPanel {
 		bv.addMouseMotionListener(mc);
 		bv.setBounds(43, 131, 535, 190);
 		add(bv);
-		
+
 		add(starLabel);
 	}
 
-
 }
-
-
-

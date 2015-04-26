@@ -25,24 +25,24 @@ public class SelectionMenu extends JPanel {
 		initialize();
 	}
 
-	void  initialize() {
-		
-		JButton btnCampaignMode = new JButton("Campaign Mode");
-		btnCampaignMode.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						app.toMenu(3);
+	void initialize() {
 
-					}});
+		JButton btnCampaignMode = new JButton("Campaign Mode");
+		btnCampaignMode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				app.toMenu(3);
+
+			}
+		});
 
 		JButton btnChooseLevel = new JButton("Choose Level");
-		btnChooseLevel.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		btnChooseLevel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-						app.toMenu(2);
+				app.toMenu(2);
 
-					}});
+			}
+		});
 
 		JButton btnViewAchievements = new JButton("View Achievements");
 
@@ -51,43 +51,71 @@ public class SelectionMenu extends JPanel {
 
 		JLabel lblSelectionMenu = new JLabel("Select an Option");
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addGap(137)
-										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblSixessWildWest)
-												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-														.addGroup(groupLayout.createSequentialGroup()
-																.addGap(6)
-																.addComponent(btnChooseLevel, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
-																.addComponent(btnCampaignMode, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))))
-																.addGroup(groupLayout.createSequentialGroup()
+		groupLayout
+				.setHorizontalGroup(groupLayout
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addGroup(
+												groupLayout
+														.createParallelGroup(
+																Alignment.LEADING)
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addGap(137)
+																		.addGroup(
+																				groupLayout
+																						.createParallelGroup(
+																								Alignment.TRAILING)
+																						.addComponent(
+																								lblSixessWildWest)
+																						.addGroup(
+																								groupLayout
+																										.createParallelGroup(
+																												Alignment.LEADING)
+																										.addGroup(
+																												groupLayout
+																														.createSequentialGroup()
+																														.addGap(6)
+																														.addComponent(
+																																btnChooseLevel,
+																																GroupLayout.PREFERRED_SIZE,
+																																117,
+																																GroupLayout.PREFERRED_SIZE))
+																										.addComponent(
+																												btnCampaignMode,
+																												GroupLayout.PREFERRED_SIZE,
+																												137,
+																												GroupLayout.PREFERRED_SIZE))))
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
 																		.addGap(145)
-																		.addComponent(btnViewAchievements, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
-																		.addGroup(groupLayout.createSequentialGroup()
-																				.addGap(169)
-																				.addComponent(lblSelectionMenu)))
-																				.addContainerGap(150, Short.MAX_VALUE))
-				);
-		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-						.addGap(16)
+																		.addComponent(
+																				btnViewAchievements,
+																				GroupLayout.PREFERRED_SIZE,
+																				160,
+																				GroupLayout.PREFERRED_SIZE))
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addGap(169)
+																		.addComponent(
+																				lblSelectionMenu)))
+										.addContainerGap(150, Short.MAX_VALUE)));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(
+				Alignment.LEADING).addGroup(
+				groupLayout.createSequentialGroup().addGap(16)
 						.addComponent(lblSixessWildWest)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(lblSelectionMenu)
-						.addGap(54)
-						.addComponent(btnCampaignMode)
-						.addGap(12)
+						.addComponent(lblSelectionMenu).addGap(54)
+						.addComponent(btnCampaignMode).addGap(12)
 						.addComponent(btnChooseLevel)
 						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(btnViewAchievements)
-						.addGap(48))
-				);
+						.addComponent(btnViewAchievements).addGap(48)));
 		setLayout(groupLayout);
-		
+
 	}
 }
