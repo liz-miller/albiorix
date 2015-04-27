@@ -153,4 +153,20 @@ public class Square{
 	public Tile peekTile(){
 		return this.tile;
 	}
+	
+	/**
+	 * equals() - an override of whether or not the current Square and the given Square are the same.
+	 * This method simply checks whether or not they have the same row and column location, as well as Tile and 
+	 * isMarked
+	 * be changed at a later time depending on usage
+	 * @param other
+	 * @return whether or not the two Squares have the same location, Tile, and isMarked value
+	 */
+	public boolean equals(Square other){
+		return this.getCol() == other.getCol() &&
+				this.getRow() == other.getRow() &&
+				this.peekTile().equals(other.peekTile()) &&
+				this.isMarked() == other.isMarked();
+
+	}
 }
