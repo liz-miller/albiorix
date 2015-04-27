@@ -182,7 +182,7 @@ public class Square{
 	 * return the color of the Tile located in the current Square. If there is no Tile, return Black -AB 4/27
 	 * @return color of the Tile 
 	 */
-	public Color getColor(){
+	public Color getTileColor(){
 		if(this.peekTile() == null){
 			return Color.BLACK;
 		}
@@ -195,8 +195,9 @@ public class Square{
 	 * get the value of the Tile located in the current Square. If there is no Tile, return 0. - AB 4/27
 	 * @return value of the Tile
 	 */
-	public int getValue() {
+	public int getTileValue() {
 		if(this.peekTile() == null){
+			System.err.println("Square: No Tile associated with this Square but you attempted to get its value");
 			return 0;
 		}
 		else {

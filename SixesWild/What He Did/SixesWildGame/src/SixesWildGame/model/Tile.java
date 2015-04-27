@@ -113,7 +113,7 @@ public class Tile {
 		}
 		else if(value == 3){
 			//set color to (orange)
-			this.color = Color.BLUE;
+			this.color = Color.CYAN;
 		}
 		else if(value == 4){
 			//set  color to (yellow)
@@ -125,7 +125,7 @@ public class Tile {
 		}
 		else if(value == 6){
 			//set color to (pink)
-			this.color = Color.YELLOW;
+			this.color = Color.BLUE;
 		}
 	}
 	
@@ -135,7 +135,7 @@ public class Tile {
 	 */
 	public Color getColor(){
 		if(this.color == null){
-			return Color.WHITE;
+			updateColor();
 		}
 		return this.color;
 	}

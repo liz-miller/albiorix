@@ -43,19 +43,37 @@ public class BoardView extends JPanel {
 		for (int r = 0; r < Board.boardHW; r++) {
 			for (int c = 0; c < Board.boardHW; c++) {
 				
+				//get the Square located at the current Board location
 				Square square = board.getSquare(r, c);
 				
-				//determine background color
-				if(square.getColor() == null){
-					g.setColor(Color.WHITE);
-				}
-				else {
-					g.setColor(square.getColor()); 
-				}
+				//draw the border around the Square
+				g.setColor(Color.BLACK);
 				g.fillRect(c * 60 + 6, r * 60 + 6, 64, 64);
 				
-				g.setColor(Color.black); //set the color of the writing to black
-				g.drawString("" + square.getValue(), c * 60 + 30, r * 60 + 40);
+				//set the background of the Square depending on whether or not it is marked
+				if(square.isMarked()){
+					g.setColor(Color.DARK_GRAY);
+				}
+				else {
+					g.setColor(Color.WHITE);
+				}
+				g.fillRect(c * 60 + 7, r * 60 + 7, 62, 62);
+				
+				//only print the Tile if there is a Tile located in the current Square
+				if(square.peekTile() != null){
+					//set the background of the Tile
+					if(square.getTileColor() == null){
+						g.setColor(Color.CYAN);
+					}
+					else {
+						g.setColor(square.getTileColor()); 
+					}
+					g.fillRect(c * 60 + 12, r * 60 + 12, 50, 50);
+					
+					//print the value of the Tile
+					g.setColor(Color.black); //set the color of the writing to black
+					g.drawString("" + square.getTileValue(), c * 60 + 35, r * 60 + 40);
+				}
 			}
 
 		}

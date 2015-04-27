@@ -2,10 +2,11 @@ package SixesWildGame.model;
 
 import java.util.Random;
 
-//NOTE: This class has not been updated since we switched to the new structure -AB 4/27
-
-
-// The model class for the board
+/**
+ * Board - this Class 
+ * @author Alex
+ *
+ */
 public class Board {
 	Square[][] allSquares;
 	public final static int boardHW = 9;
@@ -22,25 +23,46 @@ public class Board {
 				allSquares[r][c].addTile(generateRandomTile());
 			}
 		}
+		
 	}
 
-	// TODO: I'm confused as to the purpose of this method - does it create new Tiles to be added to the Square located at r,c? if so, it shouldn't
-	// need to return anything, just alter the Square. I'm setting this to void for now. may be changed later. -AB 4/27
+	/**
+	 * TODO: I'm confused as to the purpose of this method - does it create new Tiles to be added to the Square located at r,c? 
+	 * if so, it shouldn't need to return anything, just alter the Square. I'm setting this to void for now. may be changed later. -AB 4/27
+	 * @param r - row the the Board
+	 * @param c - column of the Board
+	 */
 	public void SpawnTile(int r, int c) {
 		Square currentSquare = getSquare(r,c);
 		currentSquare.addTile(new Tile(randomGenerator.nextInt(6) + 1, 1, currentSquare));
 		
-		//return new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);	 //old -AB 4/27
+		//return new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);	 //old line of code -AB 4/27
 	} 
 	
+	/**
+	 * Create a randomly generated Tile
+	 * @return Tile - a new Tile with a random value, 1 as a multiplier, and null as its parent
+	 */
 	public Tile generateRandomTile(){
 		return new Tile(randomGenerator.nextInt(6) + 1, 1, null);
 	}
 
+	/**
+	 * getTile() - Using the Board's row and column, return the Tile from that location
+	 * @param r - row of the Board
+	 * @param c - column of the Board
+	 * @return Tile located at the Board's row and column
+	 */
 	public Tile getTile(int r, int c) {
 		return allSquares[r][c].getTile();
 	}
 	
+	/**
+	 * Using the Board's row and column, return the Square from that location
+	 * @param r - row of the Board
+	 * @param c - column of the Board
+	 * @return Square located at the Board's row and column
+	 */
 	public Square getSquare(int r, int c){
 		return allSquares[r][c];
 	}
