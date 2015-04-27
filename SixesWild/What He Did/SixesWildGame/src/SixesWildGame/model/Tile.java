@@ -103,30 +103,29 @@ public class Tile {
 	 * method to determine and set the Color of the Tile using the value. Each value has a pre-determined Color
 	 */
 	private void updateColor(){
-		//TODO: make sure these colors match up how we originally planned them
 		if(value == 1){
 			//set color to (white)
-			this.color = Color.WHITE;
+			this.color = Color.RED;
 		}
 		else if(value == 2){
 			//set color to (red)
-			this.color = Color.RED;
+			this.color = Color.ORANGE;
 		}
 		else if(value == 3){
 			//set color to (orange)
-			this.color = Color.ORANGE;
+			this.color = Color.BLUE;
 		}
 		else if(value == 4){
 			//set  color to (yellow)
-			this.color = Color.YELLOW;
+			this.color = Color.MAGENTA;
 		}
 		else if(value == 5){
 			//set color to ( blue)
-			this.color = Color.BLUE;
+			this.color = Color.GREEN;
 		}
 		else if(value == 6){
 			//set color to (pink)
-			this.color = Color.PINK;
+			this.color = Color.YELLOW;
 		}
 	}
 	
@@ -135,6 +134,9 @@ public class Tile {
 	 * @return tile.color
 	 */
 	public Color getColor(){
+		if(this.color == null){
+			return Color.WHITE;
+		}
 		return this.color;
 	}
 	

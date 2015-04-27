@@ -1,5 +1,7 @@
 package SixesWildGame.model;
 
+import java.awt.Color;
+
 /**
  * Square - this Object will be the building blocks to a Level, and can contain a Tile which can be used to a Move
  * @author Alex
@@ -135,14 +137,20 @@ public class Square{
 	}
 	
 	/**
-	 * Removes the Tile from the Square, and changes the Tile's parent to null. This is much like Pile.get() from A1
+	 * Removes the Tile from the Square, and changes the Tile's parent to null. This is much like Pile.get() from A1.
+	 * Note: if the Square does not currently have a Tile, it just returns null and does not change the Square.
 	 * @return this.tile
 	 */
 	public Tile getTile(){
-		Tile thisTile = tile;
-		tile.setParent(null);
-		this.tile = null;
-		return thisTile;
+		if(this.tile == null){
+			return null;
+		}
+		else {
+			Tile thisTile = tile;
+			tile.setParent(null);
+			this.tile = null;
+			return thisTile;
+		}
 	}
 	
 	/**
@@ -168,5 +176,31 @@ public class Square{
 				this.peekTile().equals(other.peekTile()) &&
 				this.isMarked() == other.isMarked();
 
+	}
+
+	/**
+	 * return the color of the Tile located in the current Square. If there is no Tile, return Black -AB 4/27
+	 * @return color of the Tile 
+	 */
+	public Color getColor(){
+		if(this.peekTile() == null){
+			return Color.BLACK;
+		}
+		else{
+			return this.peekTile().getColor();
+		}
+	}
+
+	/**
+	 * get the value of the Tile located in the current Square. If there is no Tile, return 0. - AB 4/27
+	 * @return value of the Tile
+	 */
+	public int getValue() {
+		if(this.peekTile() == null){
+			return 0;
+		}
+		else {
+			return this.peekTile().getValue();
+		}
 	}
 }
