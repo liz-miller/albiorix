@@ -2,6 +2,9 @@ package SixesWildGame.model;
 
 import java.util.Random;
 
+//NOTE: This class has not been updated since we switched to the new structure -AB 4/27
+
+
 // The model class for the board
 public class Board {
 	Tile[][] allTiles;
@@ -14,14 +17,15 @@ public class Board {
 		
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
-				allTiles[r][c] = new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);
+				//allTiles[r][c] = new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);
 			}
 		}
 	}
 	
+	/*
 	public Tile SpawnTile(int r, int c) {
-		return new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);
-	}
+		return new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);	
+	} */
 
 	public Tile getTile(int r, int c) {
 		return allTiles[r][c];

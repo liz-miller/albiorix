@@ -2,7 +2,7 @@ package SixesWildGame.boundary;
 
 import java.awt.BorderLayout;
 
-import javax.media.j3d.Billboard;
+//import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 import java.awt.EventQueue;
 import java.awt.MouseInfo;

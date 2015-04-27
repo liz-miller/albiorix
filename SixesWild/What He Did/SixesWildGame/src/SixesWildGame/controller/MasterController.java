@@ -9,7 +9,8 @@ import SixesWildGame.model.Tile;
 public class MasterController {
 	// If we can get this to work we will be almost done
 	// This will have to somehow be broken into many controllers
-}
+
+	/*
 	public void onMouseEvent(MouseEvent e){
 		Tile tileEntered = (Tile) e.getSource(); // get the tile that called the event
 		if(!tileEntered.getText().contains("|")){ // If the tile is NOT already selected
@@ -96,4 +97,6 @@ public class MasterController {
 
 
 	}
+	*/
+}
 

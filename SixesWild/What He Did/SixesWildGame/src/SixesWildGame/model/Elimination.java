@@ -1,8 +1,8 @@
 package SixesWildGame.model;
 
-import src.SixesWildGame.model.Level;
-import src.SixesWildGame.model.Square;
-import src.SixesWildGame.model.Tile;
+import SixesWildGame.model.Level;
+import SixesWildGame.model.Square;
+import SixesWildGame.model.Tile;
 
 
 /**

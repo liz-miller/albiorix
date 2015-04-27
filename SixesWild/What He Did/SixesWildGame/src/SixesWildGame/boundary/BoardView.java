@@ -32,10 +32,10 @@ public class BoardView extends JPanel {
 				Tile t = board.getTile(r, c);
 				// what about select tiles? when a move is being done...
 
-				g.setColor(getColor(t.getValue()));
+				//g.setColor(getColor(t.getValue())); //Commented out because it currently does not run correctly with board not working -AB 4/27
 				g.fillRect(c * 60 + 6, r * 60 + 6, 64, 64);
 				g.setColor(Color.black);
-				g.drawString("" + t.getValue(), c * 60 + 6, r * 60 + 6);
+				//g.drawString("" + t.getValue(), c * 60 + 6, r * 60 + 6); //Commented out because it currently does not run correctly with board not working -AB 4/27
 			}
 		}
 
