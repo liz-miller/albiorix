@@ -5,7 +5,7 @@ import java.util.Stack;
 
 /**
  * Board - this Class 
- * @author Alex
+ * @author Alex && npmahowald
  *
  */
 public class Board {
@@ -87,6 +87,38 @@ public class Board {
 		while(!swipedSquares.empty()){
 		square = swipedSquares.pop();
 		square.peekTile().setSelected(false);
+		}
+	}
+	
+	public int numSwiped(){
+		return swipedSquares.size();
+	}
+	
+	public int countSwiped(){
+		int count = 0;
+		for(int i = 0; i < numSwiped(); i++){
+			count = count + swipedSquares.elementAt(i).getTileValue();
+		}
+		return count;
+	}
+	public void eliminateSwipedTiles(){
+		Square square, downSquare;
+		
+		while(!swipedSquares.empty()){
+			
+			square = swipedSquares.pop();
+			if(square.getCol() == 0){
+				downSquare = new Square(square.getCol(),square.getRow());
+				downSquare.addTile(generateRandomTile());
+				allSquares[square.getRow()][square.getCol()] = downSquare;
+			}else{
+			
+			downSquare = allSquares[square.getRow()][square.getCol() - 1];
+			allSquares[square.getRow()][square.getCol()] = downSquare;
+			swipedSquares.push(allSquares[square.getRow()][square.getCol() - 1]);
+			
+			}
+			
 		}
 	}
 }

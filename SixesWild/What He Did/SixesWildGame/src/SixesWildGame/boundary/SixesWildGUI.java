@@ -50,13 +50,12 @@ public class SixesWildGUI extends JPanel {
 
 	private JButton btnEliminateTile;
 	private int eliminateTilesLeft = 3;
-	private boolean eliminateTileState = false;
 
 	private JButton btnSwapTile;
 	private int swapTilesLeft = 3;
-	private boolean swapTileState = false;
 
 	Board board;
+	BoardView bv;
 	Application app;
 
 	public SixesWildGUI(Application app, Board b) {
@@ -114,8 +113,10 @@ public class SixesWildGUI extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				if (eliminateTilesLeft > 0) {
-					eliminateTileState = true;
-					swapTileState = false;
+					bv.eliminateTileState = true;
+					bv.swapTileState = false;
+					eliminateTilesLeft--;
+					btnEliminateTile.setText("Eliminate Tile (" + eliminateTilesLeft + " left)");
 				}
 			}
 		});
@@ -128,8 +129,10 @@ public class SixesWildGUI extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (swapTilesLeft > 0) {
 					// I used these booleans to control the state of the program
-					eliminateTileState = false;
-					swapTileState = true;
+					bv.eliminateTileState = false;
+					bv.swapTileState = true;
+					swapTilesLeft--;
+					btnSwapTile.setText("Swap Tiles (" + swapTilesLeft + " left)");
 				}
 			}
 		});
@@ -143,7 +146,7 @@ public class SixesWildGUI extends JPanel {
 
 		starLabel.setBounds(267, 78, 91, 31);
 
-		BoardView bv = new BoardView(board);
+		bv = new BoardView(board);
 		MouseController mc = new MouseController(app, bv, board);
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);

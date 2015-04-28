@@ -3,6 +3,7 @@ package SixesWildGame.boundary;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import SixesWildGame.model.Board;
@@ -16,6 +17,9 @@ import SixesWildGame.model.Square;
 public class BoardView extends JPanel {
 	// The GUI class for the board
 	Board board;
+	protected boolean eliminateTileState = false;
+
+	protected boolean swapTileState = false;
 
 	/**
 	 * Constructor for BoardView using a pre-created Board to be painted
@@ -87,5 +91,17 @@ public class BoardView extends JPanel {
 		int xIndex = (x - 6)/64;
 		int yIndex = (y - 6)/64;
 		return board.getSquare(xIndex, yIndex);
+	}
+	public boolean getEliminateTileState(){
+		return eliminateTileState;
+	}
+	public void setEliminateTileState(boolean b){
+		eliminateTileState = b;
+	}
+	public boolean getSwapTileState(){
+		return swapTileState;
+	}
+	public void setSwapTileState(boolean b){
+		swapTileState = b;
 	}
 }

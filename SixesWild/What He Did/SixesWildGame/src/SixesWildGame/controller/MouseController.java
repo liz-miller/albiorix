@@ -1,5 +1,9 @@
 package SixesWildGame.controller;
-
+/**
+ * MouseController - this Class 
+ * @author npmahowald
+ *
+ */
 import java.awt.event.*;
 
 import SixesWildGame.boundary.Application;
@@ -25,20 +29,12 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent me) {
-		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
-		sixesFrame.repaint();
+		mouseAction(me);
 
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent me) {
-		/*
-		System.out.println("1");
-		if(mouseHasBeenPressed){
-			System.out.println("2");
-		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
-		sixesFrame.repaint();
-		}*/
 
 	}
 
@@ -62,11 +58,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mousePressed(MouseEvent me) {
-		/*
-		mouseHasBeenPressed = true;
-		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
-		sixesFrame.repaint();
-		 */
+		mouseAction(me);
 	}
 
 	@Override
@@ -75,6 +67,32 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		board.remAllFromSelected();
 		sixesFrame.repaint();
 
+	}
+	
+	private void mouseAction(MouseEvent me){
+		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
+		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
+				){
+			board.remAllFromSelected();
+			//sub points
+		}else if(((
+				(board.numSwiped() == 2 && sixesFrame.getSwapTileState()) // if a swapped tile is needed
+				||
+				board.countSwiped() == 6 ) && board.numSwiped() > 1)  // or the count is 6
+				|| sixesFrame.getEliminateTileState()// or an eliminate is needed
+				){ 
+			if(sixesFrame.getEliminateTileState()){// This just resets the button
+				sixesFrame.setEliminateTileState(false);
+			//	eliminateTilesLeft--;
+			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
+			} else if(!sixesFrame.getSwapTileState()){
+				board.eliminateSwipedTiles();
+				//Only occurs if a special move is not being used
+			//	movesLeft--;
+			//	point = point + 10*numClicked;
+			}
+			}
+		sixesFrame.repaint();
 	}
 
 }
