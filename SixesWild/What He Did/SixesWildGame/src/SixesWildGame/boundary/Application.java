@@ -47,6 +47,6 @@ public class Application extends JFrame {
 
 		// google how to refresh when changing content pane for JFrame
 		// repaint doesn't work, I had been using setVisible(true) but IDK
-		// repaint();
+		 //repaint();
 	}
 }
