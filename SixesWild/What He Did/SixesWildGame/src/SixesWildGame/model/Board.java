@@ -25,6 +25,12 @@ public class Board {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
 				allSquares[r][c].addTile(generateRandomTile());
+				if(r == 0){
+					allSquares[r][c].peekTile().setMult(3);
+				}
+				else if(r == 1){
+					allSquares[r][c].peekTile().setMult(2);
+				}
 			}
 		}
 		
@@ -52,7 +58,7 @@ public class Board {
 	 * @return Tile located at the Board's row and column
 	 */
 	public Tile getTile(int r, int c) {
-		return allSquares[c][r].getTile();
+		return allSquares[c][r].peekTile();
 	}
 	
 	/**

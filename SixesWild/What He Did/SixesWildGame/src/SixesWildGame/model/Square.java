@@ -204,4 +204,17 @@ public class Square{
 			return this.peekTile().getValue();
 		}
 	}
+	/** 
+	 * get the multiplication value of the Tile. If there is no Tile, return 0.  -AB 4/28
+	 * @return
+	 */
+	public int getTileMult() {
+		if(this.peekTile() == null){
+			System.err.println("Square: no Tile associated with this Square but you attempted to get its multiplier");
+			return 0;
+		}
+		else {
+			return this.peekTile().getMult();
+		}
+	}
 }

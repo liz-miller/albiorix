@@ -75,6 +75,7 @@ public class BoardView extends JPanel {
 
 		}
 	}
+	
 	private void paintTile(Square square, Graphics g, int indexW, int indexH){
 		//set the background of the Tile
 
@@ -86,21 +87,31 @@ public class BoardView extends JPanel {
 		//print the value of the Tile
 		g.setColor(Color.black); //set the color of the writing to black
 		g.drawString("" + square.getTileValue(), indexW * 64 + 35, indexH * 64 + 35);
+		
+		//print the multiplier if it is not 1
+		if(square.getTileMult() != 1){
+			g.drawString("x" + square.getTileMult(), indexW * 64 + 53, indexH * 64 + 60);
+		}
 	}
+	
 	public Square getSquare(int x, int y){
 		int xIndex = (x - 6)/64;
 		int yIndex = (y - 6)/64;
 		return board.getSquare(xIndex, yIndex);
 	}
+	
 	public boolean getEliminateTileState(){
 		return eliminateTileState;
 	}
+	
 	public void setEliminateTileState(boolean b){
 		eliminateTileState = b;
 	}
+	
 	public boolean getSwapTileState(){
 		return swapTileState;
 	}
+	
 	public void setSwapTileState(boolean b){
 		swapTileState = b;
 	}
