@@ -13,23 +13,32 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	private Application app;
 	private BoardView sixesFrame;
 	private Board board;
+	private boolean mouseHasBeenPressed;
 
 	public MouseController(Application app, BoardView boardView,
 			Board board) {
 		this.app = app;
 		this.sixesFrame = boardView;
 		this.board = board;
+		mouseHasBeenPressed = false;
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseDragged(MouseEvent me) {
+		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
+		sixesFrame.repaint();
 
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseMoved(MouseEvent me) {
+		/*
+		System.out.println("1");
+		if(mouseHasBeenPressed){
+			System.out.println("2");
+		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
+		sixesFrame.repaint();
+		}*/
 
 	}
 
@@ -47,20 +56,22 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseExited(MouseEvent me) {
-		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
-		sixesFrame.repaint();
+		
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent me) {
+		/*
+		mouseHasBeenPressed = true;
 		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
 		sixesFrame.repaint();
-
+		 */
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
+		mouseHasBeenPressed = false;
 		board.remAllFromSelected();
 		sixesFrame.repaint();
 
