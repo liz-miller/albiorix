@@ -25,7 +25,7 @@ public class Application extends JFrame {
 		super("Sixes Wild");
 		setSize(800, 800);
 		this.model = m;
-		toMenu(3);
+		toMenu(0);
 	}
 
 	// Navigates between menus, he didn't seem to have major problem with this
@@ -33,20 +33,25 @@ public class Application extends JFrame {
 		if (selection == 0) {
 			splsh = new SplashScreen(this);
 			setContentPane(splsh);
+			 repaint();
 		}
 		if (selection == 1) {
 			selmen = new SelectionMenu(this);
 			setContentPane(selmen);
+			selmen.revalidate(); 
+			repaint();
 		} else if (selection == 2) {
 			slvl = new selectLevel(this);
 			setContentPane(slvl);
+			slvl.revalidate(); 
+			repaint();
+			
 		} else if (selection == 3) {
 			game = new SixesWildGUI(this, model.getBoard(1));
+			
 			setContentPane(game);
+			game.revalidate(); 
+			repaint();
 		}
-
-		// google how to refresh when changing content pane for JFrame
-		// repaint doesn't work, I had been using setVisible(true) but IDK
-		 //repaint();
 	}
 }

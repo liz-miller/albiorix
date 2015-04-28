@@ -11,9 +11,9 @@ import java.awt.Color;
 public class Tile {
 	
 	private int value;
-	private Color color;
 	private Square parent;
 	private int multiplier;
+	private boolean selected;
 	
 	/**
 	 * Constructor for Tile - This specifies the value, multiplier, and parent Square of the tile. Using this information the color
@@ -35,7 +35,8 @@ public class Tile {
 		//then update the other class values
 		setParent(parent);
 		setMult(mult);
-		updateColor();
+		getColor();
+		setSelected(false);
 		
 	}
 	
@@ -73,7 +74,7 @@ public class Tile {
 		}
 		else{
 			this.value = val;
-			updateColor();
+			getColor();
 		}
 	}
 	
@@ -102,43 +103,50 @@ public class Tile {
 	/**
 	 * method to determine and set the Color of the Tile using the value. Each value has a pre-determined Color
 	 */
-	private void updateColor(){
+	public Color getColor(){
+		Color color;
+		if(selected){
+			color = Color.GRAY;
+		} else {
 		if(value == 1){
 			//set color to (white)
-			this.color = Color.RED;
+			color = Color.RED;
 		}
 		else if(value == 2){
 			//set color to (red)
-			this.color = Color.ORANGE;
+			color = Color.ORANGE;
 		}
 		else if(value == 3){
 			//set color to (orange)
-			this.color = Color.CYAN;
+			color = Color.CYAN;
 		}
 		else if(value == 4){
 			//set  color to (yellow)
-			this.color = Color.MAGENTA;
+			color = Color.MAGENTA;
 		}
 		else if(value == 5){
 			//set color to ( blue)
-			this.color = Color.GREEN;
+			color = Color.GREEN;
 		}
 		else if(value == 6){
 			//set color to (pink)
-			this.color = Color.BLUE;
-		}
+			color = Color.BLUE;
+		} else{
+			color = Color.BLACK;
+		}}
+		return color;
 	}
 	
 	/**
 	 * getter for the Tile color value
 	 * @return tile.color
 	 */
-	public Color getColor(){
+	/*public Color getColor(){
 		if(this.color == null){
 			updateColor();
 		}
 		return this.color;
-	}
+	}*/
 	
 	/**
 	 * getter which returns the parent Square 
@@ -173,6 +181,10 @@ public class Tile {
 		return (this.getValue() == t.getValue() &&
 				this.getMult() == t.getMult());
 		
+	}
+	
+	public void setSelected(boolean selState){
+		selected = selState;
 	}
 	
 } //end Tile 

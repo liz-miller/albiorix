@@ -1,6 +1,7 @@
 package SixesWildGame.model;
 
 import java.util.Random;
+import java.util.Stack;
 
 /**
  * Board - this Class 
@@ -8,11 +9,14 @@ import java.util.Random;
  *
  */
 public class Board {
-	Square[][] allSquares;
+	private Square[][] allSquares;
+	private Stack<Square> swipedSquares;
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
 	
 	public Board () {
+		swipedSquares = new Stack<Square>(); // Used to hold the tiles as they were
+												// swiped
 		// So far all this does is generate a random board, and he wrote it
 		allSquares  = new Square[boardHW][boardHW];
 		
@@ -32,12 +36,6 @@ public class Board {
 	 * @param r - row the the Board
 	 * @param c - column of the Board
 	 */
-	public void SpawnTile(int r, int c) {
-		Square currentSquare = getSquare(r,c);
-		currentSquare.addTile(new Tile(randomGenerator.nextInt(6) + 1, 1, currentSquare));
-		
-		//return new Tile(randomGenerator.nextInt(6) + 1, r, c, 1);	 //old line of code -AB 4/27
-	} 
 	
 	/**
 	 * Create a randomly generated Tile
@@ -54,7 +52,7 @@ public class Board {
 	 * @return Tile located at the Board's row and column
 	 */
 	public Tile getTile(int r, int c) {
-		return allSquares[r][c].getTile();
+		return allSquares[c][r].getTile();
 	}
 	
 	/**
@@ -64,7 +62,32 @@ public class Board {
 	 * @return Square located at the Board's row and column
 	 */
 	public Square getSquare(int r, int c){
-		return allSquares[r][c];
+		return allSquares[c][r];
+	}
+	
+	public void pushToSelected(Square square){
+		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || !square.equals(swipedSquares.peek()))){
+		square.peekTile().setSelected(true);
+		swipedSquares.push(square);
+		}
+	}
+	
+	public Square popFromSelected(){
+		Square square = swipedSquares.pop();
+		square.peekTile().setSelected(false);
+		return square;
+	}
+	
+	public Square peekAtSelected(){
+		return swipedSquares.peek();
+	}
+	
+	public void remAllFromSelected(){
+		Square square;
+		while(!swipedSquares.empty()){
+		square = swipedSquares.pop();
+		square.peekTile().setSelected(false);
+		}
 	}
 }
 

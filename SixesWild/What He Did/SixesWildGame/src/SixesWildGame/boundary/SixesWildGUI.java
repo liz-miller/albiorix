@@ -102,11 +102,10 @@ public class SixesWildGUI extends JPanel {
 
 			}
 		});
-		btnBack.setBounds(21, 348, 162, 29);
+		btnBack.setBounds(21, 750, 162, 29);
 		add(btnBack);
 
-		btnEliminateTile = new JButton("Eliminate Tile (" + eliminateTilesLeft
-				+ " left)");
+		btnEliminateTile = new JButton("Eliminate Tile (" + eliminateTilesLeft + " left)");
 
 		// This listener will have to go into a separate class
 		// Theoretically, we could have a TileGUI class, that might our "art" a
@@ -145,10 +144,10 @@ public class SixesWildGUI extends JPanel {
 		starLabel.setBounds(267, 78, 91, 31);
 
 		BoardView bv = new BoardView(board);
-		MouseController mc = new MouseController(app, this, board);
+		MouseController mc = new MouseController(app, bv, board);
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);
-		bv.setBounds(43, 131, 535, 190);
+		bv.setBounds(43, 131, 700, 700);
 		add(bv);
 
 		add(starLabel);
