@@ -67,8 +67,8 @@ public class BoardView extends JPanel {
 				}
 				g.fillRect(c * 64 + 8, r * 64 + 8, 62, 62);
 				
-				//only print the Tile if there is a Tile located in the current Square
-				if(square.peekTile() != null){
+				//only print the Tile if the Square is not inert and there is a Tile located in the current Square
+				if(!square.isInert() && square.peekTile() != null){
 					paintTile(square, g, c, r);
 				}
 			}

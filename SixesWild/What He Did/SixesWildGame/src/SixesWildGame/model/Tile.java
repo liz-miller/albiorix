@@ -79,7 +79,7 @@ public class Tile {
 	}
 	
 	/**
-	 * setter to change the multiplier of the Tile
+	 * setter to change the multiplier of the Tile. If the Tile's value is 6, then its multiplier cannot be changed from 1.
 	 * @param mult - the new multiplier
 	 */
 	public void setMult(int mult){
@@ -87,7 +87,9 @@ public class Tile {
 			System.out.println("Tile: new multiplier is out of bounds");
 		}
 		else{
-			this.multiplier = mult;
+			if(this.value != 6){
+				this.multiplier = mult;
+			}
 		}
 
 	}
@@ -108,32 +110,33 @@ public class Tile {
 		if(selected){
 			color = Color.GRAY;
 		} else {
-		if(value == 1){
-			//set color to (white)
-			color = Color.RED;
+			if(value == 1){
+				//set color to (white)
+				color = Color.RED;
+			}
+			else if(value == 2){
+				//set color to (red)
+				color = Color.ORANGE;
+			}
+			else if(value == 3){
+				//set color to (orange)
+				color = Color.CYAN;
+			}
+			else if(value == 4){
+				//set  color to (yellow)
+				color = Color.MAGENTA;
+			}
+			else if(value == 5){
+				//set color to ( blue)
+				color = Color.GREEN;
+			}
+			else if(value == 6){
+				//set color to (pink)
+				color = Color.BLUE;
+			} else{
+				color = Color.BLACK;
+			}
 		}
-		else if(value == 2){
-			//set color to (red)
-			color = Color.ORANGE;
-		}
-		else if(value == 3){
-			//set color to (orange)
-			color = Color.CYAN;
-		}
-		else if(value == 4){
-			//set  color to (yellow)
-			color = Color.MAGENTA;
-		}
-		else if(value == 5){
-			//set color to ( blue)
-			color = Color.GREEN;
-		}
-		else if(value == 6){
-			//set color to (pink)
-			color = Color.BLUE;
-		} else{
-			color = Color.BLACK;
-		}}
 		return color;
 	}
 	
