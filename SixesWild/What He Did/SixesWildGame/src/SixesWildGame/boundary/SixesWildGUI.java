@@ -3,6 +3,7 @@ package SixesWildGame.boundary;
 import java.awt.BorderLayout;
 
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 
@@ -34,8 +35,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 import java.util.Stack;
+import java.util.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+//-- imported to make the timer work
+import java.util.TimerTask;
+import java.util.Timer;
 
 
 /**
@@ -93,6 +99,17 @@ public class SixesWildGUI extends JPanel {
 		
 	}
 	
+	//-- setter variable and method
+	JLabel theClock;
+	public JLabel getTimerLabel() {
+		return theClock;
+	}
+	
+	//-- new lightning when timer expires (change to a victory screen later)
+	void reset(){
+		app.toMenu(4);
+	}
+	
 	void initialize() {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, windowW, windowH);
@@ -110,6 +127,19 @@ public class SixesWildGUI extends JPanel {
 			}
 		scoreBoard.setBounds(33, 15, 200, 16);
 		add(scoreBoard);
+		
+		//-- new timer instance
+		/*
+		if(level == lightning){ // <-- change to real code 
+			//the clock to display time left
+			Timer theTimer = new Timer();
+			ClockTick clockTick = new ClockTick(this, theTimer);
+			theTimer.scheduleAtFixedRate(clockTick, 1000, 1000);
+			theClock = new JLabel("10");
+			theClock.setBounds(600, 50, 174, 29);
+			add(theClock);
+		}
+		*/
 
 		btnResetBoard = new JButton("Reset Board");
 		btnResetBoard.addActionListener(new ActionListener() {
