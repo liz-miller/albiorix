@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 
@@ -25,6 +26,7 @@ import javax.swing.SwingConstants;
 
 import SixesWildGame.controller.MouseController;
 import SixesWildGame.model.Board;
+import SixesWildGame.model.Lightning;
 import SixesWildGame.model.Tile;
 import SixesWildGame.model.Level;
 import SixesWildGame.model.Puzzle;
@@ -50,19 +52,8 @@ import java.util.Timer;
  * @author nmpahowald
  */
 public class SixesWildGUI extends JPanel {
-	// The vast majority of this info will have to leave this class, in the end
-	// this ought
-	// to be just the GUI element
 	protected JLabel scoreBoard;
 	public final static int boardHW = 9;
-	private int tileSize = 60;
-	private int count = 0;
-	// public static int pointMult = 1;
-	private boolean dragging = false;
-	private int numClicked = 0;
-	private Tile allTiles[];
-	private Stack<Tile> swipedTiles;
-	private int topCorner = 40;
 
 	private JButton btnEliminateTile;
 
@@ -71,6 +62,7 @@ public class SixesWildGUI extends JPanel {
 	
 	private JButton btnResetBoard;
 	private JLabel starLabel;
+	
 
 	Level level;
 	BoardView bv;
@@ -85,7 +77,9 @@ public class SixesWildGUI extends JPanel {
 	}
 	
 	public void updateStatViews(){
-		if(!level.getTimer()){
+		if(level instanceof Lightning){
+			scoreBoard.setText("Score: " + level.getScore() + ", Time Left: "+((Lightning) level).getTime());
+		}else{
 		scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
 				+ ((Puzzle) level).getMovesLeft());
 		}
@@ -100,46 +94,36 @@ public class SixesWildGUI extends JPanel {
 	}
 	
 	//-- setter variable and method
-	JLabel theClock;
-	public JLabel getTimerLabel() {
-		return theClock;
+	public JLabel getScoreBoard() {
+		return scoreBoard;
 	}
 	
-	//-- new lightning when timer expires (change to a victory screen later)
-	void reset(){
-		app.toMenu(4);
-	}
+	
 	
 	void initialize() {
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setBounds(100, 100, windowW, windowH);
 
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-		// setContentPane(contentPane);
 
-		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were
-											// swiped
 		setLayout(null);
 		scoreBoard = new JLabel();
-		if(!level.getTimer()){
+		if(level instanceof Lightning){
+			// <-- change to real code 
+				//the clock to display time left
+				Timer theTimer = new Timer();
+				ClockTick clockTick = new ClockTick((Lightning) level, theTimer, this);
+				theTimer.scheduleAtFixedRate(clockTick, 1000, 1000);
+				scoreBoard.setText("Score: " + level.getScore() + ", Time Left: "+((Lightning) level).getTime());
+			
+		}else{
 			scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
 					+ ((Puzzle) level).getMovesLeft());
 			}
 		scoreBoard.setBounds(33, 15, 200, 16);
 		add(scoreBoard);
 		
-		//-- new timer instance
-		/*
-		if(level == lightning){ // <-- change to real code 
-			//the clock to display time left
-			Timer theTimer = new Timer();
-			ClockTick clockTick = new ClockTick(this, theTimer);
-			theTimer.scheduleAtFixedRate(clockTick, 1000, 1000);
-			theClock = new JLabel("10");
-			theClock.setBounds(600, 50, 174, 29);
-			add(theClock);
-		}
-		*/
+		
+
+		
 
 		btnResetBoard = new JButton("Reset Board");
 		btnResetBoard.addActionListener(new ActionListener() {

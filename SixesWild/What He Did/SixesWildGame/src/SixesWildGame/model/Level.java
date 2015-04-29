@@ -12,7 +12,6 @@
 
 public abstract class Level {
 	private String levelType;
-	private boolean timer;
 	private int score;
 	private int[] starThreshold;
 	private int eliminateTilesLeft = 3;
@@ -91,6 +90,10 @@ public abstract class Level {
 	public String getType(Level l){
 		return l.levelType;
 	}
+	
+	public abstract void decreaseMovesLeft();
+	public abstract int getMovesLeft();
+	
 	public void decreaseEliminateTilesLeft(){
 		eliminateTilesLeft--;
 		
@@ -105,10 +108,7 @@ public abstract class Level {
 	public int getSwapTilesLeft(){
 		return swapTilesLeft;
 	}
-	
-	public boolean getTimer(){
-		return timer;
-	}
+
 	public Board getBoard(){
 		return board;
 	}
@@ -142,6 +142,7 @@ public abstract class Level {
 		return 0;
 
 	}
+	
 	
 	
 	

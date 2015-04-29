@@ -10,7 +10,6 @@ import java.sql.Time;
  */
 public class Puzzle extends Level{
 	private String levelType;
-	private boolean timer;
 	private int[] starThreshold;
 	private int movesLeft = 30;
 	private int eliminateTilesLeft = 3;
@@ -21,7 +20,6 @@ public class Puzzle extends Level{
 		super(starThreshold);
 		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
-		this.timer = false;
 	}
 
 	@Override

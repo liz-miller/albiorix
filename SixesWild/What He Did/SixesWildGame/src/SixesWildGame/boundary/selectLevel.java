@@ -43,6 +43,7 @@ public class selectLevel extends JPanel {
 		JButton button = new JButton("2");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				app.toMenu(4);
 			}
 		});
 		button.setBounds(133, 49, 39, 29);

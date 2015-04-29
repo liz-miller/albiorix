@@ -5,26 +5,24 @@ import java.sql.Time;
 /**
  * Creates a Lightning Level.
  * 
- * @author Liz Miller
+ * @author Liz Miller & npmahowald
  *
  */
 public class Lightning extends Level{
-	private String gameName;
-	private Square squares[];
-	private Tile tiles[];
-	private int numMoves;
-	private int numStars;
-	private int difficulty;
-	private Time timeLeft;
+	private String levelType;
+	private int score;
+	private int[] starThreshold;
+	private int eliminateTilesLeft = 3;
+	private int swapTilesLeft = 3;
+	private boolean eliminateTileState;
+	private boolean swapTileState;
+	private Board board;
+	private int time;
 	
-	public void Level(String gameName, Square squares[], Tile tiles[], int numMoves, int numStars, int difficulty, Time timeLeft){
-		this.gameName = gameName;
-		this.squares = squares;
-		this.tiles = tiles;
-		this.numMoves = numMoves;
-		this.numStars = numStars;
-		this.difficulty = difficulty;
-		this.timeLeft = timeLeft;
+	public Lightning(int time, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold);
+		this.levelType = "Lightning";
+		this.time = time;
 	}
 
 	@Override
@@ -39,5 +37,19 @@ public class Lightning extends Level{
 		
 	}
 	
+	@Override
+	public void decreaseMovesLeft(){
+	}
 	
+	@Override
+	public int getMovesLeft(){
+		return 0;
+	}
+	
+	public int getTime(){
+		return time;
+	}
+	public void setTime(int t){
+		time = t;
+	}
 }
