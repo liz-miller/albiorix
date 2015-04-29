@@ -48,10 +48,9 @@ public class SixesWildGUI extends JPanel {
 	private int topCorner = 40;
 
 	private JButton btnEliminateTile;
-	private int eliminateTilesLeft = 3;
+
 
 	private JButton btnSwapTile;
-	private int swapTilesLeft = 3;
 	
 	private JButton btnResetBoard;
 
@@ -70,8 +69,8 @@ public class SixesWildGUI extends JPanel {
 	public void upDateStatViews(){
 		scoreBoard.setText("Score: " + point + ", Moves Left: "
 				+ board.getMovesLeft());
-		btnEliminateTile.setText("Eliminate Tile (" + eliminateTilesLeft + " left)");
-		btnSwapTile.setText("Swap Tiles (" + swapTilesLeft + " left)");
+		btnEliminateTile.setText("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
+		btnSwapTile.setText("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
 	}
 	
 	void initialize() {
@@ -115,7 +114,7 @@ public class SixesWildGUI extends JPanel {
 		btnBack.setBounds(21, 750, 162, 29);
 		add(btnBack);
 
-		btnEliminateTile = new JButton("Eliminate Tile (" + eliminateTilesLeft + " left)");
+		btnEliminateTile = new JButton("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
 
 		// This listener will have to go into a separate class
 		// Theoretically, we could have a TileGUI class, that might our "art" a
@@ -123,27 +122,27 @@ public class SixesWildGUI extends JPanel {
 		btnEliminateTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (eliminateTilesLeft > 0) {
+				if (board.getEliminateTilesLeft() > 0) {
 					bv.eliminateTileState = true;
 					bv.swapTileState = false;
-					eliminateTilesLeft--;
-					btnEliminateTile.setText("Eliminate Tile (" + eliminateTilesLeft + " left)");
+					board.decreaseEliminateTilesLeft();
+					btnEliminateTile.setText("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
 				}
 			}
 		});
 		btnEliminateTile.setBounds(404, 11, 174, 29);
 		add(btnEliminateTile);
 
-		btnSwapTile = new JButton("Swap Tiles (" + swapTilesLeft + " left)");
+		btnSwapTile = new JButton("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
 		// and this one
 		btnSwapTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (swapTilesLeft > 0) {
+				if (board.getSwapTilesLeft() > 0) {
 					// I used these booleans to control the state of the program
 					bv.eliminateTileState = false;
 					bv.swapTileState = true;
-					swapTilesLeft--;
-					btnSwapTile.setText("Swap Tiles (" + swapTilesLeft + " left)");
+					board.decreaseSwapTilesLeft();
+					btnSwapTile.setText("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
 				}
 			}
 		});

@@ -3,6 +3,8 @@ package SixesWildGame.model;
 import java.util.Random;
 import java.util.Stack;
 
+import javax.swing.JButton;
+
 /**
  * Board - this Class 
  * @author Alex && npmahowald
@@ -14,6 +16,8 @@ public class Board {
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
 	private int movesLeft = 30;
+	private int eliminateTilesLeft = 3;
+	private int swapTilesLeft = 3;
 	
 	public Board () {
 		swipedSquares = new Stack<Square>(); // Used to hold the tiles as they were
@@ -108,7 +112,8 @@ public class Board {
 		
 		
 		while(!swipedSquares.empty()){
-			//Vertical stacks not working 
+			//Vertical stacks not working, forgets to delete a tile
+			// Mystery of the disappearing six
 			Square square = swipedSquares.pop();
 			square.peekTile().setSelected(false);
 			if(square.getCol() == 0){
@@ -129,6 +134,20 @@ public class Board {
 	}
 	public int getMovesLeft(){
 		return movesLeft;
+	}
+	public void decreaseEliminateTilesLeft(){
+		eliminateTilesLeft--;
+		
+	}
+	public int getEliminateTilesLeft(){
+		return eliminateTilesLeft;
+	}
+	public void decreaseSwapTilesLeft(){
+		swapTilesLeft--;
+		
+	}
+	public int getSwapTilesLeft(){
+		return swapTilesLeft;
 	}
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
