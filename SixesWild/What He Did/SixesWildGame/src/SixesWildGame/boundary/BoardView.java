@@ -11,7 +11,7 @@ import SixesWildGame.model.Square;
 
 /**
  * BoardView - This is the Boundary class which displays the contents of a Board
- * @author Alex
+ * @author Alex & nmpahowald
  */
 
 public class BoardView extends JPanel {

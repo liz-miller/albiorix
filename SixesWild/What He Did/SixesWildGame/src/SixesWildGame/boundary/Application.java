@@ -21,6 +21,12 @@ public class Application extends JFrame {
 
 	Model model;
 
+	
+	/**
+	 * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
+	 * as the mediator for elements of the game that want access to GUI classes
+	 * @author nmpahowald
+	 */
 	public Application(Model m) {
 		super("Sixes Wild");
 		setSize(800, 800);

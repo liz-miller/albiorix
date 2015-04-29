@@ -29,6 +29,12 @@ import java.util.Stack;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+/**
+ * SixesWildGUI - This is the boundary class that displays the pane that the BoardView is displayed on, as well as
+ * the buttons that operate the game and the scoreboard for the game itself.
+ * @author nmpahowald
+ */
 public class SixesWildGUI extends JPanel {
 	// The vast majority of this info will have to leave this class, in the end
 	// this ought

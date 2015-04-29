@@ -19,6 +19,12 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	private Board board;
 	private boolean mouseHasBeenPressed;
 
+	
+	/**
+	 * MouseController - This is the main controller class, it takes in mouse events that act on the BoardView and distributes them
+	 * to the methods that need to be called.
+	 * @author nmpahowald
+	 */
 	public MouseController(Application app, BoardView boardView,
 			Board board) {
 		this.app = app;

@@ -7,7 +7,7 @@ import javax.swing.JButton;
 
 /**
  * Board - this Class 
- * @author Alex && npmahowald
+ * @author Alex & npmahowald
  *
  */
 public class Board {
