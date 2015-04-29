@@ -6,7 +6,7 @@ public class Model {
 	
 
 	public Level getLevel() {
-		int[] starThresholds = {1,2,3};
+		int[] starThresholds = {500,1000,1500};
 		return new Puzzle(30, starThresholds, 3, 3);
 	}
 }

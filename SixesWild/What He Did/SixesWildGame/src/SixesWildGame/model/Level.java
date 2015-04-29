@@ -21,7 +21,7 @@ public abstract class Level {
 	private boolean swapTileState;
 	private Board board;
 	
-	protected Level(){ 
+	protected Level(int[] starThreshold){ 
 	this.starThreshold = starThreshold;
 	this.eliminateTilesLeft = eliminateTilesLeft;
 	this.swapTilesLeft = swapTilesLeft;
@@ -132,6 +132,15 @@ public abstract class Level {
 	
 	public void setSwapTileState(boolean b){
 		swapTileState = b;
+	}
+	
+	public int numStars(){
+		if(score > starThreshold[2]) return 3;
+		if(score > starThreshold[1]) return 2;
+		if(score > starThreshold[0]) return 1;
+		
+		return 0;
+
 	}
 	
 	

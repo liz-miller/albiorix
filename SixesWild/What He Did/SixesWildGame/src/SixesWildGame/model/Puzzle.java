@@ -18,7 +18,7 @@ public class Puzzle extends Level{
 	private Board board;
 	
 	public Puzzle(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
-		super();
+		super(starThreshold);
 		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
 		this.timer = false;

@@ -48,8 +48,6 @@ public class SixesWildGUI extends JPanel {
 	// this ought
 	// to be just the GUI element
 	protected JLabel scoreBoard;
-	private int boardH = 700;
-	private int boardW = 600;
 	public final static int boardHW = 9;
 	private int tileSize = 60;
 	private int count = 0;
@@ -66,6 +64,7 @@ public class SixesWildGUI extends JPanel {
 	private JButton btnSwapTile;
 	
 	private JButton btnResetBoard;
+	private JLabel starLabel;
 
 	Level level;
 	BoardView bv;
@@ -86,6 +85,11 @@ public class SixesWildGUI extends JPanel {
 		}
 		btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
 		btnSwapTile.setText("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
+		String starString = "";
+		for(int i = 0; i < level.numStars(); i++){
+			starString = starString + "\u2606 ";
+		}
+		starLabel.setText(starString);
 		
 	}
 	
@@ -167,20 +171,20 @@ public class SixesWildGUI extends JPanel {
 		add(btnSwapTile);
 
 		// our "stars"
-		JLabel starLabel = new JLabel("\u2606 \u2606 \u2606");
+		starLabel = new JLabel("");
 		starLabel.setForeground(Color.BLACK);
 		starLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-
-		starLabel.setBounds(267, 78, 91, 31);
-
+		starLabel.setBounds(267, 78, 100, 31);
+		add(starLabel);
+		
 		bv = new BoardView(level);
 		MouseController mc = new MouseController(app, bv, level.getBoard());
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);
-		bv.setBounds(43, 131, boardH, boardW);
+		bv.setBounds(43, 131, 600, 520);
 		add(bv);
 
-		add(starLabel);
+		
 	}
 
 }
