@@ -8,25 +8,23 @@ import SixesWildGame.model.Tile;
 /**
  * Creates an Elimination Level.
  * 
- * @author Liz Miller
+ * @author Liz Miller & npmahowald
  *
  */
 public class Elimination extends Level {
-	private String gameName;
-	private Square squares[];
-	private Tile tiles[];
-	private int numMoves;
-	private int numStars;
-	private int difficulty;
+	private String levelType;
+	private int[] starThreshold;
+	private int movesLeft = 30;
+	private int eliminateTilesLeft = 3;
+	private int swapTilesLeft = 3;
+	private Board board;
 	
-	public Elimination(String gameName, Square squares[], Tile tiles[], int numMoves, int numStars, int difficulty){
-		this.gameName = gameName;
-		this.squares = squares;
-		this.tiles = tiles;
-		this.numMoves = numMoves;
-		this.numStars = numStars;
-		this.difficulty = difficulty;	
+	public Elimination(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold);
+		this.levelType = "Elimination";
+		this.movesLeft = movesLeft;
 	}
+
 
 	@Override
 	public Level restart() {
@@ -40,4 +38,11 @@ public class Elimination extends Level {
 		
 	}
 
+	public void decreaseMovesLeft(){
+		movesLeft--;
+		
+	}
+	public int getMovesLeft(){
+		return movesLeft;
+	}
 }
