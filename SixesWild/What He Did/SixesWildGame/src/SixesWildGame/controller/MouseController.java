@@ -70,11 +70,13 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	}
 	
 	private void mouseAction(MouseEvent me){
-		board.pushToSelected(sixesFrame.getSquare(me.getY(), me.getX()));
+		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
+		if(!selectedSquare.peekTile().getSelected()){
+		board.pushToSelected(selectedSquare);
 		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
 				){
 			board.remAllFromSelected();
-			//sub points
+			board.decreaseMovesLeft();
 		}else if(((
 				(board.numSwiped() == 2 && sixesFrame.getSwapTileState()) // if a swapped tile is needed
 				||
@@ -87,12 +89,16 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
 			} else if(!sixesFrame.getSwapTileState()){
 				board.eliminateSwipedTiles();
+				board.decreaseMovesLeft();
 				//Only occurs if a special move is not being used
 			//	movesLeft--;
 			//	point = point + 10*numClicked;
 			}
 			}
+		app.getGameGUI().upDateStatViews();
+		sixesFrame.revalidate();
 		sixesFrame.repaint();
 	}
+		}
 
 }

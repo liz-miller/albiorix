@@ -189,5 +189,8 @@ public class Tile {
 	public void setSelected(boolean selState){
 		selected = selState;
 	}
+	public boolean getSelected(){
+		return selected;
+	}
 	
 } //end Tile 

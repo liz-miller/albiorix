@@ -13,6 +13,7 @@ public class Board {
 	private Stack<Square> swipedSquares;
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
+	private int movesLeft = 30;
 	
 	public Board () {
 		swipedSquares = new Stack<Square>(); // Used to hold the tiles as they were
@@ -25,6 +26,8 @@ public class Board {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
 				allSquares[r][c].addTile(generateRandomTile());
+				
+				
 			}
 		}
 		
@@ -42,7 +45,7 @@ public class Board {
 	 * @return Tile - a new Tile with a random value, 1 as a multiplier, and null as its parent
 	 */
 	public Tile generateRandomTile(){
-		return new Tile(randomGenerator.nextInt(6) + 1, 1, null);
+		return new Tile(randomGenerator.nextInt(6) + 1, randomGenerator.nextInt(3) + 1, null);
 	}
 
 	/**
@@ -66,7 +69,7 @@ public class Board {
 	}
 	
 	public void pushToSelected(Square square){
-		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || !square.equals(swipedSquares.peek()))){
+		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || square != swipedSquares.peek())){
 		square.peekTile().setSelected(true);
 		swipedSquares.push(square);
 		}
@@ -102,23 +105,39 @@ public class Board {
 		return count;
 	}
 	public void eliminateSwipedTiles(){
-		Square square, downSquare;
+		
 		
 		while(!swipedSquares.empty()){
-			
-			square = swipedSquares.pop();
+			//Vertical stacks not working 
+			Square square = swipedSquares.pop();
+			square.peekTile().setSelected(false);
 			if(square.getCol() == 0){
-				downSquare = new Square(square.getCol(),square.getRow());
-				downSquare.addTile(generateRandomTile());
-				allSquares[square.getRow()][square.getCol()] = downSquare;
+				square.addTile(generateRandomTile());
 			}else{
-			
-			downSquare = allSquares[square.getRow()][square.getCol() - 1];
-			allSquares[square.getRow()][square.getCol()] = downSquare;
-			swipedSquares.push(allSquares[square.getRow()][square.getCol() - 1]);
+				Square downSquare = allSquares[square.getRow()][square.getCol() - 1];
+				square.addTile(downSquare.peekTile());
+				swipedSquares.push(downSquare);
 			
 			}
 			
+			
+		}
+	}
+	public void decreaseMovesLeft(){
+		movesLeft--;
+		
+	}
+	public int getMovesLeft(){
+		return movesLeft;
+	}
+	public void resetBoard(){
+		for (int r = 0; r < boardHW; r++) {
+			for (int c = 0; c < boardHW; c++) {
+				allSquares[r][c] = new Square(r,c);
+				allSquares[r][c].addTile(generateRandomTile());
+				
+				
+			}
 		}
 	}
 }
