@@ -72,7 +72,7 @@ public class Board {
 	}
 	
 	public void pushToSelected(Square square){
-		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || !square.equals(swipedSquares.peek()))){
+		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || square != swipedSquares.peek())){
 		square.peekTile().setSelected(true);
 		swipedSquares.push(square);
 		}
@@ -108,10 +108,10 @@ public class Board {
 		return count;
 	}
 	public void eliminateSwipedTiles(){
-		Square square, downSquare;
+		
 		
 		while(!swipedSquares.empty()){
-			
+			Square square, downSquare;
 			square = swipedSquares.pop();
 			if(square.getCol() == 0){
 				downSquare = new Square(square.getCol(),square.getRow());
@@ -119,9 +119,9 @@ public class Board {
 				allSquares[square.getRow()][square.getCol()] = downSquare;
 			}else{
 			
-			downSquare = allSquares[square.getRow()][square.getCol() - 1];
-			allSquares[square.getRow()][square.getCol()] = downSquare;
-			swipedSquares.push(allSquares[square.getRow()][square.getCol() - 1]);
+				downSquare = allSquares[square.getRow()][square.getCol() - 1];
+			allSquares[square.getRow()][square.getCol()] = new Square(square.getRow(),square.getCol(), downSquare.getTileValue(), downSquare.getTile().getMult());
+			swipedSquares.push(downSquare);
 			
 			}
 			
