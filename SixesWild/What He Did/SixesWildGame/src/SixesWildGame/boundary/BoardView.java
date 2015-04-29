@@ -18,6 +18,7 @@ import SixesWildGame.model.Square;
 public class BoardView extends JPanel {
 	// The GUI class for the board
 	Level level;
+	private int squareHW = 55;
 
 
 	/**
@@ -45,7 +46,7 @@ public class BoardView extends JPanel {
 
 		//draw the border around the Square
 		g.setColor(Color.BLACK);
-		g.fillRect(6, 6 , 55* level.getBoard().boardHW + 2, 55* level.getBoard().boardHW + 2);
+		g.fillRect(6, 6 , squareHW* level.getBoard().boardHW + 2, squareHW* level.getBoard().boardHW + 2);
 		// this is where you draw the board. For now, this draws squares that represent the values and colors of the Tiles. This will be 
 		// replaced at one point to display both the Squares and Tiles
 		for (int r = 0; r < level.getBoard().boardHW; r++) {
@@ -64,7 +65,7 @@ public class BoardView extends JPanel {
 				else {
 					g.setColor(Color.WHITE);
 				}
-				g.fillRect(c * 55 + 8, r * 55 + 8, 53, 53);
+				g.fillRect(c * squareHW + 8, r * squareHW + 8, 53, 53);
 				
 				//only print the Tile if the Square is not inert and there is a Tile located in the current Square
 				if(!square.isInert() && square.peekTile() != null){
@@ -81,22 +82,22 @@ public class BoardView extends JPanel {
 		g.setColor(square.getTileColor()); 
 		
 		
-		g.fillRect(indexW * 55 + 12, indexH * 55 + 12, 45, 45);
+		g.fillRect(indexW * squareHW + 12, indexH * squareHW + 12, 45, 45);
 		
 		//print the value of the Tile
 		g.setColor(Color.black); //set the color of the writing to black
-		g.drawString("" + square.getTileValue(), indexW * 55 + 35, indexH * 55 + 35);
+		g.drawString("" + square.getTileValue(), indexW * squareHW + 35, indexH * squareHW + 35);
 		
 		//print the multiplier if it is not 1
 		if(square.getTileMult() != 1){
-			g.drawString("x" + square.getTileMult(), indexW *55 + 42, indexH * 55 + 50);
+			g.drawString("x" + square.getTileMult(), indexW *squareHW + 42, indexH * squareHW + 50);
 		}
 	}
 	
 	public Square getSquare(int x, int y){
 		if(x > level.getBoard().boardHW*64 || y > level.getBoard().boardHW*64) return null;
-		int xIndex = (x - 6)/64;
-		int yIndex = (y - 6)/64;
+		int xIndex = (x - 6)/squareHW;
+		int yIndex = (y - 6)/squareHW;
 		return level.getBoard().getSquare(xIndex, yIndex);
 	}
 	
