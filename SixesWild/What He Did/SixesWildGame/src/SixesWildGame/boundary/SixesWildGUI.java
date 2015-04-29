@@ -81,7 +81,7 @@ public class SixesWildGUI extends JPanel {
 			scoreBoard.setText("Score: " + level.getScore() + ", Time Left: "+((Lightning) level).getTime());
 		}else{
 		scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
-				+ ((Puzzle) level).getMovesLeft());
+				+ level.getMovesLeft());
 		}
 		btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
 		btnSwapTile.setText("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
@@ -116,7 +116,7 @@ public class SixesWildGUI extends JPanel {
 			
 		}else{
 			scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
-					+ ((Puzzle) level).getMovesLeft());
+					+ level.getMovesLeft());
 			}
 		scoreBoard.setBounds(33, 15, 200, 16);
 		add(scoreBoard);

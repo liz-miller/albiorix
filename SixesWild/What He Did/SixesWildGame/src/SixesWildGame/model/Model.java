@@ -9,8 +9,9 @@ public class Model {
 		int[] starThresholds = {500,1000,1500};
 		if (type == 2){
 			return new Lightning(30, starThresholds, 3, 3); //-- this will need to be changed to lightning
-		}
-		else{
+		}else if(type == 3){
+			return new Elimination(30, starThresholds, 3, 3);
+		} else{
 			return new Puzzle(30, starThresholds, 3, 3); //-- puzzle as default
 		}
 

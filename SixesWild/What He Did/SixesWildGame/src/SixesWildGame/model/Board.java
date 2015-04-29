@@ -107,6 +107,11 @@ public class Board {
 		}
 		return count;
 	}
+	public void unMarkSwipedSquares(){
+		for(int i = 0; i < swipedTiles.size(); i++){
+			swipedTiles.elementAt(i).getParent().setUnMarked();
+		}
+	}
 	public int eliminateSwipedTiles(){
 		
 		int multipliers = 1;
@@ -157,6 +162,14 @@ public class Board {
 	}
 	public Level getParent(){
 		return parent;
+	}
+	public void markAll(){
+		for (int r = 0; r < boardHW; r++) {
+			for (int c = 0; c < boardHW; c++) {
+				allSquares[r][c].setMarked();
+				
+			}
+		}
 	}
 }
 

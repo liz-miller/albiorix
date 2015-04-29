@@ -4,7 +4,7 @@ package SixesWildGame.model;
 /**
  * Creates a Release Level.
  * 
- * @author Liz Miller
+ * @author Liz Miller & npmahowald
  *
  */
 public class Release extends Level{
@@ -19,6 +19,7 @@ public class Release extends Level{
 		super(starThreshold);
 		this.levelType = "Release";
 		this.movesLeft = movesLeft;
+		board = new Board(this);
 	}
 
 

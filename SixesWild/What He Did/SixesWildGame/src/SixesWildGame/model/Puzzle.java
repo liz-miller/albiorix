@@ -20,6 +20,7 @@ public class Puzzle extends Level{
 		super(starThreshold);
 		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
+		board = new Board(this);
 	}
 
 	@Override

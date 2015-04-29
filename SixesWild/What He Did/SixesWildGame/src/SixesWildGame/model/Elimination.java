@@ -17,12 +17,12 @@ public class Elimination extends Level {
 	private int movesLeft = 30;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
-	private Board board;
 	
 	public Elimination(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
 		this.levelType = "Elimination";
 		this.movesLeft = movesLeft;
+		super.getBoard().markAll();
 	}
 
 

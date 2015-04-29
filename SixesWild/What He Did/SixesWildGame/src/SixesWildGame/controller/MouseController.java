@@ -99,6 +99,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 				board.getParent().setEliminateTileState(false);
 				board.eliminateSwipedTiles();
 			} else if(!board.getParent().getSwapTileState()){
+				board.unMarkSwipedSquares();
 				board.getParent().incrementScore(10*board.numSwiped()*board.eliminateSwipedTiles());
 				
 				board.getParent().decreaseMovesLeft();

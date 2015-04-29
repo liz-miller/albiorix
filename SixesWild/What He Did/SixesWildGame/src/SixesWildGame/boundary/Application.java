@@ -66,7 +66,15 @@ public class Application extends JFrame {
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
-		}
+		
+		//-- play an Elimination level
+				} else if (selection == 5) {
+					game = new SixesWildGUI(this, model.getLevel(3)); //-- getlevel takes int
+				
+					setContentPane(game);
+					game.revalidate(); 
+					repaint();
+				}
 	}
 	public SixesWildGUI getGameGUI(){
 		return game;

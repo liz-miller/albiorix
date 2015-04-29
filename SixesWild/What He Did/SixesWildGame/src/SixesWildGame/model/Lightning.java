@@ -23,6 +23,7 @@ public class Lightning extends Level{
 		super(starThreshold);
 		this.levelType = "Lightning";
 		this.time = time;
+		board = new Board(this);
 	}
 
 	@Override
