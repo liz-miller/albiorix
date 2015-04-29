@@ -144,7 +144,6 @@ public class Board {
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
-				allSquares[r][c] = new Square(r,c);
 				allSquares[r][c].addTile(generateRandomTile());
 				
 				
