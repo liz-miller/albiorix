@@ -13,6 +13,7 @@
 public abstract class Level {
 	private String levelType;
 	private boolean timer;
+	private int score;
 	private int[] starThreshold;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
@@ -22,6 +23,7 @@ public abstract class Level {
 	this.starThreshold = starThreshold;
 	this.eliminateTilesLeft = eliminateTilesLeft;
 	this.swapTilesLeft = swapTilesLeft;
+	this.score = 0;
 	board = new Board(this);
 }
 	
@@ -105,6 +107,12 @@ public abstract class Level {
 	}
 	public Board getBoard(){
 		return board;
+	}
+	public void incrementScore(int i){
+		score = score + i;
+	}
+	public int getScore(){
+		return score;
 	}
 	
 	

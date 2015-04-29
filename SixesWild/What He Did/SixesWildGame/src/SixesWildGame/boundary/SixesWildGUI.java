@@ -56,7 +56,6 @@ public class SixesWildGUI extends JPanel {
 	// public static int pointMult = 1;
 	private boolean dragging = false;
 	private int numClicked = 0;
-	private int point = 0;
 	private Tile allTiles[];
 	private Stack<Tile> swipedTiles;
 	private int topCorner = 40;
@@ -81,8 +80,8 @@ public class SixesWildGUI extends JPanel {
 	}
 	
 	public void updateStatViews(){
-		if(level.getTimer()){
-		scoreBoard.setText("Score: " + point + ", Moves Left: "
+		if(!level.getTimer()){
+		scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
 				+ ((Puzzle) level).getMovesLeft());
 		}
 		btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
@@ -101,11 +100,11 @@ public class SixesWildGUI extends JPanel {
 											// swiped
 		setLayout(null);
 		scoreBoard = new JLabel();
-		if(level.getTimer()){
-			scoreBoard.setText("Score: " + point + ", Moves Left: "
+		if(!level.getTimer()){
+			scoreBoard.setText("Score: " + level.getScore() + ", Moves Left: "
 					+ ((Puzzle) level).getMovesLeft());
 			}
-		scoreBoard.setBounds(33, 15, 150, 16);
+		scoreBoard.setBounds(33, 15, 200, 16);
 		add(scoreBoard);
 
 		btnResetBoard = new JButton("Reset Board");
