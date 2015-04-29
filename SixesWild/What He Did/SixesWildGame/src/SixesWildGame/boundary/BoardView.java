@@ -90,7 +90,7 @@ public class BoardView extends JPanel {
 		
 		//print the multiplier if it is not 1
 		if(square.getTileMult() != 1){
-			g.drawString("x" + square.getTileMult(), indexW * 64 + 53, indexH * 64 + 60);
+			g.drawString("x" + square.getTileMult(), indexW * 64 + 45, indexH * 64 + 60);
 		}
 	}
 	

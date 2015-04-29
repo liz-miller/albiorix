@@ -25,12 +25,8 @@ public class Board {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
 				allSquares[r][c].addTile(generateRandomTile());
-				if(r == 0){
-					allSquares[r][c].peekTile().setMult(3);
-				}
-				else if(r == 1){
-					allSquares[r][c].peekTile().setMult(2);
-				}
+				
+				
 			}
 		}
 		
@@ -48,7 +44,7 @@ public class Board {
 	 * @return Tile - a new Tile with a random value, 1 as a multiplier, and null as its parent
 	 */
 	public Tile generateRandomTile(){
-		return new Tile(randomGenerator.nextInt(6) + 1, 1, null);
+		return new Tile(randomGenerator.nextInt(6) + 1, randomGenerator.nextInt(3) + 1, null);
 	}
 
 	/**
@@ -119,7 +115,7 @@ public class Board {
 				allSquares[square.getRow()][square.getCol()] = downSquare;
 			}else{
 			
-				downSquare = allSquares[square.getRow()][square.getCol() - 1];
+			downSquare = allSquares[square.getRow()][square.getCol() - 1];
 			allSquares[square.getRow()][square.getCol()] = new Square(square.getRow(),square.getCol(), downSquare.getTileValue(), downSquare.getTile().getMult());
 			swipedSquares.push(downSquare);
 			
