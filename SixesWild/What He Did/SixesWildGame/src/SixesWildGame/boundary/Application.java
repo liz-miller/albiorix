@@ -54,4 +54,7 @@ public class Application extends JFrame {
 			repaint();
 		}
 	}
+	public SixesWildGUI getGameGUI(){
+		return game;
+	}
 }

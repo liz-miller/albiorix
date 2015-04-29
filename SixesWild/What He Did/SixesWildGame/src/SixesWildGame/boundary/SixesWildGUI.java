@@ -42,7 +42,6 @@ public class SixesWildGUI extends JPanel {
 	// public static int pointMult = 1;
 	private boolean dragging = false;
 	private int numClicked = 0;
-	private int movesLeft = 20;
 	private int point = 0;
 	private Tile allTiles[];
 	private Stack<Tile> swipedTiles;
@@ -53,6 +52,8 @@ public class SixesWildGUI extends JPanel {
 
 	private JButton btnSwapTile;
 	private int swapTilesLeft = 3;
+	
+	private JButton btnResetBoard;
 
 	Board board;
 	BoardView bv;
@@ -77,16 +78,19 @@ public class SixesWildGUI extends JPanel {
 											// swiped
 		setLayout(null);
 		scoreBoard = new JLabel("Score: " + point + ", Moves Left: "
-				+ movesLeft);
+				+ board.getMovesLeft());
 		scoreBoard.setBounds(33, 15, 150, 16);
 		add(scoreBoard);
 
-		JButton btnResetBoard = new JButton("Reset Board");
+		btnResetBoard = new JButton("Reset Board");
 		btnResetBoard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				movesLeft--;
+				board.resetBoard();
+				board.decreaseMovesLeft();
 				scoreBoard.setText("Score: " + point + ", Moves Left: "
-						+ movesLeft);
+						+ board.getMovesLeft());
+				bv.revalidate();
+				bv.repaint();
 
 			}
 		});

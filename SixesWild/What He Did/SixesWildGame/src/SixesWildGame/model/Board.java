@@ -13,6 +13,7 @@ public class Board {
 	private Stack<Square> swipedSquares;
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
+	private int movesLeft = 30;
 	
 	public Board () {
 		swipedSquares = new Stack<Square>(); // Used to hold the tiles as they were
@@ -107,7 +108,7 @@ public class Board {
 		
 		
 		while(!swipedSquares.empty()){
-			
+			//Vertical stacks not working 
 			Square square = swipedSquares.pop();
 			square.peekTile().setSelected(false);
 			if(square.getCol() == 0){
@@ -120,6 +121,22 @@ public class Board {
 			}
 			
 			
+		}
+	}
+	public void decreaseMovesLeft(){
+		movesLeft--;
+	}
+	public int getMovesLeft(){
+		return movesLeft;
+	}
+	public void resetBoard(){
+		for (int r = 0; r < boardHW; r++) {
+			for (int c = 0; c < boardHW; c++) {
+				allSquares[r][c] = new Square(r,c);
+				allSquares[r][c].addTile(generateRandomTile());
+				
+				
+			}
 		}
 	}
 }

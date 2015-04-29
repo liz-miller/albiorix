@@ -76,7 +76,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
 				){
 			board.remAllFromSelected();
-			//sub points
+			board.decreaseMovesLeft();
 		}else if(((
 				(board.numSwiped() == 2 && sixesFrame.getSwapTileState()) // if a swapped tile is needed
 				||
@@ -89,11 +89,14 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
 			} else if(!sixesFrame.getSwapTileState()){
 				board.eliminateSwipedTiles();
+				board.decreaseMovesLeft();
 				//Only occurs if a special move is not being used
 			//	movesLeft--;
 			//	point = point + 10*numClicked;
 			}
 			}
+		app.getGameGUI().repaint();
+		sixesFrame.revalidate();
 		sixesFrame.repaint();
 	}
 		}
