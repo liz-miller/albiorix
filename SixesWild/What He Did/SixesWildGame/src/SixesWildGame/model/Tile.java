@@ -87,7 +87,10 @@ public class Tile {
 			System.out.println("Tile: new multiplier is out of bounds");
 		}
 		else{
-			if(this.value != 6){
+			if(this.value == 6){
+				this.multiplier = 1;
+			}
+			else {
 				this.multiplier = mult;
 			}
 		}
