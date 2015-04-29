@@ -12,7 +12,7 @@ import javax.swing.JButton;
  */
 public class Board {
 	private Square[][] allSquares;
-	private Stack<Square> swipedSquares;
+	private Stack<Tile> swipedTiles;
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
 	private int movesLeft = 30;
@@ -20,7 +20,7 @@ public class Board {
 	private int swapTilesLeft = 3;
 	
 	public Board () {
-		swipedSquares = new Stack<Square>(); // Used to hold the tiles as they were
+		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were
 												// swiped
 		// So far all this does is generate a random board, and he wrote it
 		allSquares  = new Square[boardHW][boardHW];
@@ -72,56 +72,59 @@ public class Board {
 		return allSquares[c][r];
 	}
 	
-	public void pushToSelected(Square square){
-		if(square != null && square.peekTile() != null && (swipedSquares.isEmpty() || square != swipedSquares.peek())){
-		square.peekTile().setSelected(true);
-		swipedSquares.push(square);
+	public void pushToSelected(Tile tile){
+		if(tile != null && (swipedTiles.isEmpty() || -1 == swipedTiles.lastIndexOf(tile))){
+		tile.setSelected(true);
+		swipedTiles.push(tile);
 		}
 	}
 	
-	public Square popFromSelected(){
-		Square square = swipedSquares.pop();
-		square.peekTile().setSelected(false);
-		return square;
+	public Tile popFromSelected(){
+		Tile tile = swipedTiles.pop();
+		tile.setSelected(false);
+		return tile;
 	}
 	
-	public Square peekAtSelected(){
-		return swipedSquares.peek();
+	public Tile peekAtSelected(){
+		return swipedTiles.peek();
 	}
 	
 	public void remAllFromSelected(){
-		Square square;
-		while(!swipedSquares.empty()){
-		square = swipedSquares.pop();
-		square.peekTile().setSelected(false);
+		Tile tile;
+		while(!swipedTiles.empty()){
+		tile = swipedTiles.pop();
+		tile.setSelected(false);
 		}
 	}
 	
 	public int numSwiped(){
-		return swipedSquares.size();
+		return swipedTiles.size();
 	}
 	
 	public int countSwiped(){
 		int count = 0;
 		for(int i = 0; i < numSwiped(); i++){
-			count = count + swipedSquares.elementAt(i).getTileValue();
+			count = count + swipedTiles.elementAt(i).getValue();
 		}
 		return count;
 	}
 	public void eliminateSwipedTiles(){
 		
+		Tile tile, downTile;
 		
-		while(!swipedSquares.empty()){
+		while(!swipedTiles.empty()){
 			//Vertical stacks not working, forgets to delete a tile
 			// Mystery of the disappearing six
-			Square square = swipedSquares.pop();
-			square.peekTile().setSelected(false);
-			if(square.getCol() == 0){
-				square.addTile(generateRandomTile());
+			tile = swipedTiles.pop();
+			//square.peekTile().setSelected(false);
+			if(tile.getParent().getCol() == 0){
+				
+				tile.getParent().addTile(generateRandomTile());
 			}else{
-				Square downSquare = allSquares[square.getRow()][square.getCol() - 1];
-				square.addTile(downSquare.peekTile());
-				swipedSquares.push(downSquare);
+				Square upSquare = allSquares[tile.getParent().getRow()][tile.getParent().getCol() - 1];
+				downTile = upSquare.getTile();
+				tile.getParent().addTile(downTile);
+				swipedTiles.push(new Tile(1, 1, upSquare));
 			
 			}
 			

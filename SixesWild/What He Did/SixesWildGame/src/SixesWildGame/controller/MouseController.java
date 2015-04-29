@@ -11,6 +11,7 @@ import SixesWildGame.boundary.BoardView;
 import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.model.Board;
 import SixesWildGame.model.Square;
+import SixesWildGame.model.Tile;
 	// He just made this its empty, it will help us deal with all the mouse calls
 public class MouseController implements MouseListener, MouseMotionListener {
 
@@ -76,9 +77,9 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	}
 	
 	private void mouseAction(MouseEvent me){
-		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
-		if(!selectedSquare.peekTile().getSelected()){
-		board.pushToSelected(selectedSquare);
+		Tile selectedTile = sixesFrame.getSquare(me.getY(), me.getX()).peekTile();
+		if(!selectedTile.getSelected()){
+		board.pushToSelected(selectedTile);
 		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
 				){
 			board.remAllFromSelected();
