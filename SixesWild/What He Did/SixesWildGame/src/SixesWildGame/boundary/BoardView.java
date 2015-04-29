@@ -45,7 +45,7 @@ public class BoardView extends JPanel {
 
 		//draw the border around the Square
 		g.setColor(Color.BLACK);
-		g.fillRect(6, 6 , 64* level.getBoard().boardHW + 2, 64* level.getBoard().boardHW + 2);
+		g.fillRect(6, 6 , 55* level.getBoard().boardHW + 2, 55* level.getBoard().boardHW + 2);
 		// this is where you draw the board. For now, this draws squares that represent the values and colors of the Tiles. This will be 
 		// replaced at one point to display both the Squares and Tiles
 		for (int r = 0; r < level.getBoard().boardHW; r++) {
@@ -64,7 +64,7 @@ public class BoardView extends JPanel {
 				else {
 					g.setColor(Color.WHITE);
 				}
-				g.fillRect(c * 64 + 8, r * 64 + 8, 62, 62);
+				g.fillRect(c * 55 + 8, r * 55 + 8, 53, 53);
 				
 				//only print the Tile if the Square is not inert and there is a Tile located in the current Square
 				if(!square.isInert() && square.peekTile() != null){
@@ -81,15 +81,15 @@ public class BoardView extends JPanel {
 		g.setColor(square.getTileColor()); 
 		
 		
-		g.fillRect(indexW * 64 + 12, indexH * 64 + 12, 54, 54);
+		g.fillRect(indexW * 55 + 12, indexH * 55 + 12, 45, 45);
 		
 		//print the value of the Tile
 		g.setColor(Color.black); //set the color of the writing to black
-		g.drawString("" + square.getTileValue(), indexW * 64 + 35, indexH * 64 + 35);
+		g.drawString("" + square.getTileValue(), indexW * 55 + 35, indexH * 55 + 35);
 		
 		//print the multiplier if it is not 1
 		if(square.getTileMult() != 1){
-			g.drawString("x" + square.getTileMult(), indexW * 64 + 45, indexH * 64 + 60);
+			g.drawString("x" + square.getTileMult(), indexW *55 + 42, indexH * 55 + 50);
 		}
 	}
 	

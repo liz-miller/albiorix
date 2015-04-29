@@ -129,7 +129,7 @@ public class SixesWildGUI extends JPanel {
 
 			}
 		});
-		btnBack.setBounds(21, 750, 162, 29);
+		btnBack.setBounds(21, 650, 162, 29);
 		add(btnBack);
 
 		btnEliminateTile = new JButton("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
