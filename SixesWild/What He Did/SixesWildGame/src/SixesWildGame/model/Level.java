@@ -5,26 +5,24 @@
  * Creates a generic level for Sixes' Wild West.
  *  
  * 
- * @author Liz Miller
+ * @author Liz Miller & npmahowald
  */
 
 //STATUS: needs body method implementations. Last modified: 4/26
 
 public abstract class Level {
-	private String gameName;
-	private Square squares[];
-	private Tile tiles[];
-	private int numMoves;
-	private int numStars;
-	protected int difficulty;
+	private String levelType;
+	private boolean timer;
+	private int[] starThreshold;
+	private int eliminateTilesLeft = 3;
+	private int swapTilesLeft = 3;
+	private Board board;
 	
 	protected Level(){ 
-	this.gameName = gameName;
-	this.squares = squares;
-	this.tiles = tiles;
-	this.numMoves = numMoves;
-	this.numStars = numStars;
-	this.difficulty = difficulty;
+	this.starThreshold = starThreshold;
+	this.eliminateTilesLeft = eliminateTilesLeft;
+	this.swapTilesLeft = swapTilesLeft;
+	board = new Board(this);
 }
 	
 	/**
@@ -84,36 +82,31 @@ public abstract class Level {
 	 * @param Level l
 	 * @return
 	 */
-	public String getName(Level l){
-		return l.gameName;
+	public String getType(Level l){
+		return l.levelType;
+	}
+	public void decreaseEliminateTilesLeft(){
+		eliminateTilesLeft--;
+		
+	}
+	public int getEliminateTilesLeft(){
+		return eliminateTilesLeft;
+	}
+	public void decreaseSwapTilesLeft(){
+		swapTilesLeft--;
+		
+	}
+	public int getSwapTilesLeft(){
+		return swapTilesLeft;
 	}
 	
-	/**
-	 * Returns the number of moves of a level.
-	 * @param Level l
-	 * @return
-	 */
-	public int getNumMoves(Level l){
-		return l.numMoves;
+	public boolean getTimer(){
+		return timer;
+	}
+	public Board getBoard(){
+		return board;
 	}
 	
-	/**
-	 * Returns the number of stars of a level.
-	 * @param Level l
-	 * @return
-	 */
-	public int getNumStars(Level l){
-		return l.numStars;
-	}
-	
-	/**
-	 * Returns the difficulty of a level.
-	 * @param Level l
-	 * @return
-	 */
-	public int getDifficulty(Level l){
-		return l.difficulty;
-	}
 	
 	
 	

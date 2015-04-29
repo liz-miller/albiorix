@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import SixesWildGame.model.Board;
+import SixesWildGame.model.Level;
 import SixesWildGame.model.Square;
 
 /**
@@ -16,7 +17,7 @@ import SixesWildGame.model.Square;
 
 public class BoardView extends JPanel {
 	// The GUI class for the board
-	Board board;
+	Level level;
 	protected boolean eliminateTileState = false;
 
 	protected boolean swapTileState = false;
@@ -25,9 +26,9 @@ public class BoardView extends JPanel {
 	 * Constructor for BoardView using a pre-created Board to be painted
 	 * @param b - Board to be painted
 	 */
-	public BoardView(Board b) {
+	public BoardView(Level l) {
 		super();
-		this.board = b;
+		this.level = l;
 		
 		
 	}
@@ -40,21 +41,21 @@ public class BoardView extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		if (board == null) {
+		if (level.getBoard() == null) {
 			return;
 		}
 
 		//draw the border around the Square
 		g.setColor(Color.BLACK);
-		g.fillRect(6, 6 , 64* board.boardHW + 2, 64* board.boardHW + 2);
+		g.fillRect(6, 6 , 64* level.getBoard().boardHW + 2, 64* level.getBoard().boardHW + 2);
 		// this is where you draw the board. For now, this draws squares that represent the values and colors of the Tiles. This will be 
 		// replaced at one point to display both the Squares and Tiles
-		for (int r = 0; r < Board.boardHW; r++) {
+		for (int r = 0; r < level.getBoard().boardHW; r++) {
 			
-			for (int c = 0; c < Board.boardHW; c++) {
+			for (int c = 0; c < level.getBoard().boardHW; c++) {
 				
 				//get the Square located at the current Board location
-				Square square = board.getSquare(r, c);
+				Square square = level.getBoard().getSquare(r, c);
 				
 				
 				
@@ -95,10 +96,10 @@ public class BoardView extends JPanel {
 	}
 	
 	public Square getSquare(int x, int y){
-		if(x > board.boardHW*64 || y > board.boardHW*64) return null;
+		if(x > level.getBoard().boardHW*64 || y > level.getBoard().boardHW*64) return null;
 		int xIndex = (x - 6)/64;
 		int yIndex = (y - 6)/64;
-		return board.getSquare(xIndex, yIndex);
+		return level.getBoard().getSquare(xIndex, yIndex);
 	}
 	
 	public boolean getEliminateTileState(){

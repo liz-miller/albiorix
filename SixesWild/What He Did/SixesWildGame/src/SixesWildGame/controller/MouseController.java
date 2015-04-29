@@ -12,6 +12,8 @@ import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.model.Board;
 import SixesWildGame.model.Square;
 import SixesWildGame.model.Tile;
+import SixesWildGame.model.Puzzle;
+import SixesWildGame.model.Level;
 	// He just made this its empty, it will help us deal with all the mouse calls
 public class MouseController implements MouseListener, MouseMotionListener {
 
@@ -78,14 +80,14 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
 		if(selectedSquare == null){
 			mouseLeaveAction(me);
-			}else{
+			}
 		Tile selectedTile = selectedSquare.peekTile();
 		if(!selectedTile.getSelected()){
 		board.pushToSelected(selectedTile);
 		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
 				){
 			board.remAllFromSelected();
-			board.decreaseMovesLeft();
+			((Puzzle) board.getParent()).decreaseMovesLeft();
 		}else if(((
 				(board.numSwiped() == 2 && sixesFrame.getSwapTileState()) // if a swapped tile is needed
 				||
@@ -98,18 +100,18 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
 			} else if(!sixesFrame.getSwapTileState()){
 				board.eliminateSwipedTiles();
-				board.decreaseMovesLeft();
+				((Puzzle) board.getParent()).decreaseMovesLeft();
 				//Only occurs if a special move is not being used
 			//	movesLeft--;
 			//	point = point + 10*numClicked;
 			}
 			}
-		app.getGameGUI().upDateStatViews();
+		app.getGameGUI().updateStatViews();
 		sixesFrame.revalidate();
 		sixesFrame.repaint();
 		}
 		}
-	}
+	
 	private void mouseLeaveAction(MouseEvent me){
 		mouseHasBeenPressed = false;
 		board.remAllFromSelected();

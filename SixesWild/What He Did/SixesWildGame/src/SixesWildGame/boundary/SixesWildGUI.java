@@ -2,28 +2,36 @@ package SixesWildGame.boundary;
 
 import java.awt.BorderLayout;
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
+
 import java.awt.EventQueue;
 import java.awt.MouseInfo;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
+
 import java.awt.GridBagConstraints;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import SixesWildGame.controller.MouseController;
 import SixesWildGame.model.Board;
 import SixesWildGame.model.Tile;
+import SixesWildGame.model.Level;
+import SixesWildGame.model.Puzzle;
 
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.util.Random;
 import java.util.Stack;
 import java.awt.event.ActionListener;
@@ -60,23 +68,26 @@ public class SixesWildGUI extends JPanel {
 	
 	private JButton btnResetBoard;
 
-	Board board;
+	Level level;
 	BoardView bv;
 	Application app;
 
-	public SixesWildGUI(Application app, Board b) {
+	public SixesWildGUI(Application app, Level l) {
 		super();
-		this.board = b;
+		this.level = l;
 		this.app = app;
 
 		initialize();
 	}
 	
-	public void upDateStatViews(){
+	public void updateStatViews(){
+		if(level.getTimer()){
 		scoreBoard.setText("Score: " + point + ", Moves Left: "
-				+ board.getMovesLeft());
-		btnEliminateTile.setText("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
-		btnSwapTile.setText("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
+				+ ((Puzzle) level).getMovesLeft());
+		}
+		btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
+		btnSwapTile.setText("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
+		
 	}
 	
 	void initialize() {
@@ -89,18 +100,20 @@ public class SixesWildGUI extends JPanel {
 		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were
 											// swiped
 		setLayout(null);
-		scoreBoard = new JLabel("Score: " + point + ", Moves Left: "
-				+ board.getMovesLeft());
+		scoreBoard = new JLabel();
+		if(level.getTimer()){
+			scoreBoard.setText("Score: " + point + ", Moves Left: "
+					+ ((Puzzle) level).getMovesLeft());
+			}
 		scoreBoard.setBounds(33, 15, 150, 16);
 		add(scoreBoard);
 
 		btnResetBoard = new JButton("Reset Board");
 		btnResetBoard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				board.resetBoard();
-				board.decreaseMovesLeft();
-				scoreBoard.setText("Score: " + point + ", Moves Left: "
-						+ board.getMovesLeft());
+				level.getBoard().resetBoard();
+				((Puzzle) level).decreaseMovesLeft();
+				updateStatViews();
 				bv.revalidate();
 				bv.repaint();
 
@@ -120,7 +133,7 @@ public class SixesWildGUI extends JPanel {
 		btnBack.setBounds(21, 750, 162, 29);
 		add(btnBack);
 
-		btnEliminateTile = new JButton("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
+		btnEliminateTile = new JButton("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
 
 		// This listener will have to go into a separate class
 		// Theoretically, we could have a TileGUI class, that might our "art" a
@@ -128,27 +141,27 @@ public class SixesWildGUI extends JPanel {
 		btnEliminateTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (board.getEliminateTilesLeft() > 0) {
+				if (level.getEliminateTilesLeft() > 0) {
 					bv.eliminateTileState = true;
 					bv.swapTileState = false;
-					board.decreaseEliminateTilesLeft();
-					btnEliminateTile.setText("Eliminate Tile (" + board.getEliminateTilesLeft() + " left)");
+					level.decreaseEliminateTilesLeft();
+					btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
 				}
 			}
 		});
 		btnEliminateTile.setBounds(404, 11, 174, 29);
 		add(btnEliminateTile);
 
-		btnSwapTile = new JButton("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
+		btnSwapTile = new JButton("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
 		// and this one
 		btnSwapTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (board.getSwapTilesLeft() > 0) {
+				if (level.getSwapTilesLeft() > 0) {
 					// I used these booleans to control the state of the program
 					bv.eliminateTileState = false;
 					bv.swapTileState = true;
-					board.decreaseSwapTilesLeft();
-					btnSwapTile.setText("Swap Tiles (" + board.getSwapTilesLeft() + " left)");
+					level.decreaseSwapTilesLeft();
+					btnSwapTile.setText("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
 				}
 			}
 		});
@@ -162,8 +175,8 @@ public class SixesWildGUI extends JPanel {
 
 		starLabel.setBounds(267, 78, 91, 31);
 
-		bv = new BoardView(board);
-		MouseController mc = new MouseController(app, bv, board);
+		bv = new BoardView(level);
+		MouseController mc = new MouseController(app, bv, level.getBoard());
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);
 		bv.setBounds(43, 131, boardH, boardW);

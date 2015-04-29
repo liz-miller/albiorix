@@ -53,7 +53,7 @@ public class Application extends JFrame {
 			repaint();
 			
 		} else if (selection == 3) {
-			game = new SixesWildGUI(this, model.getBoard(1));
+			game = new SixesWildGUI(this, model.getLevel());
 			
 			setContentPane(game);
 			game.revalidate(); 

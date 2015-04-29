@@ -15,11 +15,10 @@ public class Board {
 	private Stack<Tile> swipedTiles;
 	public final static int boardHW = 9;
 	static Random randomGenerator = new Random();
-	private int movesLeft = 30;
-	private int eliminateTilesLeft = 3;
-	private int swapTilesLeft = 3;
+	private Level parent;
 	
-	public Board () {
+	public Board (Level parent) {
+		this.parent = parent;
 		swipedTiles = new Stack<Tile>(); // Used to hold the tiles as they were
 												// swiped
 		// So far all this does is generate a random board, and he wrote it
@@ -131,27 +130,7 @@ public class Board {
 			
 		}
 	}
-	public void decreaseMovesLeft(){
-		movesLeft--;
-		
-	}
-	public int getMovesLeft(){
-		return movesLeft;
-	}
-	public void decreaseEliminateTilesLeft(){
-		eliminateTilesLeft--;
-		
-	}
-	public int getEliminateTilesLeft(){
-		return eliminateTilesLeft;
-	}
-	public void decreaseSwapTilesLeft(){
-		swapTilesLeft--;
-		
-	}
-	public int getSwapTilesLeft(){
-		return swapTilesLeft;
-	}
+
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
@@ -161,6 +140,9 @@ public class Board {
 				
 			}
 		}
+	}
+	public Level getParent(){
+		return parent;
 	}
 }
 
