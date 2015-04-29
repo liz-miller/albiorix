@@ -129,7 +129,7 @@ public class SixesWildGUI extends JPanel {
 		btnResetBoard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				level.getBoard().resetBoard();
-				((Puzzle) level).decreaseMovesLeft();
+				level.decreaseMovesLeft();
 				updateStatViews();
 				bv.revalidate();
 				bv.repaint();
