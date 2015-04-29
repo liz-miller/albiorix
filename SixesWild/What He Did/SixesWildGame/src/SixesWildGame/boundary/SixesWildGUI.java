@@ -143,7 +143,6 @@ public class SixesWildGUI extends JPanel {
 				if (level.getEliminateTilesLeft() > 0) {
 					level.setEliminateTileState(true);
 					level.setSwapTileState(false);
-					level.decreaseEliminateTilesLeft();
 					btnEliminateTile.setText("Eliminate Tile (" + level.getEliminateTilesLeft() + " left)");
 				}
 			}
@@ -159,7 +158,7 @@ public class SixesWildGUI extends JPanel {
 					// I used these booleans to control the state of the program
 					level.setEliminateTileState(false);
 					level.setSwapTileState(true);
-					level.decreaseSwapTilesLeft();
+					
 					btnSwapTile.setText("Swap Tiles (" + level.getSwapTilesLeft() + " left)");
 				}
 			}

@@ -95,6 +95,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 				|| board.getParent().getEliminateTileState()// or an eliminate is needed
 				){ 
 			if(board.getParent().getEliminateTileState()){// This just resets the button
+				board.getParent().decreaseEliminateTilesLeft();
 				board.getParent().setEliminateTileState(false);
 				board.eliminateSwipedTiles();
 			} else if(!board.getParent().getSwapTileState()){
@@ -104,7 +105,9 @@ public class MouseController implements MouseListener, MouseMotionListener {
 				//Only occurs if a special move is not being used
 				
 				}else{
-					//swaptile
+					board.swapTiles();
+					board.getParent().decreaseSwapTilesLeft();
+					board.getParent().setSwapTileState(false);
 				}
 			}
 		app.getGameGUI().updateStatViews();

@@ -146,6 +146,15 @@ public class Board {
 			}
 		}
 	}
+	public void swapTiles(){
+		Tile firstTile = swipedTiles.pop();
+		Tile secondTile = swipedTiles.pop();
+		Square toSquare = secondTile.getParent();
+		firstTile.setSelected(false);
+		secondTile.setSelected(false);
+		firstTile.getParent().addTile(secondTile);
+		toSquare.addTile(firstTile);
+	}
 	public Level getParent(){
 		return parent;
 	}
