@@ -87,7 +87,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		if((board.countSwiped() > 6) && !board.getParent().getEliminateTileState() && !board.getParent().getSwapTileState()
 				){
 			board.remAllFromSelected();
-			((Puzzle) board.getParent()).decreaseMovesLeft();
+			board.getParent().decreaseMovesLeft();
 		}else if(((
 				(board.numSwiped() == 2 && board.getParent().getSwapTileState()) // if a swapped tile is needed
 				||
