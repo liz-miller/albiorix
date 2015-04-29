@@ -107,7 +107,9 @@ public class Board {
 		}
 		return count;
 	}
-	public void eliminateSwipedTiles(){
+	public int eliminateSwipedTiles(){
+		
+		int multipliers = 1;
 		
 		Tile tile, downTile;
 		Square upSquare;
@@ -115,6 +117,7 @@ public class Board {
 		while(!swipedTiles.empty()){
 			
 			tile = swipedTiles.pop();
+			multipliers = multipliers*tile.getMult();
 			
 			if(tile.getParent().getCol() == 0){
 				
@@ -128,7 +131,9 @@ public class Board {
 			}
 			
 			
+			
 		}
+		return multipliers;
 	}
 
 	public void resetBoard(){

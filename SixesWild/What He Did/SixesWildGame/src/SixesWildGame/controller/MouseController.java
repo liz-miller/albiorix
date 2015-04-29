@@ -99,8 +99,8 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			//	eliminateTilesLeft--;
 			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
 			} else if(!sixesFrame.getSwapTileState()){
-				board.getParent().incrementScore(10*board.numSwiped());
-				board.eliminateSwipedTiles();
+				board.getParent().incrementScore(10*board.numSwiped()*board.eliminateSwipedTiles());
+				
 				((Puzzle) board.getParent()).decreaseMovesLeft();
 				//Only occurs if a special move is not being used
 				
