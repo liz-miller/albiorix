@@ -80,37 +80,39 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
 		if(selectedSquare == null){
 			mouseLeaveAction(me);
-			}
+			} else{
 		Tile selectedTile = selectedSquare.peekTile();
 		if(!selectedTile.getSelected()){
 		board.pushToSelected(selectedTile);
-		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
+		if((board.countSwiped() > 6) && !board.getParent().getEliminateTileState() && !board.getParent().getSwapTileState()
 				){
 			board.remAllFromSelected();
 			((Puzzle) board.getParent()).decreaseMovesLeft();
 		}else if(((
-				(board.numSwiped() == 2 && sixesFrame.getSwapTileState()) // if a swapped tile is needed
+				(board.numSwiped() == 2 && board.getParent().getSwapTileState()) // if a swapped tile is needed
 				||
 				board.countSwiped() == 6 ) && board.numSwiped() > 1)  // or the count is 6
-				|| sixesFrame.getEliminateTileState()// or an eliminate is needed
+				|| board.getParent().getEliminateTileState()// or an eliminate is needed
 				){ 
-			if(sixesFrame.getEliminateTileState()){// This just resets the button
-				sixesFrame.setEliminateTileState(false);
-			//	eliminateTilesLeft--;
-			//	btnEliminateTile.setText("Eliminate Tile ("+eliminateTilesLeft+" left)");
-			} else if(!sixesFrame.getSwapTileState()){
+			if(board.getParent().getEliminateTileState()){// This just resets the button
+				board.getParent().setEliminateTileState(false);
+				board.eliminateSwipedTiles();
+			} else if(!board.getParent().getSwapTileState()){
 				board.getParent().incrementScore(10*board.numSwiped()*board.eliminateSwipedTiles());
 				
 				((Puzzle) board.getParent()).decreaseMovesLeft();
 				//Only occurs if a special move is not being used
 				
-			}
+				}else{
+					//swaptile
+				}
 			}
 		app.getGameGUI().updateStatViews();
 		sixesFrame.revalidate();
 		sixesFrame.repaint();
 		}
 		}
+	}
 	
 	private void mouseLeaveAction(MouseEvent me){
 		mouseHasBeenPressed = false;

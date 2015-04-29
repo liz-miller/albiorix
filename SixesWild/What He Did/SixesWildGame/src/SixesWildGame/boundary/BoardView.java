@@ -18,9 +18,7 @@ import SixesWildGame.model.Square;
 public class BoardView extends JPanel {
 	// The GUI class for the board
 	Level level;
-	protected boolean eliminateTileState = false;
 
-	protected boolean swapTileState = false;
 
 	/**
 	 * Constructor for BoardView using a pre-created Board to be painted
@@ -102,19 +100,5 @@ public class BoardView extends JPanel {
 		return level.getBoard().getSquare(xIndex, yIndex);
 	}
 	
-	public boolean getEliminateTileState(){
-		return eliminateTileState;
-	}
 	
-	public void setEliminateTileState(boolean b){
-		eliminateTileState = b;
-	}
-	
-	public boolean getSwapTileState(){
-		return swapTileState;
-	}
-	
-	public void setSwapTileState(boolean b){
-		swapTileState = b;
-	}
 }

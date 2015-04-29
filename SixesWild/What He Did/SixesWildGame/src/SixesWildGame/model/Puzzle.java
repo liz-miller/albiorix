@@ -5,7 +5,7 @@ import java.sql.Time;
 /**
  * Creates a Puzzle Level.
  * 
- * @author Liz Miller
+ * @author Liz Miller & npmahowald
  *
  */
 public class Puzzle extends Level{
