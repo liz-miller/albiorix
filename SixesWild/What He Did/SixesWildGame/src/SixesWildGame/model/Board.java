@@ -107,19 +107,18 @@ public class Board {
 		
 		
 		while(!swipedSquares.empty()){
-			Square square, downSquare;
-			square = swipedSquares.pop();
-			if(square.getCol() == 0){
-				downSquare = new Square(square.getCol(),square.getRow());
-				downSquare.addTile(generateRandomTile());
-				allSquares[square.getRow()][square.getCol()] = downSquare;
-			}else{
 			
-			downSquare = allSquares[square.getRow()][square.getCol() - 1];
-			allSquares[square.getRow()][square.getCol()] = new Square(square.getRow(),square.getCol(), downSquare.getTileValue(), downSquare.getTile().getMult());
-			swipedSquares.push(downSquare);
+			Square square = swipedSquares.pop();
+			square.peekTile().setSelected(false);
+			if(square.getCol() == 0){
+				square.addTile(generateRandomTile());
+			}else{
+				Square downSquare = allSquares[square.getRow()][square.getCol() - 1];
+				square.addTile(downSquare.peekTile());
+				swipedSquares.push(downSquare);
 			
 			}
+			
 			
 		}
 	}
