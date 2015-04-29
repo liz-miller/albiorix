@@ -111,17 +111,17 @@ public class Board {
 	public void eliminateSwipedTiles(){
 		
 		Tile tile, downTile;
+		Square upSquare;
 		
 		while(!swipedTiles.empty()){
-			//Vertical stacks not working, forgets to delete a tile
-			// Mystery of the disappearing six
+			
 			tile = swipedTiles.pop();
-			//square.peekTile().setSelected(false);
+			
 			if(tile.getParent().getCol() == 0){
 				
 				tile.getParent().addTile(generateRandomTile());
 			}else{
-				Square upSquare = allSquares[tile.getParent().getRow()][tile.getParent().getCol() - 1];
+				upSquare = allSquares[tile.getParent().getRow()][tile.getParent().getCol() - 1];
 				downTile = upSquare.getTile();
 				tile.getParent().addTile(downTile);
 				swipedTiles.push(new Tile(1, 1, upSquare));

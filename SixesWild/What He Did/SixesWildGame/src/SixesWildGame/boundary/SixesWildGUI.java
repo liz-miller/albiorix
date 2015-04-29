@@ -40,8 +40,8 @@ public class SixesWildGUI extends JPanel {
 	// this ought
 	// to be just the GUI element
 	protected JLabel scoreBoard;
-	private int windowH = 700;
-	private int windowW = 700;
+	private int boardH = 700;
+	private int boardW = 600;
 	public final static int boardHW = 9;
 	private int tileSize = 60;
 	private int count = 0;
@@ -166,7 +166,7 @@ public class SixesWildGUI extends JPanel {
 		MouseController mc = new MouseController(app, bv, board);
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);
-		bv.setBounds(43, 131, 700, 700);
+		bv.setBounds(43, 131, boardH, boardW);
 		add(bv);
 
 		add(starLabel);

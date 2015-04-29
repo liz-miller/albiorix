@@ -59,7 +59,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseExited(MouseEvent me) {
-		
+		mouseLeaveAction(me);
 
 	}
 
@@ -70,14 +70,16 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseReleased(MouseEvent me) {
-		mouseHasBeenPressed = false;
-		board.remAllFromSelected();
-		sixesFrame.repaint();
+		mouseLeaveAction(me);
 
 	}
 	
 	private void mouseAction(MouseEvent me){
-		Tile selectedTile = sixesFrame.getSquare(me.getY(), me.getX()).peekTile();
+		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
+		if(selectedSquare == null){
+			mouseLeaveAction(me);
+			}else{
+		Tile selectedTile = selectedSquare.peekTile();
 		if(!selectedTile.getSelected()){
 		board.pushToSelected(selectedTile);
 		if((board.countSwiped() > 6) && !sixesFrame.getEliminateTileState() && !sixesFrame.getSwapTileState()
@@ -105,7 +107,13 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		app.getGameGUI().upDateStatViews();
 		sixesFrame.revalidate();
 		sixesFrame.repaint();
-	}
 		}
+		}
+	}
+	private void mouseLeaveAction(MouseEvent me){
+		mouseHasBeenPressed = false;
+		board.remAllFromSelected();
+		sixesFrame.repaint();
+	}
 
 }
