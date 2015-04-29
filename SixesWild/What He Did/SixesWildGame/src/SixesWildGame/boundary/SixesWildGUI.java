@@ -33,7 +33,7 @@ public class SixesWildGUI extends JPanel {
 	// The vast majority of this info will have to leave this class, in the end
 	// this ought
 	// to be just the GUI element
-	private JLabel scoreBoard;
+	protected JLabel scoreBoard;
 	private int windowH = 700;
 	private int windowW = 700;
 	public final static int boardHW = 9;
@@ -66,7 +66,14 @@ public class SixesWildGUI extends JPanel {
 
 		initialize();
 	}
-
+	
+	public void upDateStatViews(){
+		scoreBoard.setText("Score: " + point + ", Moves Left: "
+				+ board.getMovesLeft());
+		btnEliminateTile.setText("Eliminate Tile (" + eliminateTilesLeft + " left)");
+		btnSwapTile.setText("Swap Tiles (" + swapTilesLeft + " left)");
+	}
+	
 	void initialize() {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, windowW, windowH);

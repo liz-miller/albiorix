@@ -95,7 +95,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			//	point = point + 10*numClicked;
 			}
 			}
-		app.getGameGUI().repaint();
+		app.getGameGUI().upDateStatViews();
 		sixesFrame.revalidate();
 		sixesFrame.repaint();
 	}

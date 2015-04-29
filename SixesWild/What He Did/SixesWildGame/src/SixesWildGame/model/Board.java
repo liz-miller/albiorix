@@ -125,6 +125,7 @@ public class Board {
 	}
 	public void decreaseMovesLeft(){
 		movesLeft--;
+		
 	}
 	public int getMovesLeft(){
 		return movesLeft;
