@@ -53,4 +53,8 @@ public class Lightning extends Level{
 	public void setTime(int t){
 		time = t;
 	}
+	
+	public boolean endGame(){
+		return time == 0;
+	}
 }

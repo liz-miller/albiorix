@@ -14,14 +14,14 @@ import SixesWildGame.model.Tile;
 public class Elimination extends Level {
 	private String levelType;
 	private int[] starThreshold;
-	private int movesLeft = 30;
+	private int movesLeft;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	
-	public Elimination(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
+	public Elimination(int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
 		this.levelType = "Elimination";
-		this.movesLeft = movesLeft;
+		this.movesLeft = 0;
 		super.getBoard().markAll();
 	}
 
@@ -39,10 +39,20 @@ public class Elimination extends Level {
 	}
 
 	public void decreaseMovesLeft(){
-		movesLeft--;
+		movesLeft++;
 		
 	}
 	public int getMovesLeft(){
 		return movesLeft;
+	}
+	
+	public boolean endGame(){
+		for (int r = 0; r < super.getBoard().boardHW; r++) {
+			for (int c = 0; c < super.getBoard().boardHW; c++) {
+				if(super.getBoard().getSquare(r, c).isMarked()) return false;
+				
+			}
+		}
+		return true;
 	}
 }

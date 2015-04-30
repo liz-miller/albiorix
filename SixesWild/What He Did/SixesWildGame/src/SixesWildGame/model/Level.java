@@ -92,7 +92,10 @@ public abstract class Level {
 	}
 	
 	public abstract void decreaseMovesLeft();
+	
 	public abstract int getMovesLeft();
+	
+	public abstract boolean endGame();
 	
 	public void decreaseEliminateTilesLeft(){
 		eliminateTilesLeft--;
@@ -142,6 +145,7 @@ public abstract class Level {
 		return 0;
 
 	}
+	
 	
 	
 	

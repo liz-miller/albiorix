@@ -10,15 +10,15 @@ package SixesWildGame.model;
 public class Release extends Level{
 	private String levelType;
 	private int[] starThreshold;
-	private int movesLeft = 30;
+	private int movesLeft;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private Board board;
 	
-	public Release(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
+	public Release(int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
 		this.levelType = "Release";
-		this.movesLeft = movesLeft;
+		this.movesLeft = 0;
 		board = new Board(this);
 	}
 
@@ -35,11 +35,14 @@ public class Release extends Level{
 		
 	}
 	public void decreaseMovesLeft(){
-		movesLeft--;
+		movesLeft++;
 		
 	}
 	public int getMovesLeft(){
 		return movesLeft;
+	}
+	public boolean endGame(){
+		return true;
 	}
 
 }

@@ -10,7 +10,7 @@ public class Model {
 		if (type == 2){
 			return new Lightning(30, starThresholds, 3, 3); //-- this will need to be changed to lightning
 		}else if(type == 3){
-			return new Elimination(30, starThresholds, 3, 3);
+			return new Elimination(starThresholds, 3, 3);
 		} else{
 			return new Puzzle(30, starThresholds, 3, 3); //-- puzzle as default
 		}

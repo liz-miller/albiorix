@@ -11,7 +11,7 @@ import java.sql.Time;
 public class Puzzle extends Level{
 	private String levelType;
 	private int[] starThreshold;
-	private int movesLeft = 30;
+	private int movesLeft;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private Board board;
@@ -40,6 +40,10 @@ public class Puzzle extends Level{
 	}
 	public int getMovesLeft(){
 		return movesLeft;
+	}
+	
+	public boolean endGame(){
+		return movesLeft == 0;
 	}
 	
 }
