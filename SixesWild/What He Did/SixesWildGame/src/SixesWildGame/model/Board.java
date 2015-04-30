@@ -33,6 +33,12 @@ public class Board {
 				
 			}
 		}
+		//inert testing
+		for (int r = 0; r < boardHW; r++) {
+			allSquares[r][3] = new Square(r,3,true);
+			
+			
+		}
 		
 	}
 
@@ -116,24 +122,23 @@ public class Board {
 		
 		int multipliers = 1;
 		
-		Tile tile, downTile;
+		Tile tile;
 		Square upSquare;
 		
 		while(!swipedTiles.empty()){
 			
 			tile = swipedTiles.pop();
 			multipliers = multipliers*tile.getMult();
-			
-			if(tile.getParent().getCol() == 0){
-				
+			upSquare = getAboveSquare(tile.getParent());
+			if(upSquare == null){
 				tile.getParent().addTile(generateRandomTile());
 			}else{
-				upSquare = allSquares[tile.getParent().getRow()][tile.getParent().getCol() - 1];
-				downTile = upSquare.getTile();
-				tile.getParent().addTile(downTile);
+				tile.getParent().addTile(upSquare.getTile());
 				swipedTiles.push(new Tile(1, 1, upSquare));
-			
 			}
+				
+			
+			
 			
 			
 			
@@ -169,6 +174,18 @@ public class Board {
 				
 			}
 		}
+	}
+	
+
+	private Square getAboveSquare(Square belowSquare){
+		Square upSquare;
+		do{
+			if(belowSquare.getCol() == 0) return null;
+			upSquare = allSquares[belowSquare.getRow()][belowSquare.getCol() - 1];
+			if(!upSquare.isInert()) return upSquare;
+			belowSquare = upSquare;
+		}while(upSquare.isInert());
+		return null;
 	}
 }
 
