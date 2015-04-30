@@ -188,7 +188,6 @@ public class Board {
 		int col = belowSquare.getCol();
 		boolean inert = belowSquare.isInert();
 		while(col > 0){
-			System.out.println(col);
 			inert = allSquares[belowSquare.getRow()][--col].isInert();
 			if(!inert) return allSquares[belowSquare.getRow()][col];
 

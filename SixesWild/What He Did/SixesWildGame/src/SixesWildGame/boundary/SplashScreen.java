@@ -23,7 +23,6 @@ public class SplashScreen extends JPanel {
 		splashLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("going to 1");
 				app.toMenu(1);
 			}
 		});

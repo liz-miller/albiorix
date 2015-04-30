@@ -172,7 +172,6 @@ public class Square{
 	 */
 	public void addTile(Tile tile){
 		if(isInert){
-			System.err.println("Square: Attempted to add a Tile to an inert Square");
 			return;
 		}
 		this.tile = tile;
