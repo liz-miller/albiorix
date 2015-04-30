@@ -98,7 +98,9 @@ public class BoardView extends JPanel {
 		if(x > level.getBoard().boardHW*squareHW || y > level.getBoard().boardHW*squareHW || x < 0 || y < 0) return null;
 		int xIndex = (x - 6)/squareHW;
 		int yIndex = (y - 6)/squareHW;
-		return level.getBoard().getSquare(xIndex, yIndex);
+		Square square = level.getBoard().getSquare(xIndex, yIndex);
+		if(square.isInert()) return null;
+		return square;
 	}
 	
 	
