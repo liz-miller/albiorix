@@ -34,11 +34,18 @@ public class Board {
 			}
 		}
 		//inert testing
-		for (int r = 0; r < boardHW; r++) {
-			allSquares[r][3] = new Square(r,3,true);
+		allSquares[0][0] = new Square(0,0,true);
+		allSquares[8][8] = new Square(0,0,true);
+		allSquares[0][8] = new Square(0,0,true);
+		allSquares[8][0] = new Square(0,0,true);
+		allSquares[4][4] = new Square(0,0,true);
+		allSquares[4][5] = new Square(0,0,true);
+		allSquares[4][3] = new Square(0,0,true);
+		allSquares[5][4] = new Square(0,0,true);
+		allSquares[3][4] = new Square(0,0,true);
 			
 			
-		}
+		
 		
 	}
 
@@ -178,13 +185,14 @@ public class Board {
 	
 
 	private Square getAboveSquare(Square belowSquare){
-		Square upSquare;
-		do{
-			if(belowSquare.getCol() == 0) return null;
-			upSquare = allSquares[belowSquare.getRow()][belowSquare.getCol() - 1];
-			if(!upSquare.isInert()) return upSquare;
-			belowSquare = upSquare;
-		}while(upSquare.isInert());
+		int col = belowSquare.getCol();
+		boolean inert = belowSquare.isInert();
+		while(col > 0){
+			System.out.println(col);
+			inert = allSquares[belowSquare.getRow()][--col].isInert();
+			if(!inert) return allSquares[belowSquare.getRow()][col];
+
+		}
 		return null;
 	}
 }

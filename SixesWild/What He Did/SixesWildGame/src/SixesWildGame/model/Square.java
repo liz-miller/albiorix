@@ -116,7 +116,7 @@ public class Square{
 	 */
 	public void setMarked(){
 		if(isInert){
-			System.err.println("Square: Attempted to mark an inert Square");
+			//System.err.println("Square: Attempted to mark an inert Square");
 			return;
 		}
 		isMarked = true;
