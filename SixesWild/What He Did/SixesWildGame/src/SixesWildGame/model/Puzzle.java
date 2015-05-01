@@ -16,7 +16,6 @@ public class Puzzle extends Level{
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private Board board;
-//	Application app;
 	
 	
 	public Puzzle(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){

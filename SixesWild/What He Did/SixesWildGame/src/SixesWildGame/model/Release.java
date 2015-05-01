@@ -48,8 +48,7 @@ public class Release extends Level{
 		boolean endGame = true;
 		Square almostGoal, square;
 		for (int r = 0; r < super.getBoard().boardHW; r++) {
-			for (int c = 0; c < super.getBoard().boardHW; c++) {
-				square = super.getBoard().getSquare(r, c);
+				square = super.getBoard().getSquare(8, r);
 				if(square.isSixesGoal()){
 					hasAGoal = true;
 					almostGoal = super.getBoard().getAboveSquare(square);
@@ -65,7 +64,7 @@ public class Release extends Level{
 					
 				}
 
-			}
+			
 		}
 		if(!hasAGoal){
 			System.err.println("Release: Board is stored in release level but has no goal squares");
