@@ -14,7 +14,8 @@ import SixesWildGame.model.Square;
 import SixesWildGame.model.Tile;
 import SixesWildGame.model.Puzzle;
 import SixesWildGame.model.Level;
-	// He just made this its empty, it will help us deal with all the mouse calls
+
+
 public class MouseController implements MouseListener, MouseMotionListener {
 
 	private Application app;

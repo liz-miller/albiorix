@@ -2,6 +2,7 @@ package SixesWildGame.boundary;
 
 import java.awt.BorderLayout;
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 
@@ -22,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import SixesWildGame.controller.MouseController;
+import SixesWildGame.controller.ResetButtonController;
 import SixesWildGame.model.Board;
 import SixesWildGame.model.Lightning;
 import SixesWildGame.model.Tile;
@@ -104,7 +106,7 @@ public class SixesWildGUI extends JPanel {
 	}
 
 	void initialize() {
-
+		bv = new BoardView(level);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setLayout(null);
@@ -130,16 +132,8 @@ public class SixesWildGUI extends JPanel {
 		add(scoreBoard);
 
 		btnResetBoard = new JButton("Reset Board");
-		btnResetBoard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				level.getBoard().resetBoard();
-				level.decreaseMovesLeft();
-				updateStatViews();
-				bv.revalidate();
-				bv.repaint();
-
-			}
-		});
+		ResetButtonController rbc = new ResetButtonController(level, bv, this);
+		btnResetBoard.addActionListener(rbc);
 		btnResetBoard.setBounds(244, 10, 117, 29);
 		add(btnResetBoard);
 
@@ -157,9 +151,7 @@ public class SixesWildGUI extends JPanel {
 		btnEliminateTile = new JButton("Eliminate Tile ("
 				+ level.getEliminateTilesLeft() + " left)");
 
-		// This listener will have to go into a separate class
-		// Theoretically, we could have a TileGUI class, that might our "art" a
-		// little easier
+		
 		btnEliminateTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -199,7 +191,7 @@ public class SixesWildGUI extends JPanel {
 		starLabel.setBounds(267, 78, 100, 31);
 		add(starLabel);
 
-		bv = new BoardView(level);
+		
 		MouseController mc = new MouseController(app, bv, level.getBoard());
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);

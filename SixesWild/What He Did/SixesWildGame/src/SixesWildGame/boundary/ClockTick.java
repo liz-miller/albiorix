@@ -35,7 +35,6 @@ public class ClockTick extends TimerTask {
 		if(val == 0){
 			timer.cancel();
 			//-- new lightning when timer expires (change to a victory screen later)
-			param.getBoard().resetBoard();
 		}
 		if(val > 0){
 			val -= 1;
