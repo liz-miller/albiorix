@@ -12,7 +12,7 @@ public class Model {
 		}else if(type == 3){
 			return new Elimination(starThresholds, 3, 3);
 		} else  if(type == 4){
-			return new Release(starThresholds, 3, 3);
+			return new Release(30, starThresholds, 3, 3);
 		} else{
 			return new Puzzle(30, starThresholds, 3, 3); //-- puzzle as default
 		}

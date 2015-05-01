@@ -15,10 +15,10 @@ public class Release extends Level{
 	private int swapTilesLeft = 3;
 	private Board board;
 	
-	public Release(int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
+	public Release(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
 		this.levelType = "Release";
-		this.movesLeft = 0;
+		this.movesLeft = movesLeft;
 		
 		//TEMPORARY METHOD
 		super.getBoard().makeBoardReleaseable();
@@ -37,7 +37,7 @@ public class Release extends Level{
 		
 	}
 	public void decreaseMovesLeft(){
-		movesLeft++;
+		movesLeft--;
 		
 	}
 	public int getMovesLeft(){
@@ -70,7 +70,7 @@ public class Release extends Level{
 			System.err.println("Release: Board is stored in release level but has no goal squares");
 			return false;
 		}
-		return endGame;
+		return (endGame || movesLeft == 0);
 	}
 
 }
