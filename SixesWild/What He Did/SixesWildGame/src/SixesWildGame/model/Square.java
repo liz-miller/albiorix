@@ -1,6 +1,7 @@
 package SixesWildGame.model;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Square - this Object will be the building blocks to a Board, and can contain a Tile which can be used to a Move
@@ -9,7 +10,7 @@ import java.awt.Color;
  *
  */
 
-public class Square{
+public class Square implements Serializable{
 	
 	private int row;
 	private int col;

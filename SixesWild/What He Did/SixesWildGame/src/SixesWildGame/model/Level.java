@@ -1,5 +1,7 @@
  package SixesWildGame.model;
 
+import java.io.Serializable;
+
 import SixesWildGame.boundary.SixesWildGUI;
 
 
@@ -12,7 +14,7 @@ import SixesWildGame.boundary.SixesWildGUI;
 
 //STATUS: needs body method implementations. Last modified: 4/26
 
-public abstract class Level {
+public abstract class Level implements Serializable{
 	private String levelType;
 	private int score;
 	private int[] starThreshold;

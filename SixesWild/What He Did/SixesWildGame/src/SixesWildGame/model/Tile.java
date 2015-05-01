@@ -1,6 +1,7 @@
 package SixesWildGame.model;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 
 /**
@@ -8,7 +9,7 @@ import java.awt.Color;
  * @author Alex
  *
  */
-public class Tile {
+public class Tile implements Serializable{
 	
 	private int value;
 	private Square parent;

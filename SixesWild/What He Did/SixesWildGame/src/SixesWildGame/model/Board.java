@@ -1,5 +1,6 @@
 package SixesWildGame.model;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.Stack;
 
@@ -10,7 +11,7 @@ import javax.swing.JButton;
  * @author Alex & npmahowald
  *
  */
-public class Board {
+public class Board implements Serializable{
 	private Square[][] allSquares;
 	private Stack<Tile> swipedTiles;
 	public final static int boardHW = 9;

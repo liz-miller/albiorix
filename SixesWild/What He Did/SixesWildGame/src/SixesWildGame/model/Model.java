@@ -1,8 +1,10 @@
 package SixesWildGame.model;
 
+import java.io.Serializable;
+
 // top level entity
 
-public class Model {
+public class Model implements Serializable{
 	
 
 	public Level getLevel(int type) { //-- now takes int, can change this as appropriate

@@ -3,6 +3,7 @@ package SixesWildGame.boundary;
 import java.awt.BorderLayout;
 
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 
@@ -40,7 +41,7 @@ import java.util.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-//-- imported to make the timer work
+//imported to make the timer work
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -72,6 +73,18 @@ public class SixesWildGUI extends JPanel {
 		this.app = app;
 
 		initialize();
+	}
+	
+	//-- save a level configuration to disk for testing
+	public void saveToDisk(){
+		Serializer serializer = new Serializer();
+		serializer.serializeLevel(level);
+	}
+	
+	//-- load a level configuration from disk for testing
+	public void loadFromDisk(){
+		Deserializer deserializer = new Deserializer();
+		level = deserializer.deserializeLevel(level);
 	}
 
 	public void updateStatViews() {
@@ -107,12 +120,16 @@ public class SixesWildGUI extends JPanel {
 		}
 	}
 
-	// -- setter variable and method
+	// setter variable and method
 	public JLabel getScoreBoard() {
 		return scoreBoard;
 	}
 
 	void initialize() {
+	
+		//-- pull up saved level
+		//this.loadFromDisk();
+		
 		bv = new BoardView(level);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -204,6 +221,9 @@ public class SixesWildGUI extends JPanel {
 		bv.addMouseMotionListener(mc);
 		bv.setBounds(43, 131, 600, 520);
 		add(bv);
+		
+		//-- end of initialize. Save level to disk
+		//this.saveToDisk();
 
 	}
 
