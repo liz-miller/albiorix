@@ -45,13 +45,12 @@ public class Release extends Level{
 	}
 	public boolean endGame(){
 		boolean hasAGoal = false;
-		boolean endGame = false;
+		boolean endGame = true;
 		Square almostGoal, square;
 		for (int r = 0; r < super.getBoard().boardHW; r++) {
 			for (int c = 0; c < super.getBoard().boardHW; c++) {
 				square = super.getBoard().getSquare(r, c);
 				if(square.isSixesGoal()){
-					System.out.println("hi");
 					hasAGoal = true;
 					almostGoal = super.getBoard().getAboveSquare(square);
 					if(almostGoal.getTileValue() == 6 && square.peekTile() == null){
@@ -59,7 +58,9 @@ public class Release extends Level{
 						super.getBoard().pushToSelected(almostGoal.peekTile());
 						super.getBoard().eliminateSwipedTiles();
 						square.addTile(new Tile(6, 1, square));
-						endGame = true;
+						
+					}else if(square.peekTile() == null){
+						endGame = false;
 					}
 					
 				}

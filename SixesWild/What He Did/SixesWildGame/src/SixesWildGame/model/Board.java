@@ -66,6 +66,19 @@ public class Board {
 		allSquares[7][0] = new Square(7,0,6, 1);
 		allSquares[1][8] = new Square(1,8,2);
 		allSquares[7][8] = new Square(7,8,2);
+		allSquares[0][8] = new Square(0,8,1);
+		allSquares[8][8] = new Square(8,8,1);
+		allSquares[2][8] = new Square(2,8,1);
+		allSquares[3][8] = new Square(3,8,1);
+		allSquares[4][8] = new Square(4,8,1);
+		allSquares[5][8] = new Square(5,8,1);
+		allSquares[6][8] = new Square(6,8,1);
+		allSquares[3][7] = new Square(3,7,1);
+		allSquares[4][7] = new Square(4,7,1);
+		allSquares[5][7] = new Square(5,7,1);
+		allSquares[4][6] = new Square(4,6,1);
+		
+		
 		
 	}
 	
