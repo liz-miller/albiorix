@@ -32,6 +32,7 @@ public class VictoryScreen extends JPanel{
 		super();
 		this.score = scoring;
 		this.stars = star;
+        this.app = app;
 		initialize();
 	}
 	/**
@@ -50,7 +51,7 @@ public class VictoryScreen extends JPanel{
 			}
 		});
 		
-		JLabel lblYouWon = new JLabel("You Won");
+		JLabel lblYouWon = new JLabel("You Win");
 		lblYouWon.setBounds(183, 60, 78, 14);
 		add(lblYouWon);
 		
