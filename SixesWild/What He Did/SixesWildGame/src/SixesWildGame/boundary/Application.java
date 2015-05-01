@@ -74,7 +74,15 @@ public class Application extends JFrame {
 					setContentPane(game);
 					game.revalidate(); 
 					repaint();
-				}
+				
+		//-- play a release level
+	} else if (selection == 6) {
+		game = new SixesWildGUI(this, model.getLevel(4)); //-- getlevel takes int
+	
+		setContentPane(game);
+		game.revalidate(); 
+		repaint();
+	}
 	}
 	public SixesWildGUI getGameGUI(){
 		return game;

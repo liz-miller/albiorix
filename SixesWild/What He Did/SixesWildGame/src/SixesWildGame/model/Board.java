@@ -35,26 +35,39 @@ public class Board {
 		}
 		//inert testing
 		allSquares[0][0] = new Square(0,0,1);
-		allSquares[8][8] = new Square(0,0,1);
-		allSquares[0][8] = new Square(0,0,1);
-		allSquares[8][0] = new Square(0,0,1);
-		allSquares[4][4] = new Square(0,0,1);
-		allSquares[4][5] = new Square(0,0,1);
-		allSquares[4][3] = new Square(0,0,1);
-		allSquares[5][4] = new Square(0,0,1);
-		allSquares[3][4] = new Square(0,0,1);
+		allSquares[8][8] = new Square(8,8,1);
+		allSquares[0][8] = new Square(0,8,1);
+		allSquares[8][0] = new Square(8,0,1);
+		allSquares[4][4] = new Square(4,4,1);
+		allSquares[4][5] = new Square(4,5,1);
+		allSquares[4][3] = new Square(4,3,1);
+		allSquares[5][4] = new Square(5,4,1);
+		allSquares[3][4] = new Square(3,4,1);
+		
+		
 			
 			
 		
 		
 	}
-
-	/**
-	 * TODO: I'm confused as to the purpose of this method - does it create new Tiles to be added to the Square located at r,c? 
-	 * if so, it shouldn't need to return anything, just alter the Square. I'm setting this to void for now. may be changed later. -AB 4/27
-	 * @param r - row the the Board
-	 * @param c - column of the Board
-	 */
+	
+	//TEMPORARY METHOD FOR IMPLEMENTING RELEASE
+	// NOTE RESET BOARD WILL CREATE NEW SIXES (THAT IS FOR LATER TO FIX)
+	public void makeBoardReleaseable(){
+		for (int r = 0; r < boardHW; r++) {
+			for (int c = 0; c < boardHW; c++) {
+				allSquares[r][c] = new Square(r,c);
+				allSquares[r][c].addTile(new Tile(randomGenerator.nextInt(5) + 1, randomGenerator.nextInt(3) + 1, null));
+				
+				
+			}
+		}
+		allSquares[1][0] = new Square(1,0,6, 1);
+		allSquares[7][0] = new Square(7,0,6, 1);
+		allSquares[1][8] = new Square(1,8,2);
+		allSquares[7][8] = new Square(7,8,2);
+		
+	}
 	
 	/**
 	 * Create a randomly generated Tile
@@ -156,7 +169,7 @@ public class Board {
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
-				allSquares[r][c].addTile(generateRandomTile());
+				if(!allSquares[r][c].isSixesGoal() && !allSquares[r][c].isInert()) allSquares[r][c].addTile(generateRandomTile());
 				
 				
 			}
@@ -184,7 +197,7 @@ public class Board {
 	}
 	
 
-	private Square getAboveSquare(Square belowSquare){
+	public Square getAboveSquare(Square belowSquare){
 		int col = belowSquare.getCol();
 		boolean inert = belowSquare.isInert();
 		while(col > 0){
@@ -194,5 +207,6 @@ public class Board {
 		}
 		return null;
 	}
+	
 }
 

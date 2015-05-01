@@ -42,17 +42,21 @@ public class Square{
 		this.row = r;
 		this.col = c;
 		this.tile = null;
+		this.isMarked = false;
 		if(i == 0){
-			this.isMarked = false;
+			
 			this.isInert = false;
+			this.isSixesGoal = false;
 		} else if (i == 1){
-			this.isMarked = false;
 			this.isInert = true;
+			this.isSixesGoal = false;
 		} else if(i == 2){
-			this.isMarked = true;
+			
+			if(c != 8) System.err.println("Square: Invalid Specification of column, release goals should be in row 9");
 			this.isInert = true;
+			this.isSixesGoal = true;
 		} else{
-			System.err.println("Square: Invalid Specification in Inert/Goal square constructor");
+			System.err.println("Square: Invalid Specification in Inert/Goal square constructor, must be 0, 1, or 2");
 		}
 	}
 	
@@ -161,6 +165,14 @@ public class Square{
 	}
 	
 	/**
+	 * Getter to return the value of isSixesGoal
+	 * @return this.isSixesGoal
+	 */
+	public boolean isSixesGoal() {
+		return isSixesGoal;
+	}
+	
+	/**
 	 * returns the row location of the Square
 	 * @return row
 	 */
@@ -182,7 +194,7 @@ public class Square{
 	 * @param tile - Tile to be added to the Square
 	 */
 	public void addTile(Tile tile){
-		if(isInert){
+		if(isInert && (isSixesGoal && tile.getValue() != 6)){
 			return;
 		}
 		this.tile = tile;
@@ -196,7 +208,7 @@ public class Square{
 	 * @return this.tile
 	 */
 	public Tile getTile(){
-		if(isInert){
+		if(isInert && !isSixesGoal){
 			System.err.println("Square: Attempted to get a Tile from an inert Square");
 			return null;
 		}
@@ -217,7 +229,7 @@ public class Square{
 	 * @return this.tile
 	 */
 	public Tile peekTile(){
-		if(isInert){
+		if(isInert && !isSixesGoal){
 			System.err.println("Square: Attempted to access a Tile from an inert Square");
 			return null;
 		}
@@ -248,8 +260,8 @@ public class Square{
 	 */
 	public Color getTileColor(){
 		
-		if(isInert){
-			System.err.println("Square: Attempted to add a Tile to an inert Square");
+		if(isInert && !isSixesGoal){
+			System.err.println("Square: attempted to get color of an inert square");
 			return Color.BLACK;
 		}
 		else if(this.peekTile() == null){
@@ -265,7 +277,7 @@ public class Square{
 	 * @return value of the Tile
 	 */
 	public int getTileValue() {
-		if(isInert){
+		if(isInert && !isSixesGoal){
 			System.err.println("Square: Square is inert but you tried to access its Tile's Value");
 			return 0;
 		}

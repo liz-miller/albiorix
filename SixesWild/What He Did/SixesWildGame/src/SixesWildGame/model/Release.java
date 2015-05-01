@@ -19,6 +19,9 @@ public class Release extends Level{
 		super(starThreshold);
 		this.levelType = "Release";
 		this.movesLeft = 0;
+		
+		//TEMPORARY METHOD
+		super.getBoard().makeBoardReleaseable();
 	}
 
 
@@ -41,7 +44,33 @@ public class Release extends Level{
 		return movesLeft;
 	}
 	public boolean endGame(){
-		return true;
+		boolean hasAGoal = false;
+		boolean endGame = false;
+		Square almostGoal, square;
+		for (int r = 0; r < super.getBoard().boardHW; r++) {
+			for (int c = 0; c < super.getBoard().boardHW; c++) {
+				square = super.getBoard().getSquare(r, c);
+				if(square.isSixesGoal()){
+					System.out.println("hi");
+					hasAGoal = true;
+					almostGoal = super.getBoard().getAboveSquare(square);
+					if(almostGoal.getTileValue() == 6 && square.peekTile() == null){
+
+						super.getBoard().pushToSelected(almostGoal.peekTile());
+						super.getBoard().eliminateSwipedTiles();
+						square.addTile(new Tile(6, 1, square));
+						endGame = true;
+					}
+					
+				}
+
+			}
+		}
+		if(!hasAGoal){
+			System.err.println("Release: Board is stored in release level but has no goal squares");
+			return false;
+		}
+		return endGame;
 	}
 
 }

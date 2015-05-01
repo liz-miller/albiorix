@@ -57,18 +57,19 @@ public class BoardView extends JPanel {
 				Square square = level.getBoard().getSquare(r, c);
 				
 				
-				
+
 				//set the background of the Square depending on whether or not it is marked
-				if(square.isMarked()){
+				if(square.isSixesGoal()){
+					g.setColor(Color.YELLOW);
+				}else if(square.isMarked()){
 					g.setColor(Color.DARK_GRAY);
-				}
-				else {
+				}else{
 					g.setColor(Color.WHITE);
 				}
 				g.fillRect(c * squareHW + 8, r * squareHW + 8, 53, 53);
-				
+
 				//only print the Tile if the Square is not inert and there is a Tile located in the current Square
-				if(!square.isInert() && square.peekTile() != null){
+				if((square.isSixesGoal() || !square.isInert()) && square.peekTile() != null){
 					paintTile(square, g, c, r);
 				}
 			}
