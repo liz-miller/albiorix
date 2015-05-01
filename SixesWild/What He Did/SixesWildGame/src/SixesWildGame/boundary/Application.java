@@ -8,6 +8,8 @@ import SixesWildGame.model.Model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import SixesWildGame.boundary.VictoryScreen;
+import SixesWildGame.boundary.DefeatScreen;
 
 // This object IS the window that pops up
 public class Application extends JFrame {
@@ -18,6 +20,8 @@ public class Application extends JFrame {
 	private static SelectionMenu selmen;
 	private static selectLevel slvl;
 	private static SixesWildGUI game;
+	private static VictoryScreen Vs;
+	private static DefeatScreen Ds;
 
 	Model model;
 
@@ -83,6 +87,18 @@ public class Application extends JFrame {
 		game.revalidate(); 
 		repaint();
 	}
+	else if (selection == 7) {
+		Vs = new VictoryScreen(this, model.getLevel(1));
+		setContentPane(Vs);
+		Vs.revalidate(); 
+		repaint();
+	} 
+	else if (selection == 8) {
+		Ds = new DefeatScreen(this, model.getLevel(1));
+		setContentPane(Ds);
+		Ds.revalidate(); 
+		repaint();
+	} 
 	}
 	public SixesWildGUI getGameGUI(){
 		return game;

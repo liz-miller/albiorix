@@ -1,5 +1,7 @@
  package SixesWildGame.model;
 
+import SixesWildGame.boundary.SixesWildGUI;
+
 
 /**
  * Creates a generic level for Sixes' Wild West.
@@ -19,6 +21,7 @@ public abstract class Level {
 	private boolean eliminateTileState;
 	private boolean swapTileState;
 	private Board board;
+
 	
 	protected Level(int[] starThreshold){ 
 	this.starThreshold = starThreshold;

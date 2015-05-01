@@ -1,7 +1,8 @@
 package SixesWildGame.model;
 
 import java.sql.Time;
-
+import SixesWildGame.boundary.VictoryScreen;
+import SixesWildGame.boundary.Application;
 /**
  * Creates a Puzzle Level.
  * 
@@ -15,6 +16,8 @@ public class Puzzle extends Level{
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private Board board;
+//	Application app;
+	
 	
 	public Puzzle(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
@@ -43,7 +46,9 @@ public class Puzzle extends Level{
 	}
 	
 	public boolean endGame(){
+//		app.toMenu(666);
 		return movesLeft == 0;
 	}
-	
+
+
 }

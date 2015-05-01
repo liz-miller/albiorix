@@ -76,7 +76,13 @@ public class SixesWildGUI extends JPanel {
 
 	public void updateStatViews() {
 		if (level.endGame()) {
-			app.toMenu(2);
+			if(level.numStars() >= 1){
+			app.toMenu(7);
+			}
+			else{
+				app.toMenu(8);
+			}
+				
 		} else {
 			if (level instanceof Lightning) {
 				scoreBoard.setText("Score: " + level.getScore()
