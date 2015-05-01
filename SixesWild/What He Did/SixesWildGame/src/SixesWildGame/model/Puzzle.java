@@ -46,7 +46,6 @@ public class Puzzle extends Level{
 	}
 	
 	public boolean endGame(){
-//		app.toMenu(666);
 		return movesLeft == 0;
 	}
 

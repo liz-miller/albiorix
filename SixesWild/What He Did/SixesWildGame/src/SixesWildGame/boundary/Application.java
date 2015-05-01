@@ -24,7 +24,8 @@ public class Application extends JFrame {
 	private static DefeatScreen Ds;
 
 	Model model;
-
+    int currentscore;
+    int currentstars;
 	
 	/**
 	 * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
@@ -36,6 +37,11 @@ public class Application extends JFrame {
 		setSize(800, 800);
 		this.model = m;
 		toMenu(0);
+	}
+	
+	public void Levelinfo(int levelscore, int numstars){
+		currentscore = levelscore;
+		currentstars = numstars;
 	}
 
 	// Navigates between menus, he didn't seem to have major problem with this
@@ -88,13 +94,13 @@ public class Application extends JFrame {
 		repaint();
 	}
 	else if (selection == 7) {
-		Vs = new VictoryScreen(this, model.getLevel(1));
+		Vs = new VictoryScreen(this, currentscore, currentstars);
 		setContentPane(Vs);
 		Vs.revalidate(); 
 		repaint();
 	} 
 	else if (selection == 8) {
-		Ds = new DefeatScreen(this, model.getLevel(1));
+		Ds = new DefeatScreen(this, currentscore, currentstars);
 		setContentPane(Ds);
 		Ds.revalidate(); 
 		repaint();

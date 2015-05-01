@@ -76,8 +76,9 @@ public class SixesWildGUI extends JPanel {
 
 	public void updateStatViews() {
 		if (level.endGame()) {
+		    app.Levelinfo(level.getScore(),level.numStars());
 			if(level.numStars() >= 1){
-			app.toMenu(7);
+				app.toMenu(7);
 			}
 			else{
 				app.toMenu(8);

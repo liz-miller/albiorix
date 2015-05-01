@@ -20,16 +20,18 @@ import SixesWildGame.boundary.DefeatScreen;
 public class DefeatScreen extends JPanel{
 
 	private JPanel contentPane;
-    Level level;
+	int score;
+	int stars;
 	Application app;
 	/**
 	 * Launch the application.
 	 */
 
 
-	public DefeatScreen(Application app, Level l) {
+	public DefeatScreen(Application app, int scoring, int star) {
 		super();
-		this.level = l;
+		this.score = scoring;
+		this.stars = star;
         this.app = app;
 		initialize();
 	}
@@ -53,25 +55,11 @@ public class DefeatScreen extends JPanel{
 		lblYouWon.setBounds(183, 60, 78, 14);
 		add(lblYouWon);
 		
-		
-/*
-		if (level instanceof Lightning) {
-			JLabel lblTimeLeft = new JLabel ("Time Left: " + ((Lightning) level).getTime());
-			lblTimeLeft.setBounds(47, 49, 96, 14);
-			contentPane.add(lblTimeLeft);
-			} 
-		else{
-			JLabel lblMoves = new JLabel ("Moves Left: " + level.getMovesLeft());
-			lblMoves.setBounds(47, 49, 96, 14);
-			contentPane.add(lblMoves);
-			}
-*/			
-		
-		JLabel lblScore = new JLabel("Score: " + level.getScore());
+		JLabel lblScore = new JLabel("Score: " + score);
 		lblScore.setBounds(152, 94, 78, 14);
 		add(lblScore);
 		
-		JLabel lblNewLabel = new JLabel("Stars: "+ level.numStars());
+		JLabel lblNewLabel = new JLabel("Stars: "+ stars);
 		lblNewLabel.setBounds(152, 119, 78, 14);
 		add(lblNewLabel);
 	}
