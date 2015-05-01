@@ -9,11 +9,7 @@ package SixesWildGame.model;
  */
 public class Release extends Level{
 	private String levelType;
-	private int[] starThreshold;
 	private int movesLeft;
-	private int eliminateTilesLeft = 3;
-	private int swapTilesLeft = 3;
-	private Board board;
 	
 	public Release(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
 		super(starThreshold);
@@ -47,7 +43,7 @@ public class Release extends Level{
 		boolean hasAGoal = false;
 		boolean endGame = true;
 		Square almostGoal, square;
-		for (int r = 0; r < super.getBoard().boardHW; r++) {
+		for (int r = 0; r < Board.boardHW; r++) {
 				square = super.getBoard().getSquare(8, r);
 				if(square.isSixesGoal()){
 					hasAGoal = true;

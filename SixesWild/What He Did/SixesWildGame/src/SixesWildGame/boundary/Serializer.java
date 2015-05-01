@@ -26,12 +26,11 @@ public class Serializer {
    	}
 	*/
  
-	public void serializeLevel(Level level){
+	public void serializeLevel(Level level, int lvlnum){
  
 		try{
  
-			//FileOutputStream fout = new FileOutputStream("C:\\Users/Sean/Documents/current_classes/soft_eng_dump/level.ser");
-			FileOutputStream fout = new FileOutputStream("./levelSave.ser");
+			FileOutputStream fout = new FileOutputStream("./level/level"+lvlnum+".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(level);
 			oos.close();

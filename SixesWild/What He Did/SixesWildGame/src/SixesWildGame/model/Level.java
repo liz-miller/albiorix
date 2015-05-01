@@ -18,6 +18,7 @@ public abstract class Level implements Serializable{
 	private String levelType;
 	private int score;
 	private int[] starThreshold;
+	private int[] tileWeight;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private boolean eliminateTileState;
@@ -25,8 +26,9 @@ public abstract class Level implements Serializable{
 	private Board board;
 
 	
-	protected Level(int[] starThreshold){ 
+	protected Level(int[] starThreshold, int[] tileWeight){ 
 	this.starThreshold = starThreshold;
+	this.tileWeight = tileWeight;
 	this.eliminateTilesLeft = eliminateTilesLeft;
 	this.swapTilesLeft = swapTilesLeft;
 	this.score = 0;
@@ -67,25 +69,21 @@ public abstract class Level implements Serializable{
 	 * @param sixes
 	 * @return int[] percentage
 	 */
-	public int[] calculateTilePercent(int ones, int twos, int threes, int fours, int fives, int sixes){
-		int percents[] = new int[6];
-		int sum = ones + twos + threes + fours + fives + sixes;
-		percents[1] = ones/sum;
-		percents[2] = twos/sum;
-		percents[3] = threes/sum;
-		percents[4] = fours/sum;
-		percents[5] = fives/sum;
-		percents[6] = sixes/sum;
+	public Tile generateTile(){
+		int oneWeight = tileWeight[0];
+		int twoWeight = tileWeight[0];
+		int threeWeight = tileWeight[0];
+		int fourWeight = tileWeight[0];
+		int fiveWeight = tileWeight[0];
+		int sixWeight = tileWeight[0];
+		int sevenWeight = tileWeight[0];
 		
-		return percents;
+		return null;
+		
 	
 	}
 	
-	/**
-	 * Generates tiles. Override for specific level functionality.
-	 * @param levelType
-	 */
-	public abstract void generateTiles();
+
 	
 	/**
 	 * Returns the name of a level.

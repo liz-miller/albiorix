@@ -26,12 +26,12 @@ public class Deserializer{
    	}
 	*/
 	
-	public Level deserializeLevel(Level level){
+	public Level deserializeLevel(int lvlnum){
  
 		try{
  
-			//FileInputStream fin = new FileInputStream("C:\\Users/Sean/Documents/current_classes/soft_eng_dump/level.ser");
-			FileInputStream fin = new FileInputStream("./levelSave.ser");
+			Level level;
+			FileInputStream fin = new FileInputStream("./level/level"+lvlnum+".ser");
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			level = (Level) ois.readObject();
 			ois.close();

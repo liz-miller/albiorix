@@ -4,10 +4,12 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import SixesWildGame.model.Level;
 import SixesWildGame.model.Model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import SixesWildGame.boundary.VictoryScreen;
 import SixesWildGame.boundary.DefeatScreen;
 
@@ -24,9 +26,9 @@ public class Application extends JFrame {
 	private static DefeatScreen Ds;
 
 	Model model;
-    int currentscore;
-    int currentstars;
-	
+	int currentscore;
+	int currentstars;
+
 	/**
 	 * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
 	 * as the mediator for elements of the game that want access to GUI classes
@@ -38,7 +40,7 @@ public class Application extends JFrame {
 		this.model = m;
 		toMenu(0);
 	}
-	
+
 	public void Levelinfo(int levelscore, int numstars){
 		currentscore = levelscore;
 		currentstars = numstars;
@@ -46,12 +48,14 @@ public class Application extends JFrame {
 
 	// Navigates between menus, he didn't seem to have major problem with this
 	public void toMenu(int selection) {
+		//-- load a level configuration from disk for testing
+		Deserializer deserializer = new Deserializer();
 		if (selection == 0) {
 			splsh = new SplashScreen(this);
 			setContentPane(splsh);
-			 repaint();
+			repaint();
 		}
-		if (selection == 1) {
+		else if (selection == 1) {
 			selmen = new SelectionMenu(this);
 			setContentPane(selmen);
 			selmen.revalidate(); 
@@ -61,52 +65,56 @@ public class Application extends JFrame {
 			setContentPane(slvl);
 			slvl.revalidate(); 
 			repaint();
-			
-		} else if (selection == 3) {
+		
+		}/* else if (selection == 3) {
 			game = new SixesWildGUI(this, model.getLevel(1)); //-- getlevel takes int
-			
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
-			
-		//-- play a lightning level
+
+			//-- play a lightning level
 		} else if (selection == 4) {
 			game = new SixesWildGUI(this, model.getLevel(2)); //-- getlevel takes int
-		
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
-		
-		//-- play an Elimination level
-				} else if (selection == 5) {
-					game = new SixesWildGUI(this, model.getLevel(3)); //-- getlevel takes int
-				
-					setContentPane(game);
-					game.revalidate(); 
-					repaint();
-				
-		//-- play a release level
-	} else if (selection == 6) {
-		game = new SixesWildGUI(this, model.getLevel(4)); //-- getlevel takes int
-	
-		setContentPane(game);
-		game.revalidate(); 
-		repaint();
-	}
-	else if (selection == 7) {
-		Vs = new VictoryScreen(this, currentscore, currentstars);
-		setContentPane(Vs);
-		Vs.revalidate(); 
-		repaint();
-	} 
-	else if (selection == 8) {
-		Ds = new DefeatScreen(this, currentscore, currentstars);
-		setContentPane(Ds);
-		Ds.revalidate(); 
-		repaint();
-	} 
+
+			//-- play an Elimination level
+		} else if (selection == 5) {
+			game = new SixesWildGUI(this, model.getLevel(3)); //-- getlevel takes int				
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+
+			//-- play a release level
+		} else if (selection == 6) {
+			game = new SixesWildGUI(this, model.getLevel(4)); //-- getlevel takes int
+
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}*/
+		else if (selection == 7) {
+			Vs = new VictoryScreen(this, currentscore, currentstars);
+			setContentPane(Vs);
+			Vs.revalidate(); 
+			repaint();
+		} 
+		else if (selection == 8) {
+			Ds = new DefeatScreen(this, currentscore, currentstars);
+			setContentPane(Ds);
+			Ds.revalidate(); 
+			repaint();
+		} else{
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection)); //-- getlevel takes int
+
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		} 
 	}
 	public SixesWildGUI getGameGUI(){
 		return game;
 	}
+
 }

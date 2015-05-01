@@ -76,16 +76,16 @@ public class SixesWildGUI extends JPanel {
 	}
 	
 	//-- save a level configuration to disk for testing
-	public void saveToDisk(){
-		Serializer serializer = new Serializer();
-		serializer.serializeLevel(level);
-	}
+	//public void saveToDisk(){
+	//	Serializer serializer = new Serializer();
+	//	serializer.serializeLevel(level, 10);
+	//}
 	
 	//-- load a level configuration from disk for testing
-	public void loadFromDisk(){
-		Deserializer deserializer = new Deserializer();
-		level = deserializer.deserializeLevel(level);
-	}
+	//public void loadFromDisk(){
+	//	Deserializer deserializer = new Deserializer();
+	//	level = deserializer.deserializeLevel(1);
+	//}
 
 	public void updateStatViews() {
 		if (level.endGame()) {
