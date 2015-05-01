@@ -18,8 +18,8 @@ public class Puzzle extends Level{
 	private Board board;
 	
 	
-	public Puzzle(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold);
+	public Puzzle(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold,  tileWeight,  multWeight);
 		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
 		board = new Board(this);
@@ -31,11 +31,7 @@ public class Puzzle extends Level{
 		return null;
 	}
 
-	@Override
-	public void generateTiles() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	public void decreaseMovesLeft(){
 		movesLeft--;
 		

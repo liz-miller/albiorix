@@ -19,8 +19,8 @@ public class Lightning extends Level{
 	private Board board;
 	private int time;
 	
-	public Lightning(int time, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold);
+	public Lightning(int time, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold, tileWeight, multWeight);
 		this.levelType = "Lightning";
 		this.time = time;
 		board = new Board(this);
@@ -32,11 +32,7 @@ public class Lightning extends Level{
 		return null;
 	}
 
-	@Override
-	public void generateTiles() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	@Override
 	public void decreaseMovesLeft(){

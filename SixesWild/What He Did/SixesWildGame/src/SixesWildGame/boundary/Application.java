@@ -66,7 +66,7 @@ public class Application extends JFrame {
 			slvl.revalidate(); 
 			repaint();
 		
-		}/* else if (selection == 3) {
+		} else if (selection == 3) {
 			game = new SixesWildGUI(this, model.getLevel(1)); //-- getlevel takes int
 			setContentPane(game);
 			game.revalidate(); 
@@ -93,7 +93,7 @@ public class Application extends JFrame {
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
-		}*/
+		}
 		else if (selection == 7) {
 			Vs = new VictoryScreen(this, currentscore, currentstars);
 			setContentPane(Vs);
@@ -106,7 +106,7 @@ public class Application extends JFrame {
 			Ds.revalidate(); 
 			repaint();
 		} else{
-			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection)); //-- getlevel takes int
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection - 4)); //-- getlevel takes int
 
 			setContentPane(game);
 			game.revalidate(); 

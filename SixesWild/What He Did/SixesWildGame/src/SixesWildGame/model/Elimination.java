@@ -18,8 +18,8 @@ public class Elimination extends Level {
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	
-	public Elimination(int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold);
+	public Elimination(int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold, tileWeight, multWeight);
 		this.levelType = "Elimination";
 		this.movesLeft = 0;
 		super.getBoard().markAll();
@@ -32,11 +32,7 @@ public class Elimination extends Level {
 		return null;
 	}
 
-	@Override
-	public void generateTiles() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public void decreaseMovesLeft(){
 		movesLeft++;

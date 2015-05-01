@@ -11,8 +11,8 @@ public class Release extends Level{
 	private String levelType;
 	private int movesLeft;
 	
-	public Release(int movesLeft, int[] starThreshold, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold);
+	public Release(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
+		super(starThreshold, tileWeight, multWeight);
 		this.levelType = "Release";
 		this.movesLeft = movesLeft;
 		
@@ -27,11 +27,7 @@ public class Release extends Level{
 		return null;
 	}
 
-	@Override
-	public void generateTiles() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	public void decreaseMovesLeft(){
 		movesLeft--;
 		

@@ -136,8 +136,6 @@ public class SixesWildGUI extends JPanel {
 		setLayout(null);
 		scoreBoard = new JLabel();
 		if (level instanceof Lightning) {
-			// <-- change to real code
-			// the clock to display time left
 			Timer theTimer = new Timer();
 			ClockTick clockTick = new ClockTick((Lightning) level, theTimer,
 					this);

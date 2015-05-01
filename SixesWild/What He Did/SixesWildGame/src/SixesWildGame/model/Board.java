@@ -29,13 +29,13 @@ public class Board implements Serializable{
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
-				allSquares[r][c].addTile(generateRandomTile());
+				allSquares[r][c].addTile(parent.generateTile());
 				
 				
 			}
 		}
 		//inert testing
-		allSquares[0][0] = new Square(0,0,1);
+		/*allSquares[0][0] = new Square(0,0,1);
 		allSquares[8][8] = new Square(8,8,1);
 		allSquares[0][8] = new Square(0,8,1);
 		allSquares[8][0] = new Square(8,0,1);
@@ -43,7 +43,7 @@ public class Board implements Serializable{
 		allSquares[4][5] = new Square(4,5,1);
 		allSquares[4][3] = new Square(4,3,1);
 		allSquares[5][4] = new Square(5,4,1);
-		allSquares[3][4] = new Square(3,4,1);
+		allSquares[3][4] = new Square(3,4,1);*/
 		
 		
 			
@@ -83,13 +83,6 @@ public class Board implements Serializable{
 		
 	}
 	
-	/**
-	 * Create a randomly generated Tile
-	 * @return Tile - a new Tile with a random value, 1 as a multiplier, and null as its parent
-	 */
-	public Tile generateRandomTile(){
-		return new Tile(randomGenerator.nextInt(6) + 1, randomGenerator.nextInt(3) + 1, null);
-	}
 
 	/**
 	 * getTile() - Using the Board's row and column, return the Tile from that location
@@ -165,7 +158,7 @@ public class Board implements Serializable{
 			multipliers = multipliers*tile.getMult();
 			upSquare = getAboveSquare(tile.getParent());
 			if(upSquare == null){
-				tile.getParent().addTile(generateRandomTile());
+				tile.getParent().addTile(parent.generateTile());
 			}else{
 				tile.getParent().addTile(upSquare.getTile());
 				swipedTiles.push(new Tile(1, 1, upSquare));
@@ -183,7 +176,9 @@ public class Board implements Serializable{
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
-				if(!allSquares[r][c].isSixesGoal() && !allSquares[r][c].isInert()) allSquares[r][c].addTile(generateRandomTile());
+				
+				if(!allSquares[r][c].isSixesGoal() && !allSquares[r][c].isInert() 
+						&& !(parent instanceof Release && allSquares[r][c].getTileValue() == 6)) allSquares[r][c].addTile(parent.generateTile());
 				
 				
 			}

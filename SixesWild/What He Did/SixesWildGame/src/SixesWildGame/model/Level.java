@@ -1,6 +1,7 @@
  package SixesWildGame.model;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import SixesWildGame.boundary.SixesWildGUI;
 
@@ -19,16 +20,19 @@ public abstract class Level implements Serializable{
 	private int score;
 	private int[] starThreshold;
 	private int[] tileWeight;
+	private int[] multWeight;
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	private boolean eliminateTileState;
 	private boolean swapTileState;
 	private Board board;
+	static Random randomGenerator = new Random();
 
 	
-	protected Level(int[] starThreshold, int[] tileWeight){ 
+	protected Level(int[] starThreshold, int[] tileWeight, int[] multWeight){ 
 	this.starThreshold = starThreshold;
 	this.tileWeight = tileWeight;
+	this.multWeight = multWeight;
 	this.eliminateTilesLeft = eliminateTilesLeft;
 	this.swapTilesLeft = swapTilesLeft;
 	this.score = 0;
@@ -70,15 +74,32 @@ public abstract class Level implements Serializable{
 	 * @return int[] percentage
 	 */
 	public Tile generateTile(){
-		int oneWeight = tileWeight[0];
-		int twoWeight = tileWeight[0];
-		int threeWeight = tileWeight[0];
-		int fourWeight = tileWeight[0];
-		int fiveWeight = tileWeight[0];
-		int sixWeight = tileWeight[0];
-		int sevenWeight = tileWeight[0];
+		int val, mult;
+		int rand = randomGenerator.nextInt(100);
+		if(rand < tileWeight[0]){
+			val = 1;
+		}else if(rand < tileWeight[0] + tileWeight[1]){
+			val = 2;
+		}else if(rand < tileWeight[0] + tileWeight[1] + tileWeight[2]){
+			val = 3;
+		}else if(rand < tileWeight[0] + tileWeight[1] + tileWeight[2] + tileWeight[3]){
+			val = 4;
+		}else if(rand <  tileWeight[0] + tileWeight[1] + tileWeight[2] + tileWeight[3] + tileWeight[4]){
+			val = 5;
+		}else{
+			val = 6;
+		}
+		if(rand < multWeight[0]){
+			mult = 1;
+		}else if(rand < multWeight[0] + multWeight[1]){
+			mult = 2;
+		}else{
+			mult = 3;
+		}
+		return new Tile(val, mult, null);
 		
-		return null;
+		
+		
 		
 	
 	}
