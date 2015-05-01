@@ -15,7 +15,7 @@ public class Square{
 	private int col;
 	private Tile tile;
 	private boolean isMarked;
-	//private boolean isSixesGoal; //put this here to be used later possibly for release levels
+	private boolean isSixesGoal; //put this here to be used later possibly for release levels
 	private boolean isInert;
 	
 	/**
@@ -29,20 +29,31 @@ public class Square{
 		this.tile = null;
 		isMarked = false;
 		this.isInert = false;
+		this.isSixesGoal = false;
 	}
 	
 	/**
-	 * Constructor of an inert Square. (in the case that isInert is true) This is a Square whose a Tile cannot be added and 
-	 * it cannot be marked.
+	 * Constructor of an inert or a goal Square.  This is a Square whose a Tile cannot be added and it cannot be marked,
+	 * or a square which is a goal in release.
 	 * @param r - Row location of the Square
 	 * @param c - Column location of the Square
 	 */
-	public Square(int r, int c, boolean isInert){
+	public Square(int r, int c, int i){
 		this.row = r;
 		this.col = c;
 		this.tile = null;
-		this.isMarked = false;
-		this.isInert = isInert;
+		if(i == 0){
+			this.isMarked = false;
+			this.isInert = false;
+		} else if (i == 1){
+			this.isMarked = false;
+			this.isInert = true;
+		} else if(i == 2){
+			this.isMarked = true;
+			this.isInert = true;
+		} else{
+			System.err.println("Square: Invalid Specification in Inert/Goal square constructor");
+		}
 	}
 	
 	/**

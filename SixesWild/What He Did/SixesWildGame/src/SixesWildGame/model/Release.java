@@ -19,7 +19,6 @@ public class Release extends Level{
 		super(starThreshold);
 		this.levelType = "Release";
 		this.movesLeft = 0;
-		board = new Board(this);
 	}
 
 

@@ -34,15 +34,15 @@ public class Board {
 			}
 		}
 		//inert testing
-		allSquares[0][0] = new Square(0,0,true);
-		allSquares[8][8] = new Square(0,0,true);
-		allSquares[0][8] = new Square(0,0,true);
-		allSquares[8][0] = new Square(0,0,true);
-		allSquares[4][4] = new Square(0,0,true);
-		allSquares[4][5] = new Square(0,0,true);
-		allSquares[4][3] = new Square(0,0,true);
-		allSquares[5][4] = new Square(0,0,true);
-		allSquares[3][4] = new Square(0,0,true);
+		allSquares[0][0] = new Square(0,0,1);
+		allSquares[8][8] = new Square(0,0,1);
+		allSquares[0][8] = new Square(0,0,1);
+		allSquares[8][0] = new Square(0,0,1);
+		allSquares[4][4] = new Square(0,0,1);
+		allSquares[4][5] = new Square(0,0,1);
+		allSquares[4][3] = new Square(0,0,1);
+		allSquares[5][4] = new Square(0,0,1);
+		allSquares[3][4] = new Square(0,0,1);
 			
 			
 		
