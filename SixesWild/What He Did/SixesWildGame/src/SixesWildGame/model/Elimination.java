@@ -18,8 +18,8 @@ public class Elimination extends Level {
 	private int eliminateTilesLeft = 3;
 	private int swapTilesLeft = 3;
 	
-	public Elimination(int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold, tileWeight, multWeight);
+	public Elimination(int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
+		super(starThreshold, tileWeight, multWeight, lvlNum);
 		this.levelType = "Elimination";
 		this.movesLeft = 0;
 		super.getBoard().markAll();

@@ -5,7 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import SixesWildGame.model.Level;
-import SixesWildGame.model.Model;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,7 +24,7 @@ public class Application extends JFrame {
 	private static VictoryScreen Vs;
 	private static DefeatScreen Ds;
 
-	Model model;
+	//Model model;
 	int currentscore;
 	int currentstars;
 
@@ -34,10 +33,10 @@ public class Application extends JFrame {
 	 * as the mediator for elements of the game that want access to GUI classes
 	 * @author nmpahowald
 	 */
-	public Application(Model m) {
+	public Application() {
 		super("Sixes Wild");
 		setSize(800, 800);
-		this.model = m;
+		//this.model = m;
 		toMenu(0);
 	}
 

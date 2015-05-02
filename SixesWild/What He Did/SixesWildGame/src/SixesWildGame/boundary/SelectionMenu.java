@@ -30,7 +30,7 @@ public class SelectionMenu extends JPanel {
 		JButton btnCampaignMode = new JButton("Campaign Mode");
 		btnCampaignMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				app.toMenu(3);
+				app.toMenu(5);
 
 			}
 		});

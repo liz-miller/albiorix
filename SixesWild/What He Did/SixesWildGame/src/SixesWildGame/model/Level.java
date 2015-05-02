@@ -18,6 +18,7 @@ import SixesWildGame.boundary.SixesWildGUI;
 public abstract class Level implements Serializable{
 	private String levelType;
 	private int score;
+	private int lvlNum;
 	private int[] starThreshold;
 	private int[] tileWeight;
 	private int[] multWeight;
@@ -29,7 +30,7 @@ public abstract class Level implements Serializable{
 	static Random randomGenerator = new Random();
 
 	
-	protected Level(int[] starThreshold, int[] tileWeight, int[] multWeight){ 
+	protected Level(int[] starThreshold, int[] tileWeight, int[] multWeight, int lvlNum){ 
 	this.starThreshold = starThreshold;
 	this.tileWeight = tileWeight;
 	this.multWeight = multWeight;
@@ -39,6 +40,7 @@ public abstract class Level implements Serializable{
 	eliminateTileState = false;
 	swapTileState = false;
 	board = new Board(this);
+	this.lvlNum = lvlNum;
 }
 	
 	/**
@@ -145,6 +147,12 @@ public abstract class Level implements Serializable{
 	public int getScore(){
 		return score;
 	}
+	
+	public int getLevelNum(){
+		return lvlNum;
+	}
+	
+	
 	public boolean getEliminateTileState(){
 		return eliminateTileState;
 	}

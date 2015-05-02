@@ -18,8 +18,8 @@ public class Puzzle extends Level{
 	private Board board;
 	
 	
-	public Puzzle(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold,  tileWeight,  multWeight);
+	public Puzzle(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
+		super(starThreshold,  tileWeight,  multWeight, lvlNum);
 		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
 		board = new Board(this);

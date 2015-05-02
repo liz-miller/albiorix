@@ -11,8 +11,8 @@ public class Release extends Level{
 	private String levelType;
 	private int movesLeft;
 	
-	public Release(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft){
-		super(starThreshold, tileWeight, multWeight);
+	public Release(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
+		super(starThreshold, tileWeight, multWeight, lvlNum);
 		this.levelType = "Release";
 		this.movesLeft = movesLeft;
 		

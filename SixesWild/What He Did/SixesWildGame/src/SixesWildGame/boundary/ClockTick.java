@@ -7,7 +7,6 @@ import java.util.Timer;
 import javax.swing.JFrame;
 
 import SixesWildGame.model.Lightning;
-import SixesWildGame.model.Model;
 import SixesWildGame.boundary.*;
 
 
