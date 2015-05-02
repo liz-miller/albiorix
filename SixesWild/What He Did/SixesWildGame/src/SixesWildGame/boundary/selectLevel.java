@@ -34,7 +34,7 @@ public class selectLevel extends JPanel {
 		btnLevel.setBounds(19, 49, 39, 29);
 		btnLevel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				app.toMenu(3);
+				app.toMenu(5);
 
 			}
 		});
@@ -43,7 +43,7 @@ public class selectLevel extends JPanel {
 		JButton button = new JButton("2");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				app.toMenu(4);
+				app.toMenu(6);
 			}
 		});
 		button.setBounds(133, 49, 39, 29);
@@ -53,7 +53,7 @@ public class selectLevel extends JPanel {
 		button_1.setBounds(242, 49, 39, 29);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				app.toMenu(5);
+				app.toMenu(7);
 			}
 		});
 		add(button_1);
@@ -62,13 +62,18 @@ public class selectLevel extends JPanel {
 		button_2.setBounds(367, 49, 39, 29);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				app.toMenu(6);
+				app.toMenu(8);
 			}
 		});
 		add(button_2);
 
 		JButton button_3 = new JButton("5");
 		button_3.setBounds(19, 104, 39, 29);
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				app.toMenu(9);
+			}
+		});
 		add(button_3);
 
 		JButton button_4 = new JButton("6");

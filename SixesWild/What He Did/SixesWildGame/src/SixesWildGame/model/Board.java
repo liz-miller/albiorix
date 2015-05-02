@@ -54,7 +54,7 @@ public class Board implements Serializable{
 	
 	//TEMPORARY METHOD FOR IMPLEMENTING RELEASE
 	// NOTE RESET BOARD WILL CREATE NEW SIXES (THAT IS FOR LATER TO FIX)
-	public void makeBoardReleaseable(){
+	/*public void makeBoardReleaseable(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
@@ -81,6 +81,10 @@ public class Board implements Serializable{
 		
 		
 		
+	}*/
+	
+	public void setSquare(Square square){
+		allSquares[square.getCol()][square.getRow()] = square;
 	}
 	
 

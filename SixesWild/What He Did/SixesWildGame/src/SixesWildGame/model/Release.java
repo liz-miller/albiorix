@@ -17,7 +17,7 @@ public class Release extends Level{
 		this.movesLeft = movesLeft;
 		
 		//TEMPORARY METHOD
-		super.getBoard().makeBoardReleaseable();
+		//super.getBoard().makeBoardReleaseable();
 	}
 
 
