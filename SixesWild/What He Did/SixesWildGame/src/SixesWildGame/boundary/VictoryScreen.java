@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,16 +24,18 @@ public class VictoryScreen extends JPanel{
 	int score;
 	int stars;
 	Application app;
+	int levelNum;
 	/**
 	 * Launch the application.
 	 */
 
 
-	public VictoryScreen(Application app, int scoring, int star) {
+	public VictoryScreen(Application app, int scoring, int star, int levelNum) {
 		super();
 		this.score = scoring;
 		this.stars = star;
         this.app = app;
+        this.levelNum = levelNum;
 		initialize();
 	}
 	/**
@@ -40,6 +43,12 @@ public class VictoryScreen extends JPanel{
 	 * @return 
 	 */
 	public void initialize() {
+		
+		//-- save the final score to disk
+		ScoreRecord gameStats = new ScoreRecord(app, score, stars, levelNum);
+		ScoreSave scoreSave = new ScoreSave();
+		scoreSave.serializeScore(gameStats, levelNum);
+		
 		setLayout(null);
 
 		JButton btnOk = new JButton("OK");

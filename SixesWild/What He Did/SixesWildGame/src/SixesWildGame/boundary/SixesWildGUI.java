@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 
 
+
 //import javax.media.j3d.Billboard;
 import javax.swing.border.*;
 
@@ -89,7 +90,7 @@ public class SixesWildGUI extends JPanel {
 
 	public void updateStatViews() {
 		if (level.endGame()) {
-		    app.Levelinfo(level.getScore(),level.numStars());
+		    app.Levelinfo(level.getScore(),level.numStars(),level.getLevelNum());
 			if(level.numStars() >= 1){
 				app.toMenu(3);
 			}

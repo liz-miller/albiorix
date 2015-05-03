@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 
 import SixesWildGame.boundary.VictoryScreen;
 import SixesWildGame.boundary.DefeatScreen;
+import SixesWildGame.boundary.Deserializer;
 
 // This object IS the window that pops up
 public class Application extends JFrame {
@@ -27,6 +28,7 @@ public class Application extends JFrame {
 	//Model model;
 	int currentscore;
 	int currentstars;
+	int levelNum;
 
 	/**
 	 * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
@@ -40,9 +42,10 @@ public class Application extends JFrame {
 		toMenu(0);
 	}
 
-	public void Levelinfo(int levelscore, int numstars){
+	public void Levelinfo(int levelscore, int numstars, int num){
 		currentscore = levelscore;
 		currentstars = numstars;
+		levelNum = num;
 	}
 
 	// Navigates between menus, he didn't seem to have major problem with this
@@ -94,7 +97,7 @@ public class Application extends JFrame {
 			repaint();
 		}*/
 		else if (selection == 3) {
-			Vs = new VictoryScreen(this, currentscore, currentstars);
+			Vs = new VictoryScreen(this, currentscore, currentstars, levelNum);
 			setContentPane(Vs);
 			Vs.revalidate(); 
 			repaint();
@@ -104,9 +107,46 @@ public class Application extends JFrame {
 			setContentPane(Ds);
 			Ds.revalidate(); 
 			repaint();
-		} else{
-			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection - 4)); //-- getlevel takes int
-
+		} 
+		else if (selection == 5) {
+			//-- campaign now takes you to whatever level you were on
+			int i = 0;
+			//levelNum MUST be 0, other values are placeholder
+			ScoreRecord score = new ScoreRecord(this, 0, 0, 0);
+			ScoreLoad scoreLoad = new ScoreLoad();
+			while(score != null){
+				i++;
+				score = scoreLoad.deserializeScore(i);
+			}
+			
+			/*
+			int j = 1; //j will equal number of levels in the game
+			deserializer = new Deserializer();
+			Level maxLevel = deserializer.deserializeLevel(j);
+			while(maxLevel != null){
+				j++;
+				maxLevel = deserializer.deserializeLevel(j);
+			}
+			j--;
+			
+			if(i > j){
+				i=j;
+			}
+			*/
+			
+			//-- will need to change when we put in more levels, set keep i from exceeding number of levels
+			if(i > 3){
+				i=3;
+			}
+			
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(i));
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}
+		else{
+			
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection - 5));
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
