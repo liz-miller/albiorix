@@ -67,6 +67,7 @@ public class Tile implements Serializable{
 	
 	/** 
 	 * setter for the Tile value
+	 * NOTE: changing a value to 6 will automatically set that Tile's multiplier to 1
 	 * @param val - new value for the Tile
 	 */
 	public void setVal(int val){
@@ -75,7 +76,9 @@ public class Tile implements Serializable{
 		}
 		else{
 			this.value = val;
-			getColor();
+			if(val == 6){
+				setMult(1);
+			}
 		}
 	}
 	
@@ -87,13 +90,11 @@ public class Tile implements Serializable{
 		if(!isValidMult(mult)){
 			System.out.println("Tile: new multiplier is out of bounds");
 		}
-		else{
-			if(this.value == 6){
-				this.multiplier = 1;
-			}
-			else {
-				this.multiplier = mult;
-			}
+		else if(this.value == 6){
+			this.multiplier = 1;
+		}
+		else {
+			this.multiplier = mult;
 		}
 
 	}

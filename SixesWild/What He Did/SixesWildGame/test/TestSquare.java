@@ -34,11 +34,19 @@ public class TestSquare extends TestCase{
 		assertFalse(thisSquare.isMarked());
 		
 		thisSquare.setMarked();
-		
 		assertTrue(thisSquare.isMarked());
 		
 		thisSquare.setUnMarked();
+		assertFalse(thisSquare.isMarked());
 		
+		//Test the marking of an inert Square
+		thisSquare = new Square(3, 1, 1);
+		assertFalse(thisSquare.isMarked());
+		
+		thisSquare.setMarked();
+		assertFalse(thisSquare.isMarked());
+		
+		thisSquare.setUnMarked();
 		assertFalse(thisSquare.isMarked());
 	}
 	
@@ -100,6 +108,60 @@ public class TestSquare extends TestCase{
 		assertEquals(t, thisSquare.getTile());
 		
 		assertEquals(null, thisSquare.peekTile());
+	}
+	
+	public void testSquareInert(){
+		
+		//This should be a standard Square, not inert or a SixesGoal
+		thisSquare = new Square(1, 2, 0);
+		
+		assertFalse(thisSquare.isInert());
+		assertFalse(thisSquare.isSixesGoal());
+		
+		//This should be a Square that is inert but is not a SixesGoal
+		thisSquare = new Square(1, 2, 1);
+		
+		assertTrue(thisSquare.isInert());
+		assertFalse(thisSquare.isSixesGoal());
+		
+		//This should be a Square that is inert but is also not a SixesGoal b/c of column number
+		thisSquare = new Square(1, 2, 2);
+		assertTrue(thisSquare.isInert());
+		assertFalse(thisSquare.isSixesGoal());
+		
+		//This should be a Square that is both inert and a SixesGoal
+		thisSquare = new Square(8, 8, 2);
+		assertTrue(thisSquare.isInert());
+		assertTrue(thisSquare.isSixesGoal());
+		
+	}
+	
+	/**
+	 * this test tests the Square.equals(Square) method. Two Squares are the same if they have the same
+	 * row and column, Tile, marked value, and inert status. TODO: Are they equal if not both SixesGoal? 
+	 * will ask Nathaniel -AB 5/1
+	 */
+	public void testSquareEquals(){
+		
+		//didn't think this was happening somehow
+		setUp();
+		
+		//initial test to make sure they are initialized OK
+		Square otherSquare = new Square(4,7);
+		assertTrue(thisSquare.equals(otherSquare));
+		
+		Tile t1 = new Tile(1, 3, null);
+		Tile t2 = new Tile(1, 3, null);
+		
+		//Two Squares should be equal if their Tiles are Equal
+		thisSquare.addTile(t1);
+		assertFalse(thisSquare.equals(otherSquare));
+
+		otherSquare.addTile(t2);
+		assertTrue(thisSquare.equals(otherSquare));
+		
+		
+		
 		
 		
 	}

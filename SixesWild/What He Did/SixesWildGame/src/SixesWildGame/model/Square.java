@@ -38,26 +38,37 @@ public class Square implements Serializable{
 	 * or a square which is a goal in release.
 	 * @param r - Row location of the Square
 	 * @param c - Column location of the Square
+	 * @param i - the value which determines the isInert and isSixesGoal values. A value of 1 sets only isInert to true.
+	 * a value of 2 will set isInert to true and isSixesGoal to true if the Square's column is 8. Any other value will set
+	 * both isInert and isSixesGoal to false
 	 */
 	public Square(int r, int c, int i){
 		this.row = r;
 		this.col = c;
 		this.tile = null;
 		this.isMarked = false;
-		if(i == 0){
-			
-			this.isInert = false;
-			this.isSixesGoal = false;
-		} else if (i == 1){
+		
+		//set the isInert and isSixesGoal values depending on i
+		if (i == 1){
 			this.isInert = true;
 			this.isSixesGoal = false;
 		} else if(i == 2){
 			
-			if(c != 8) System.err.println("Square: Invalid Specification of column, release goals should be in row 9");
+			if(c != 8) {
+				System.err.println("Square: Invalid Specification of column, release goals should be in row 9");
+				this.isSixesGoal = false;
+			}
+			else {
+				this.isSixesGoal = true;
+			}
 			this.isInert = true;
-			this.isSixesGoal = true;
+
 		} else{
-			System.err.println("Square: Invalid Specification in Inert/Goal square constructor, must be 0, 1, or 2");
+			System.out.println("Square: Invalid Specification in Inert/Goal square constructor, must be 1, or 2. Square"
+					+ "is neither inert nor a six goal.");
+			this.isInert = false;
+			this.isSixesGoal = false;
+			
 		}
 	}
 	
@@ -246,12 +257,25 @@ public class Square implements Serializable{
 	 * @return whether or not the two Squares have the same location, Tile, and isMarked value
 	 */
 	public boolean equals(Square other){
+		
+		boolean tilesEqual;
+		
+		//The two Squares' Tiles must be equal. This is necessary for null Tile cases
+		if(this.peekTile() == null && other.peekTile() == null){
+			tilesEqual = true;
+		}
+		else if(this.peekTile() == null || other.peekTile() == null){
+			tilesEqual = false;			
+		}
+		else {
+			tilesEqual = this.peekTile().equals(other.peekTile());
+		}
+		
 		return this.getCol() == other.getCol() &&
 				this.getRow() == other.getRow() &&
-				this.peekTile().equals(other.peekTile()) &&
+				tilesEqual &&
 				this.isMarked() == other.isMarked() &&
 				this.isInert == other.isInert();
-
 	}
 
 	/**
