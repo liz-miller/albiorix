@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @author Sean
  *
  */
-public class ScoreSave {
+public class ScoreSave implements Serializable{
   
 	public void serializeScore(ScoreRecord victory, int lvlnum){
  

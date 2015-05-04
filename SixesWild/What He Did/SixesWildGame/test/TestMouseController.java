@@ -1,7 +1,9 @@
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.io.Serializable;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import SixesWildGame.boundary.Application;
@@ -17,6 +19,7 @@ import SixesWildGame.model.Puzzle;
 import SixesWildGame.model.Release;
 import SixesWildGame.model.Square;
 import junit.framework.TestCase;
+import javax.swing.JPanel;
 
 
 /**
@@ -24,7 +27,7 @@ import junit.framework.TestCase;
  * @author nmpahowald
  */
 
-public class TestMouseController extends TestCase{
+public class TestMouseController extends TestCase implements Serializable{
 	
 	Application app;
 	Robot bot;
@@ -65,13 +68,15 @@ public class TestMouseController extends TestCase{
 	
 	public void testSelectLevel(){
 		app.toMenu(2);
-		assertTrue(app.getComponent(0).isVisible());
+			//System.out.println(((JPanel) app.getComponent(0)).getComponentAt(0, 0).);
+		
 		
 		app.toMenu(1);
-		ScoreSave scsv = new ScoreSave();
-		scsv.serializeScore(new ScoreRecord(app, 50, 1, 1), 1);
-		scsv.serializeScore(new ScoreRecord(app, 50, 1, 2), 2);
-		scsv.serializeScore(new ScoreRecord(app, 50, 1, 3), 3);
+		
+		//ScoreSave scsv = new ScoreSave();
+		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 1), 1);
+		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 2), 2);
+		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 3), 3);
 		app.toMenu(2);
 		assertTrue(app.getComponent(0).isVisible());
 		
