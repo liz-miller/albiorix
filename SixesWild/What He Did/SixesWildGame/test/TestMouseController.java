@@ -61,6 +61,13 @@ public class TestMouseController extends TestCase{
 		assertTrue(app.getContentPane() instanceof SelectionMenu);
 	}
 	
+	public void testSelectLevel(){
+		app.toMenu(2);
+		assertTrue(app.getComponent(0).isVisible());
+		
+		
+	}
+	
 	//test the Splash Screen and its transition
 		public void testBoardView() {
 			
@@ -75,7 +82,7 @@ public class TestMouseController extends TestCase{
 			SixesWildGUI gui = new SixesWildGUI(app, lvl);
 			
 			app.setContentPane(gui);
-//			app.setGame(gui);
+			app.setGame(gui);
 			
 			gui.revalidate(); 
 			app.repaint();

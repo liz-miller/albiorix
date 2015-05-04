@@ -165,5 +165,8 @@ public class Application extends JFrame {
 	public SixesWildGUI getGameGUI(){
 		return game;
 	}
+	public void setGame(SixesWildGUI gui){
+		game = gui;
+	}
 
 }
