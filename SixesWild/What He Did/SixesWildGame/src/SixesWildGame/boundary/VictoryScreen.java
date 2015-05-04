@@ -50,7 +50,7 @@ public class VictoryScreen extends JPanel{
 	public void initialize() {
 		
 		//-- save the final score to disk
-		ScoreRecord gameStats = new ScoreRecord(app, score, stars, levelNum);
+		ScoreRecord gameStats = new ScoreRecord(/*app,*/ score, stars, levelNum);
 		ScoreSave scoreSave = new ScoreSave();
 		scoreSave.serializeScore(gameStats, levelNum);
 		

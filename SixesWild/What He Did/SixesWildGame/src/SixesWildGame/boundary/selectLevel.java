@@ -48,7 +48,7 @@ public class selectLevel extends JPanel {
 		}
 		
 		int level_unlocked = 0;
-		ScoreRecord score = new ScoreRecord(app, 0, 0, 0);
+		ScoreRecord score = new ScoreRecord(/*app,*/ 0, 0, 0);
 		while(score != null){
 			score = records[level_unlocked];
 			level_unlocked++;

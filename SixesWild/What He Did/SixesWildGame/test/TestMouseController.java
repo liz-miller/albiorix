@@ -73,7 +73,11 @@ public class TestMouseController extends TestCase implements Serializable{
 		
 		app.toMenu(1);
 		
-		//ScoreSave scsv = new ScoreSave();
+		ScoreSave scsv = new ScoreSave();
+		scsv.serializeScore(new ScoreRecord(50, 1, 1), 1);
+		scsv.serializeScore(new ScoreRecord(50, 1, 2), 2);
+		scsv.serializeScore(new ScoreRecord(50, 1, 3), 3);
+		
 		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 1), 1);
 		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 2), 2);
 		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 3), 3);

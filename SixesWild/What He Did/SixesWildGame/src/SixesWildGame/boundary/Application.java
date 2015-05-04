@@ -122,7 +122,7 @@ public class Application extends JFrame {
 			//-- campaign now takes you to whatever level you were on
 			int i = 0;
 			//levelNum MUST be 0, other values are placeholder
-			ScoreRecord score = new ScoreRecord(this, 0, 0, 0);
+			ScoreRecord score = new ScoreRecord(/*this,*/ 0, 0, 0);
 			ScoreLoad scoreLoad = new ScoreLoad();
 			while(score != null){
 				i++;
