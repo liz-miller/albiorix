@@ -182,7 +182,7 @@ public class Tile implements Serializable{
 	
 	/**
 	 * equals(Tile t) - compares the value and multiplier, and returns true if they are both the same
-	 * @param Tile t - Tile to be compared with current Tile
+	 * @param t Tile to be compared with current Tile
 	 * @return whether or not the two Tiles can be considered equal
 	 */
 	public boolean equals(Tile t){

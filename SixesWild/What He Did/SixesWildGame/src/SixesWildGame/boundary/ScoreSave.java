@@ -15,7 +15,11 @@ import SixesWildGame.model.Level;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
- 
+/**
+ *  
+ * @author Sean
+ *
+ */
 public class ScoreSave {
   
 	public void serializeScore(ScoreRecord victory, int lvlnum){

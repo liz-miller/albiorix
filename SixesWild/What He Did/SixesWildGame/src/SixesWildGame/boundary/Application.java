@@ -12,7 +12,11 @@ import java.awt.event.MouseEvent;
 import SixesWildGame.boundary.VictoryScreen;
 import SixesWildGame.boundary.DefeatScreen;
 import SixesWildGame.boundary.Deserializer;
-
+/**
+ * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
+ * as the mediator for elements of the game that want access to GUI classes
+ * @author nmpahowald
+ */
 // This object IS the window that pops up
 public class Application extends JFrame {
 
@@ -29,11 +33,8 @@ public class Application extends JFrame {
 	int currentscore;
 	int currentstars;
 	int levelNum;
-
 	/**
-	 * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
-	 * as the mediator for elements of the game that want access to GUI classes
-	 * @author nmpahowald
+	 * Constructor for Application sets the screen size
 	 */
 	public Application() {
 		super("Sixes Wild");
@@ -41,13 +42,22 @@ public class Application extends JFrame {
 		//this.model = m;
 		toMenu(0);
 	}
-
+	/**
+	 * Levelinfo(int levelscore, int numstars) provides the information from the current level needed for the victory and defeat screen
+	 * @param levelscore The score from the level
+	 * @param numstars The star(s) from the level
+	 * @param num The number of the level
+	 */
 	public void Levelinfo(int levelscore, int numstars, int num){
 		currentscore = levelscore;
 		currentstars = numstars;
 		levelNum = num;
 	}
 
+	/**
+	 * toMenu(int selection) navigates between menus
+	 * @param selection The selection of which level to go to
+	 */
 	// Navigates between menus, he didn't seem to have major problem with this
 	public void toMenu(int selection) {
 		//-- load a level configuration from disk for testing

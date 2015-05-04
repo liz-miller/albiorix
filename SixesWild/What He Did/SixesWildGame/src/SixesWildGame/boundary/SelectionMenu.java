@@ -14,17 +14,26 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * SelectionMenu - This is the Boundary class which displays the main menu
+ * @author Liz
+ *
+ */
 public class SelectionMenu extends JPanel {
 
 	Application app;
-
+/**
+ * Constructor for SelectionMenu uses the application class
+ * @param app The application class which handles going through the different screens
+ */
 	public SelectionMenu(Application app) {
 		super();
 		this.app = app;
 		initialize();
 	}
-
+/**
+ * initialize() will create the selection Menu screen
+ */
 	void initialize() {
 
 		JButton btnCampaignMode = new JButton("Campaign Mode");

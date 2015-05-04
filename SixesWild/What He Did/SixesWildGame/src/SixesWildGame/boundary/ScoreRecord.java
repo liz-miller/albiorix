@@ -19,6 +19,11 @@ import SixesWildGame.model.Puzzle;
 import SixesWildGame.boundary.VictoryScreen;
 
 //-- stores end-of-level data
+/**
+ * 
+ * @author Sean
+ *
+ */
 public class ScoreRecord implements Serializable{
 
 	private JPanel contentPane;

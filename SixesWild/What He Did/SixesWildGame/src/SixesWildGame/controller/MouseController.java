@@ -14,7 +14,11 @@ import SixesWildGame.model.Square;
 import SixesWildGame.model.Tile;
 import SixesWildGame.model.Puzzle;
 import SixesWildGame.model.Level;
-
+/**
+ * MouseController - This is the main controller class, it takes in mouse events that act on the BoardView and distributes them
+ * to the methods that need to be called.
+ * @author nmpahowald
+ */
 
 public class MouseController implements MouseListener, MouseMotionListener {
 
@@ -23,12 +27,12 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	private Board board;
 	private boolean mouseHasBeenPressed;
 
-	
-	/**
-	 * MouseController - This is the main controller class, it takes in mouse events that act on the BoardView and distributes them
-	 * to the methods that need to be called.
-	 * @author nmpahowald
-	 */
+/**
+ * Constructor for MouseController which setups the mouse controller
+ * @param app The application class which handles going through the different screens
+ * @param boardView The boardView involved with the mouse action
+ * @param board The board involved with the mouse action
+ */
 	public MouseController(Application app, BoardView boardView,
 			Board board) {
 		this.app = app;
@@ -36,47 +40,65 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		this.board = board;
 		mouseHasBeenPressed = false;
 	}
-
+	/**
+	 * mouseDragged(MouseEvent me) is the mouse handler when the mouse is being dragged
+	 */
 	@Override
 	public void mouseDragged(MouseEvent me) {
 		mouseAction(me);
 
 	}
 
+	/**
+	 * mouseMoved(MouseEvent me) is the mouse handler when the mouse is being moved
+	 */
 	@Override
 	public void mouseMoved(MouseEvent me) {
 
 	}
 
+	/**
+	 * mouseClicked(MouseEvent me) is the mouse handler when the mouse is being clicked
+	 */
 	@Override
 	public void mouseClicked(MouseEvent me) {
 
 
 	}
-
+	/**
+	 * mouseEntered(MouseEvent me) is the mouse handler when the mouse is being entered
+	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * mouseExited(MouseEvent me) is the mouse handler when the mouse is being exited
+	 */
 	@Override
 	public void mouseExited(MouseEvent me) {
 		mouseLeaveAction(me);
 
 	}
-
+	/**
+	 * mousePressed(MouseEvent me) is the mouse handler when the mouse is being pressed
+	 */
 	@Override
 	public void mousePressed(MouseEvent me) {
 		mouseAction(me);
 	}
-
+	/**
+	 * mouseReleased(MouseEvent me) is the mouse handler when the mouse is being released
+	 */
 	@Override
 	public void mouseReleased(MouseEvent me) {
 		mouseLeaveAction(me);
 
 	}
-	
+	/**
+	 * mouseAction(MouseEvent me) is the mouse handler when the player is selecting squares
+	 */
 	private void mouseAction(MouseEvent me){
 		Square selectedSquare = sixesFrame.getSquare(me.getY(), me.getX());
 		if(selectedSquare == null){
@@ -118,7 +140,10 @@ public class MouseController implements MouseListener, MouseMotionListener {
 		}
 		}
 	}
-	
+	/**
+	 * mouseLeaveAction(MouseEvent me) is the mouse event when the mouse stops
+	 * being pressed
+	 */
 	private void mouseLeaveAction(MouseEvent me){
 		mouseHasBeenPressed = false;
 		board.remAllFromSelected();

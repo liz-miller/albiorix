@@ -318,7 +318,7 @@ public class Square implements Serializable{
 	
 	/** 
 	 * get the multiplication value of the Tile. If there is no Tile, return 0.  -AB 4/28
-	 * @return
+	 * @return sqaure.peekTile().getMult()
 	 */
 	public int getTileMult() {
 		if(this.peekTile() == null){

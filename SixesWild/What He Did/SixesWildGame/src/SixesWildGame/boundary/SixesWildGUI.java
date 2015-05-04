@@ -47,7 +47,7 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 /**
- * SixesWildGUI - This is the boundary class that displays the pane that the
+ * SixesWildGUI This is the boundary class that displays the pane that the
  * BoardView is displayed on, as well as the buttons that operate the game and
  * the scoreboard for the game itself.
  * 
@@ -67,7 +67,11 @@ public class SixesWildGUI extends JPanel {
 	Level level;
 	BoardView bv;
 	Application app;
-
+/**
+ * Constructor for SixesWildGUI which loads in the application class and level
+ * @param app The application class which handles going through the different screens
+ * @param l The level to be displayed
+ */
 	public SixesWildGUI(Application app, Level l) {
 		super();
 		this.level = l;
@@ -87,7 +91,10 @@ public class SixesWildGUI extends JPanel {
 	//	Deserializer deserializer = new Deserializer();
 	//	level = deserializer.deserializeLevel(1);
 	//}
-
+/**
+ * updateStatViews() will check if the level is older as well as updating the score, moves or time left 
+ * and special moves 
+ */
 	public void updateStatViews() {
 		if (level.endGame()) {
 		    app.Levelinfo(level.getScore(),level.numStars(),level.getLevelNum());
@@ -121,11 +128,18 @@ public class SixesWildGUI extends JPanel {
 		}
 	}
 
+
 	// setter variable and method
+	/**
+	 * getScoreBoard() is a setter which returns the scoreBoard
+	 * @return  scoreBoard
+	 */
 	public JLabel getScoreBoard() {
 		return scoreBoard;
 	}
-
+/**
+ * initialize() will create the SixesWildGUI
+ */
 	void initialize() {
 	
 		//-- pull up saved level

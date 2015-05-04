@@ -23,7 +23,7 @@ public class BoardView extends JPanel {
 
 	/**
 	 * Constructor for BoardView using a pre-created Board to be painted
-	 * @param b - Board to be painted
+	 * @param l level to be painted
 	 */
 	public BoardView(Level l) {
 		super();
@@ -34,7 +34,7 @@ public class BoardView extends JPanel {
 
 	/**
 	 * paintComponent(Graphics g) will paint the entire Board onto the JPanel
-	 * @param g
+	 * @param g The graphics element being painted
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
@@ -76,7 +76,14 @@ public class BoardView extends JPanel {
 
 		}
 	}
-	
+	/**
+	 * paintTile(Square square, Graphics g, int indexW, int indexH) works on painting the individual 
+	 * tiles for the board view
+	 * @param square The parent square for the given tile
+	 * @param g The graphics element being painted
+	 * @param indexW The width of the tile
+	 * @param indexH The height of the tile
+	 */
 	private void paintTile(Square square, Graphics g, int indexW, int indexH){
 		//set the background of the Tile
 
@@ -94,7 +101,12 @@ public class BoardView extends JPanel {
 			g.drawString("x" + square.getTileMult(), indexW *squareHW + 42, indexH * squareHW + 50);
 		}
 	}
-	
+	/**
+	 * Square getSquare(int x, int y) returns the square at a given location
+	 * @param x The x value of the desired square
+	 * @param y The y value of the desired square
+	 * @return square
+	 */
 	public Square getSquare(int x, int y){
 		if(x > level.getBoard().boardHW*squareHW || y > level.getBoard().boardHW*squareHW || x < 0 || y < 0) return null;
 		int xIndex = (x - 6)/squareHW;

@@ -9,11 +9,17 @@ import javax.swing.JPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * selectLevel - This is the Boundary class which displays the selectLevel menu
+ * @author Sean and Liz
+ */
 public class selectLevel extends JPanel {
 
 	Application app;
-
+/**
+ * Constructor for selectLevel uses the application class
+ * @param app The application class which handles going through the different screens
+ */
 	public selectLevel(Application app) {
 		super();
 		this.app = app;
@@ -22,7 +28,7 @@ public class selectLevel extends JPanel {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * initialize() will create the select level screen
 	 */
 	void initialize() {
 

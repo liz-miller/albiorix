@@ -11,8 +11,8 @@ import SixesWildGame.boundary.*;
 
 
 /**
+* ClockTick - This is the Boundary class which counts clock ticks for use in the lightning level type
 * @author Sean
-*
 */
 public class ClockTick extends TimerTask {
 
@@ -20,6 +20,12 @@ public class ClockTick extends TimerTask {
 	Timer timer;
 	SixesWildGUI gui;
 	
+	/**
+	 * Constructor for ClockTick
+	 * @param params info from lightning class
+	 * @param theTimer timer info
+	 * @param gui gui info
+	 */
 	// note that you can pass in what you need
 	public ClockTick(Lightning params, Timer theTimer, SixesWildGUI gui) {
 		this.param = params;
@@ -27,7 +33,9 @@ public class ClockTick extends TimerTask {
 		this.gui = gui;
 	}
 	
-
+   /**
+    * run() runs the clock tick command
+    */
 	@Override
 	public void run() {
 		int val = Integer.valueOf(param.getTime());

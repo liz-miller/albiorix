@@ -14,7 +14,10 @@ import SixesWildGame.model.Level;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
- 
+/**
+ *  Deserializer - This is the boundary class used for loading levels 
+ *  @author Sean
+ */  
 public class Deserializer{
  
 	/*
@@ -25,7 +28,9 @@ public class Deserializer{
 	   System.out.println(level);
    	}
 	*/
-	
+	/**
+	 *  deserializeLevel(int lvlnum) loads the level indicated by the lvlnum
+	 */  
 	public Level deserializeLevel(int lvlnum){
  
 		try{

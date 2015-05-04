@@ -17,7 +17,11 @@ import SixesWildGame.model.Level;
 import SixesWildGame.model.Lightning;
 import SixesWildGame.model.Puzzle;
 import SixesWildGame.boundary.VictoryScreen;
-
+/**
+ * VictoryScreen - This is the Boundary class which displays the victory screen
+ * @author William
+ *
+ */
 public class VictoryScreen extends JPanel{
 
 	private JPanel contentPane;
@@ -26,10 +30,12 @@ public class VictoryScreen extends JPanel{
 	Application app;
 	int levelNum;
 	/**
-	 * Launch the application.
+	 * Constructor for VictoryScreen uses the application class, as well as the score and stars from the level
+	 * @param app The application class which handles going through the different screens
+	 * @param scoring The score from the level
+	 * @param star The star(s) from the level
+	 * @param levelNum The number of the level 
 	 */
-
-
 	public VictoryScreen(Application app, int scoring, int star, int levelNum) {
 		super();
 		this.score = scoring;
@@ -39,8 +45,7 @@ public class VictoryScreen extends JPanel{
 		initialize();
 	}
 	/**
-	 * Create the frame.
-	 * @return 
+	 * initialize() will create the victory screen
 	 */
 	public void initialize() {
 		

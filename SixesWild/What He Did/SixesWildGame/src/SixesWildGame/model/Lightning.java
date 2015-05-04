@@ -19,6 +19,16 @@ public class Lightning extends Level{
 	private Board board;
 	private int time;
 	
+	/**
+	 * Constructor for Lightning which creates a new Lightning level by taking in the appropriate values
+	 * @param time The amount of time remaining listed as the initial amount of time in the constructor
+	 * @param starThreshold The threshold values for one, two or three stars
+	 * @param tileWeight The percentages for the chance of tiles having a certain value listed as a series of numbers
+	 * @param multWeight The percentages for the chance of tiles having a certain multiplier listed as a series of numbers
+	 * @param eliminateTilesLeft The number of eliminate tiles special moves remaining
+	 * @param swapTilesLeft The number of swap tiles special moves remaining
+	 * @param lvlNum The number of the level being worked on
+	 */
 	public Lightning(int time, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
 		super(starThreshold, tileWeight, multWeight, lvlNum);
 		this.levelType = "Lightning";
@@ -26,6 +36,9 @@ public class Lightning extends Level{
 		board = new Board(this);
 	}
 
+	/**
+	 *  restart() restarts the level
+	 */
 	@Override
 	public Level restart() {
 		// TODO Auto-generated method stub
@@ -33,23 +46,39 @@ public class Lightning extends Level{
 	}
 
 
-	
+	/**
+	 * decreaseMovesLeft() overrides the method to do nothing 
+	 * as the lightning game type doesn't use  moves
+	 */
 	@Override
 	public void decreaseMovesLeft(){
 	}
 	
+	/**
+	 * getMovesLeft() overrides the number of moves left in a lightning level to 0
+	 */
 	@Override
 	public int getMovesLeft(){
 		return 0;
 	}
 	
+	/**
+	 * getTime() is a getter for the time
+	 * @return time
+	 */
 	public int getTime(){
 		return time;
 	}
+	/**
+	 * setTime() is a setter for the time
+	 * @param t The time to be set
+	 */
 	public void setTime(int t){
 		time = t;
 	}
-	
+	/**
+	 * endGame() designates to end the lightning level type when the timer runs out
+	 */
 	public boolean endGame(){
 		return time == 0;
 	}

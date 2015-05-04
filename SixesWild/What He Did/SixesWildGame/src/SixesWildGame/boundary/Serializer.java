@@ -15,7 +15,11 @@ import SixesWildGame.model.Level;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
- 
+/**
+ * Serializer - This is the boundary class used for saving levels 
+ * @author Sean
+ *
+ */
 public class Serializer {
  
 	/*
@@ -25,7 +29,11 @@ public class Serializer {
 	   serializer.serializeLevel(levelName);
    	}
 	*/
- 
+ /**
+  * serializeLevel(int lvlnum) saves the level indicated by the level to the given lvlnum
+  * @param level The level to save
+  * @param lvlnum  The level number to save to
+  */
 	public void serializeLevel(Level level, int lvlnum){
  
 		try{

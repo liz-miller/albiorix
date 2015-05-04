@@ -17,17 +17,24 @@ import SixesWildGame.model.Lightning;
 import SixesWildGame.model.Puzzle;
 import SixesWildGame.boundary.DefeatScreen;
 
+/**
+ * DefeatScreen - This is the Boundary class which displays the defeat screen
+ * @author William
+ *
+ */
 public class DefeatScreen extends JPanel{
 
 	private JPanel contentPane;
 	int score;
 	int stars;
 	Application app;
-	/**
-	 * Launch the application.
-	 */
-
-
+	
+/**
+ * Constructor for DefeatScreen uses the application class, as well as the score and stars from the level
+ * @param app The application class which handles going through the different screens
+ * @param scoring The score from the level
+ * @param star The star(s) from the level
+ */
 	public DefeatScreen(Application app, int scoring, int star) {
 		super();
 		this.score = scoring;
@@ -35,10 +42,9 @@ public class DefeatScreen extends JPanel{
         this.app = app;
 		initialize();
 	}
-	/**
-	 * Create the frame.
-	 * @return 
-	 */
+/**
+ * initialize() will create the defeat screen
+ */
 	public void initialize() {
 		setLayout(null);
 
