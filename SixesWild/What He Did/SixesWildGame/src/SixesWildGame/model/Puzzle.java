@@ -12,8 +12,6 @@ import SixesWildGame.boundary.Application;
 public class Puzzle extends Level{
 	private int[] starThreshold;
 	private int movesLeft;
-	private int eliminateTilesLeft;
-	private int swapTilesLeft;
 	private Board board;
 	
 	/**
@@ -27,11 +25,9 @@ public class Puzzle extends Level{
 	 * @param lvlNum The number of the level being worked on
 	 */
 	public Puzzle(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
-		super(starThreshold,  tileWeight,  multWeight, lvlNum);
+		super(starThreshold,  tileWeight,  multWeight, lvlNum, eliminateTilesLeft, swapTilesLeft);
 		this.movesLeft = movesLeft;
 		board = new Board(this);
-		this.eliminateTilesLeft = eliminateTilesLeft;
-		this.swapTilesLeft = swapTilesLeft;
 	}
 
     /**

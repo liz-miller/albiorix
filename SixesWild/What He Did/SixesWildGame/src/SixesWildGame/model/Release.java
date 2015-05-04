@@ -22,7 +22,7 @@ public class Release extends Level{
 	 * @param lvlNum The number of the level being worked on
 	 */
 	public Release(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
-		super(starThreshold, tileWeight, multWeight, lvlNum);
+		super(starThreshold, tileWeight, multWeight, lvlNum, eliminateTilesLeft, swapTilesLeft);
 		this.levelType = "Release";
 		this.movesLeft = movesLeft;
 		

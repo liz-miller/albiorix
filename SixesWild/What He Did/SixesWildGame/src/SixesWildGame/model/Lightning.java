@@ -30,7 +30,7 @@ public class Lightning extends Level{
 	 * @param lvlNum The number of the level being worked on
 	 */
 	public Lightning(int time, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
-		super(starThreshold, tileWeight, multWeight, lvlNum);
+		super(starThreshold, tileWeight, multWeight, lvlNum, eliminateTilesLeft, swapTilesLeft);
 		this.levelType = "Lightning";
 		this.time = time;
 		board = new Board(this);

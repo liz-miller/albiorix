@@ -33,7 +33,7 @@ public abstract class Level implements Serializable{
 	 * @param multWeight The percentages for the chance of tiles having a certain multiplier listed as a series of numbers
 	 * @param lvlNum The number of the level being worked on
 	 */
-	protected Level(int[] starThreshold, int[] tileWeight, int[] multWeight, int lvlNum){ 
+	protected Level(int[] starThreshold, int[] tileWeight, int[] multWeight, int lvlNum, int eliminateTilesLeft, int swapTilesLeft){ 
 	this.starThreshold = starThreshold;
 	this.tileWeight = tileWeight;
 	this.multWeight = multWeight;

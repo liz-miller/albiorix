@@ -5,6 +5,8 @@ import java.awt.event.InputEvent;
 import javax.swing.JFrame;
 
 import SixesWildGame.boundary.Application;
+import SixesWildGame.boundary.ScoreRecord;
+import SixesWildGame.boundary.ScoreSave;
 import SixesWildGame.boundary.SelectionMenu;
 import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.boundary.SplashScreen;
@@ -62,6 +64,14 @@ public class TestMouseController extends TestCase{
 	}
 	
 	public void testSelectLevel(){
+		app.toMenu(2);
+		assertTrue(app.getComponent(0).isVisible());
+		
+		app.toMenu(1);
+		ScoreSave scsv = new ScoreSave();
+		scsv.serializeScore(new ScoreRecord(app, 50, 1, 1), 1);
+		scsv.serializeScore(new ScoreRecord(app, 50, 1, 2), 2);
+		scsv.serializeScore(new ScoreRecord(app, 50, 1, 3), 3);
 		app.toMenu(2);
 		assertTrue(app.getComponent(0).isVisible());
 		
