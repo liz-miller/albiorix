@@ -20,8 +20,8 @@ public class LevelBuilder {
 		int[] starThresholds = {250,500,1000};
 		int[] multWeight = {20,40,40};
 		int[] valWeight = {30,20,20, 10, 10, 10};
-		int type = 3;
-		int num = 3;
+		int type = 2;
+		int num = 4;
 		
 		if (type == 2){
 			l = new Lightning(30, starThresholds, valWeight, multWeight, 3, 3, num);

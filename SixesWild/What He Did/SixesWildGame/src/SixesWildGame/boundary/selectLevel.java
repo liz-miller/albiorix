@@ -22,10 +22,7 @@ import java.awt.GridLayout;
 public class selectLevel extends JPanel {
 
 	Application app;
-/**
- * Constructor for selectLevel uses the application class
- * @param app The application class which handles going through the different screens
- */
+
 	public selectLevel(Application app) {
 		super();
 		this.app = app;
@@ -34,7 +31,7 @@ public class selectLevel extends JPanel {
 	}
 
 	/**
-	 * initialize() will create the select level screen
+	 * Initialize the contents of the frame.
 	 */
 	void initialize() {
 		setLayout(null);
@@ -42,12 +39,6 @@ public class selectLevel extends JPanel {
 		JLabel lblSelectYourLevel = new JLabel("Select Your Level");
 		lblSelectYourLevel.setBounds(5, 9, 137, 14);
 		add(lblSelectYourLevel);
-
-		JButton btnLevel = new JButton("1");
-		btnLevel.setBounds(19, 49, 39, 29);
-		btnLevel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				app.toMenu(6);
 
 		int i = 0;
 		ScoreRecord[] records = new ScoreRecord[17];
@@ -76,20 +67,13 @@ public class selectLevel extends JPanel {
 			s_label.setText(" ");
 		}
 		else{
-				label.setText("Score: " + records[0].getScore());
-				if(records[0].getStars() == 3){
-					s_label.setText("\u2606 \u2606 \u2606");
-				}
-				else if(records[0].getStars() == 2){
-					s_label.setText("\u2606 \u2606");
-				}
-		     });
-		add(btnLevel);
-
-		JButton button = new JButton("2");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				app.toMenu(7);
+			label.setText("Score: " + records[0].getScore());
+			if(records[0].getStars() == 3){
+				s_label.setText("\u2606 \u2606 \u2606");
+			}
+			else if(records[0].getStars() == 2){
+				s_label.setText("\u2606 \u2606");
+			}
 			else if(records[0].getStars() == 1){
 				s_label.setText("\u2606");
 			}
@@ -108,12 +92,6 @@ public class selectLevel extends JPanel {
 			});
 		}
 		add(button);
-
-		JButton button_1 = new JButton("3");
-		button_1.setBounds(242, 49, 39, 29);
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				app.toMenu(8);
 				
 		JLabel label_1 = new JLabel();
 		label_1.setBounds(115, 55, 100, 23);
@@ -149,12 +127,6 @@ public class selectLevel extends JPanel {
 			});
 		}
 		add(button_1);
-
-		JButton button_2 = new JButton("4");
-		button_2.setBounds(367, 49, 39, 29);
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				app.toMenu(9);
 		
 		JLabel label_2 = new JLabel();
 		label_2.setBounds(225, 55, 100, 23);
@@ -190,12 +162,6 @@ public class selectLevel extends JPanel {
 			});
 		}
 		add(button_2);
-
-		JButton button_3 = new JButton("5");
-		button_3.setBounds(19, 104, 39, 29);
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				app.toMenu(10);
 		
 		JLabel label_3 = new JLabel();
 		label_3.setBounds(335, 55, 100, 23);
@@ -669,4 +635,3 @@ public class selectLevel extends JPanel {
 		
 	}
 }
-			}
