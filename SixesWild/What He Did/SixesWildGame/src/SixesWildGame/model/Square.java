@@ -54,7 +54,7 @@ public class Square implements Serializable{
 			this.isSixesGoal = false;
 		} else if(i == 2){
 			
-			if(c != 8) {
+			if(r != 8) {
 				System.err.println("Square: Invalid Specification of column, release goals should be in row 9");
 				this.isSixesGoal = false;
 			}
@@ -176,6 +176,28 @@ public class Square implements Serializable{
 		return isInert;
 	}
 	
+	
+	/**
+	 * This method allows a Square to become inert. This will only be used for Board set-up reasons
+	 * @param inertVal
+	 */
+	
+	//NOTE: for some reason this prohibits the game from running --- fix it somehow. 
+	/*
+	public void setInert(boolean inertVal){
+		if(inertVal){
+			isInert = true;
+			this.getTile(); //remove the current tile
+			isMarked = false;
+		}
+		else{
+			isInert = false;
+			isMarked = false;		
+		}
+	}
+	*/
+
+	
 	/**
 	 * Getter to return the value of isSixesGoal
 	 * @return this.isSixesGoal
@@ -260,6 +282,9 @@ public class Square implements Serializable{
 		
 		boolean tilesEqual;
 		
+		if(other == null){
+			return false;
+		}
 		//The two Squares' Tiles must be equal. This is necessary for null Tile cases
 		if(this.peekTile() == null && other.peekTile() == null){
 			tilesEqual = true;

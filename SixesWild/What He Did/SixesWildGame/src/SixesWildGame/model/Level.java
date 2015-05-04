@@ -3,8 +3,6 @@
 import java.io.Serializable;
 import java.util.Random;
 
-import SixesWildGame.boundary.SixesWildGUI;
-
 
 /**
  * Creates a generic level for Sixes' Wild West.
@@ -16,14 +14,13 @@ import SixesWildGame.boundary.SixesWildGUI;
 //STATUS: needs body method implementations. Last modified: 4/26
 
 public abstract class Level implements Serializable{
-	private String levelType;
 	private int score;
 	private int lvlNum;
 	private int[] starThreshold;
 	private int[] tileWeight;
 	private int[] multWeight;
-	private int eliminateTilesLeft = 3;
-	private int swapTilesLeft = 3;
+	private int eliminateTilesLeft;
+	private int swapTilesLeft;
 	private boolean eliminateTileState;
 	private boolean swapTileState;
 	private Board board;
@@ -55,53 +52,67 @@ public abstract class Level implements Serializable{
 	 */
 	public void saveLevel(Level l){
 		
+		this.starThreshold = starThreshold;
+		this.tileWeight = tileWeight;
+		this.multWeight = multWeight;
+		this.score = 0;
+		eliminateTileState = false;
+		swapTileState = false;
+		board = new Board(this);
+		this.lvlNum = lvlNum;
 	}
-	
-	/**
-	 * Opens a given level from disk.
-	 * @param l The level to load
-	 */
-	public void loadLeve(Level l){
-		
-	}
-	
-	/**
-	 * restart() is an abstract class defined by each individual level type
-	 */
-	public abstract Level restart();
-	
-	/**
-	 * generateTile() generates the level's tiles based on the given tile weights
-	 */
+
 	public Tile generateTile(){
-		int val, mult;
+		int val, mult, percentOnes, percentTwos, percentThrees, percentFours, percentFives, percentSixes;
+		int percentMultOnes, percentMultTwos, percentMultThrees;
+		int tileSum = 0, multSum = 0;
 		int rand = randomGenerator.nextInt(100);
-		if(rand < tileWeight[0]){
+		
+		//Make sure the tileWeights are calculated to be percentages
+		for(int i = 0; i < 6; i ++){
+			tileSum = tileSum + tileWeight[i];
+			if(i < 3){
+				multSum = multSum + multWeight[i];
+			}
+		}
+		
+		percentOnes = 100 * tileWeight[0] / tileSum;
+		percentTwos = 100 * tileWeight[1] / tileSum;
+		percentThrees = 100 * tileWeight[2] / tileSum;
+		percentFours = 100 * tileWeight[3] / tileSum;
+		percentFives = 100 * tileWeight[4] / tileSum;
+		percentSixes = 100 * tileWeight[5] / tileSum;
+		
+		percentMultOnes = 100 * multWeight[0] / multSum;
+		percentMultTwos = 100 * multWeight[1] / multSum;
+		percentMultThrees = 100 * multWeight[2] / multSum;
+		
+		//determine the value
+		if(rand < percentOnes){
 			val = 1;
-		}else if(rand < tileWeight[0] + tileWeight[1]){
+		}else if(rand < percentOnes + percentTwos){
 			val = 2;
-		}else if(rand < tileWeight[0] + tileWeight[1] + tileWeight[2]){
+		}else if(rand < percentOnes + percentTwos + percentThrees){
 			val = 3;
-		}else if(rand < tileWeight[0] + tileWeight[1] + tileWeight[2] + tileWeight[3]){
+		}else if(rand < percentOnes + percentTwos + percentThrees + percentFours){
 			val = 4;
-		}else if(rand <  tileWeight[0] + tileWeight[1] + tileWeight[2] + tileWeight[3] + tileWeight[4]){
+		}else if(rand <  percentOnes + percentTwos + percentThrees + percentFours + percentFives){
 			val = 5;
 		}else{
 			val = 6;
 		}
-		if(rand < multWeight[0]){
+		
+		//determine the multiplier
+		if(rand <= percentMultOnes){
 			mult = 1;
-		}else if(rand < multWeight[0] + multWeight[1]){
+		}else if(rand <= percentMultOnes + percentMultTwos){
 			mult = 2;
 		}else{
 			mult = 3;
 		}
+		
+		//generate the Tile and return it
 		return new Tile(val, mult, null);
-		
-		
-		
-		
-	
 	}
 	
 	/**
@@ -109,16 +120,12 @@ public abstract class Level implements Serializable{
 	 * @param l the level to get 
 	 * @return l.levelType
 	 */
-	public String getType(Level l){
-		return l.levelType;
-	}
+	public abstract String getType();
 	/**
 	 * decreaseMovesLeft() is an abstract class defined by each individual level type
 	 */
 	public abstract void decreaseMovesLeft();
-	/**
-	 * getMovesLeft() is an abstract class defined by each individual level type
-	 */
+	
 	public abstract int getMovesLeft();
 	/**
 	 * endGame() is an abstract class defined by each individual level type
@@ -130,6 +137,7 @@ public abstract class Level implements Serializable{
 	 */
 	public void decreaseEliminateTilesLeft(){
 		eliminateTilesLeft--;
+		
 	}
 	/**
 	 * getEliminateTilesLeft() is a getter which returns the remaining number 

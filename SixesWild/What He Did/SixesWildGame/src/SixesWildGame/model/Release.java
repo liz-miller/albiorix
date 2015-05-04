@@ -30,21 +30,6 @@ public class Release extends Level{
 		//super.getBoard().makeBoardReleaseable();
 	}
 
-
-	@Override
-	
-	/**
-	 * restart() restarts the level
-	 */
-	public Level restart() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	/**
-	 *  decreaseMovesLeft() decreases the number of moves that are left
-	 */
 	public void decreaseMovesLeft(){
 		movesLeft--;
 		
@@ -70,9 +55,12 @@ public class Release extends Level{
 				square = super.getBoard().getSquare(8, r);
 				if(square.isSixesGoal()){
 					hasAGoal = true;
-					almostGoal = super.getBoard().getAboveSquare(square);
-					if(almostGoal.getTileValue() == 6 && square.peekTile() == null){
-
+					almostGoal = super.getBoard().getSquare(square.getRow()-1, square.getCol());
+					
+					if(almostGoal.peekTile().getValue() == 6 
+							&& square.peekTile() == null){
+						System.err.println("Cool");
+						
 						super.getBoard().pushToSelected(almostGoal.peekTile());
 						super.getBoard().eliminateSwipedTiles();
 						square.addTile(new Tile(6, 1, square));
@@ -90,6 +78,10 @@ public class Release extends Level{
 			return false;
 		}
 		return (endGame || movesLeft == 0);
+	}
+	
+	public String getType(){
+		return "Release";
 	}
 
 }

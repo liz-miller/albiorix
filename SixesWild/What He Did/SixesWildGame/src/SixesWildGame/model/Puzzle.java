@@ -10,11 +10,10 @@ import SixesWildGame.boundary.Application;
  *
  */
 public class Puzzle extends Level{
-	private String levelType;
 	private int[] starThreshold;
 	private int movesLeft;
-	private int eliminateTilesLeft = 3;
-	private int swapTilesLeft = 3;
+	private int eliminateTilesLeft;
+	private int swapTilesLeft;
 	private Board board;
 	
 	/**
@@ -29,18 +28,10 @@ public class Puzzle extends Level{
 	 */
 	public Puzzle(int movesLeft, int[] starThreshold, int[] tileWeight, int[] multWeight, int eliminateTilesLeft, int swapTilesLeft, int lvlNum){
 		super(starThreshold,  tileWeight,  multWeight, lvlNum);
-		this.levelType = "Puzzle";
 		this.movesLeft = movesLeft;
 		board = new Board(this);
-	}
-
-	/**
-	 * restart() restarts the level
-	 */
-	@Override
-	public Level restart() {
-		// TODO Auto-generated method stub
-		return null;
+		this.eliminateTilesLeft = eliminateTilesLeft;
+		this.swapTilesLeft = swapTilesLeft;
 	}
 
     /**
@@ -61,6 +52,10 @@ public class Puzzle extends Level{
 	 */
 	public boolean endGame(){
 		return movesLeft == 0;
+	}
+	
+	public String getType(){
+		return "Puzzle";
 	}
 
 

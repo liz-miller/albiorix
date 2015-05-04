@@ -4,12 +4,10 @@ import java.io.Serializable;
 import java.util.Random;
 import java.util.Stack;
 
-import javax.swing.JButton;
 
 /**
  * Board - this Class 
  * @author Alex & npmahowald
- *
  */
 public class Board implements Serializable{
 	private Square[][] allSquares;
@@ -25,64 +23,23 @@ public class Board implements Serializable{
 		// So far all this does is generate a random board, and he wrote it
 		allSquares  = new Square[boardHW][boardHW];
 		
-		//This creates a grid of Squares with no Tiles 
+		//This creates a grid of Squares, and add Tiles as long as parent is not null
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
 				allSquares[r][c] = new Square(r,c);
-				allSquares[r][c].addTile(parent.generateTile());
-				
-				
+				if(parent !=null){
+					allSquares[r][c].addTile(parent.generateTile());	
+				}	
 			}
-		}
-		//inert testing
-		/*allSquares[0][0] = new Square(0,0,1);
-		allSquares[8][8] = new Square(8,8,1);
-		allSquares[0][8] = new Square(0,8,1);
-		allSquares[8][0] = new Square(8,0,1);
-		allSquares[4][4] = new Square(4,4,1);
-		allSquares[4][5] = new Square(4,5,1);
-		allSquares[4][3] = new Square(4,3,1);
-		allSquares[5][4] = new Square(5,4,1);
-		allSquares[3][4] = new Square(3,4,1);*/
-		
-		
-			
-			
+		}	
 		
 		
 	}
 	
-	//TEMPORARY METHOD FOR IMPLEMENTING RELEASE
-	// NOTE RESET BOARD WILL CREATE NEW SIXES (THAT IS FOR LATER TO FIX)
-	/*public void makeBoardReleaseable(){
-		for (int r = 0; r < boardHW; r++) {
-			for (int c = 0; c < boardHW; c++) {
-				allSquares[r][c] = new Square(r,c);
-				allSquares[r][c].addTile(new Tile(randomGenerator.nextInt(5) + 1, randomGenerator.nextInt(3) + 1, null));
-				
-				
-			}
-		}
-		allSquares[1][0] = new Square(1,0,6, 1);
-		allSquares[7][0] = new Square(7,0,6, 1);
-		allSquares[1][8] = new Square(1,8,2);
-		allSquares[7][8] = new Square(7,8,2);
-		allSquares[0][8] = new Square(0,8,1);
-		allSquares[8][8] = new Square(8,8,1);
-		allSquares[2][8] = new Square(2,8,1);
-		allSquares[3][8] = new Square(3,8,1);
-		allSquares[4][8] = new Square(4,8,1);
-		allSquares[5][8] = new Square(5,8,1);
-		allSquares[6][8] = new Square(6,8,1);
-		allSquares[3][7] = new Square(3,7,1);
-		allSquares[4][7] = new Square(4,7,1);
-		allSquares[5][7] = new Square(5,7,1);
-		allSquares[4][6] = new Square(4,6,1);
-		
-		
-		
-	}*/
-	
+	/**
+	 * setSquare(Square) places a Square in the Board in the location of its row and column values
+	 * @param square - Square to be placed
+	 */
 	public void setSquare(Square square){
 		allSquares[square.getCol()][square.getRow()] = square;
 	}
@@ -108,23 +65,39 @@ public class Board implements Serializable{
 		return allSquares[c][r];
 	}
 	
+	/**
+	 * pushToSelected(Tile) - add a Tile to the top of the  swipedTiles stack. Tile will not be added if 
+	 * the Tile is already on the stack
+	 * @param tile - Tile to be added to the swipedTiles stack
+	 */
 	public void pushToSelected(Tile tile){
 		if(tile != null && (swipedTiles.isEmpty() || -1 == swipedTiles.lastIndexOf(tile))){
-		tile.setSelected(true);
-		swipedTiles.push(tile);
+			tile.setSelected(true);
+			swipedTiles.push(tile);
 		}
 	}
 	
+	/**
+	 * popFromSelected() - takes off the Tile on the top of the swipedTiles Stack. 
+	 * @return Tile - top Tile on the stack
+	 */
 	public Tile popFromSelected(){
 		Tile tile = swipedTiles.pop();
 		tile.setSelected(false);
 		return tile;
 	}
 	
+	/**
+	 * peekAtSelected() - returns the Tile on the top of the swipedTiles Stack without removing it
+	 * @return Tile - top Tile on the stack
+	 */
 	public Tile peekAtSelected(){
 		return swipedTiles.peek();
 	}
 	
+	/**
+	 * remAllFromSelected() - empty the swipedTiles Stack by removing all the Tiles
+	 */
 	public void remAllFromSelected(){
 		Tile tile;
 		while(!swipedTiles.empty()){
@@ -133,10 +106,18 @@ public class Board implements Serializable{
 		}
 	}
 	
+	/**
+	 * numSwiped() - returns the number of Tiles which have been swiped in the current move
+	 * @return size of the swipedTiles Stack
+	 */
 	public int numSwiped(){
 		return swipedTiles.size();
 	}
 	
+	/**
+	 * countSwiped() - calculates the sum of all the Tiles that have been selected
+	 * @return int - sum of all selected Tiles
+	 */
 	public int countSwiped(){
 		int count = 0;
 		for(int i = 0; i < numSwiped(); i++){
@@ -144,11 +125,21 @@ public class Board implements Serializable{
 		}
 		return count;
 	}
+	
+	/**
+	 * unMarkSwipedSquares - set all Tiles on the swipedTiles Stack to be unmarked
+	 */
 	public void unMarkSwipedSquares(){
 		for(int i = 0; i < swipedTiles.size(); i++){
 			swipedTiles.elementAt(i).getParent().setUnMarked();
 		}
 	}
+	
+	/**
+	 * eliminateSwipedTiles() - remove all swipedTiles from the Board and the swipedTiles Stack, and
+	 * repopulate the Board as necessary. Return the running multiplier of the swipedTiles Stack.
+	 * @return int - the value of all the swiped Tiles' multiplier multiplied together
+	 */
 	public int eliminateSwipedTiles(){
 		
 		int multipliers = 1;
@@ -156,38 +147,51 @@ public class Board implements Serializable{
 		Tile tile;
 		Square upSquare;
 		
+		//as long as the swipedTiles Stack is not empty
 		while(!swipedTiles.empty()){
 			
+			//remove the Tile from the Stack and update multipliers
 			tile = swipedTiles.pop();
 			multipliers = multipliers*tile.getMult();
 			upSquare = getAboveSquare(tile.getParent());
+			
+			//add a random Tile to the current Square - none to shift downwards
 			if(upSquare == null){
 				tile.getParent().addTile(parent.generateTile());
-			}else{
+			
+			//Make sure the gravity works 
+			//TODO: I will double check, but I'm pretty sure you don't need this first line
+				}else{
 				tile.getParent().addTile(upSquare.getTile());
 				swipedTiles.push(new Tile(1, 1, upSquare));
-			}
-				
-			
-			
-			
-			
+			}	
 			
 		}
 		return multipliers;
 	}
 
+	/**
+	 * resetBoard() - generate a new Tile for all Squares on the board as long as they are not a
+	 * sixesGoal. Note: if the current Level is a Release level and the Square's Tile is a 6, a new 
+	 * Tile will not be generated for that Square
+	 */
 	public void resetBoard(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
 				
 				if(!allSquares[r][c].isSixesGoal() && !allSquares[r][c].isInert() 
-						&& !(parent instanceof Release && allSquares[r][c].getTileValue() == 6)) allSquares[r][c].addTile(parent.generateTile());
+						&& !(parent instanceof Release && allSquares[r][c].getTileValue() == 6)){
+					allSquares[r][c].addTile(parent.generateTile());
+				}
 				
 				
 			}
 		}
 	}
+	
+	/**
+	 * swapTiles() - swap the two Square locations of the 2 most recently selected Tiles
+	 */
 	public void swapTiles(){
 		Tile firstTile = swipedTiles.pop();
 		Tile secondTile = swipedTiles.pop();
@@ -197,9 +201,18 @@ public class Board implements Serializable{
 		firstTile.getParent().addTile(secondTile);
 		toSquare.addTile(firstTile);
 	}
+	
+	/**
+	 * Return the Level type of this current Board
+	 * @return Level type
+	 */
 	public Level getParent(){
 		return parent;
 	}
+	
+	/**
+	 * markAll() - Iterate through the Board and set all Squares as Marked
+	 */
 	public void markAll(){
 		for (int r = 0; r < boardHW; r++) {
 			for (int c = 0; c < boardHW; c++) {
@@ -210,16 +223,27 @@ public class Board implements Serializable{
 	}
 	
 
+	/**
+	 * getAboveSquare(Square) - returns the first non-inert Square located directly above the given Square
+	 * @param belowSquare
+	 * @return
+	 */
 	public Square getAboveSquare(Square belowSquare){
+		if(belowSquare == null){
+			return null;
+		}
 		int col = belowSquare.getCol();
 		boolean inert = belowSquare.isInert();
+		
+		//If not at the top Square, make sure the Square above is not inert. if it is not, return that Square
 		while(col > 0){
 			inert = allSquares[belowSquare.getRow()][--col].isInert();
 			if(!inert) return allSquares[belowSquare.getRow()][col];
-
 		}
+		//If there are no non-inert Squares above the current Square, return null
 		return null;
 	}
 	
 }
+	
 

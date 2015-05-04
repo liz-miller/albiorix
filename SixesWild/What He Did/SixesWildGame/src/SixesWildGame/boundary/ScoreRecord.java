@@ -38,4 +38,16 @@ public class ScoreRecord implements Serializable{
 		this.stars = star;
         this.levelNum = levelNum;
 	}
+	
+	public int getScore(){
+		return score;
+	}
+	
+	public int getStars(){
+		return stars;
+	}
+	
+	public int getLevelNum(){
+		return levelNum;
+	}
 }

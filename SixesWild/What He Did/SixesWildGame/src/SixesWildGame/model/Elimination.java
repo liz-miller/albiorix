@@ -31,17 +31,8 @@ public class Elimination extends Level {
 		this.levelType = "Elimination";
 		this.movesLeft = 0;
 		super.getBoard().markAll();
+		this.starThreshold = starThreshold;
 	}
-
-    /**
-     * restart() restarts the level
-     */
-	@Override
-	public Level restart() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
     /**
      * decreaseMovesLeft() decreases the number of moves that are left
@@ -68,5 +59,9 @@ public class Elimination extends Level {
 			}
 		}
 		return true;
+	}
+	
+	public String getType(){
+		return "Elimination";
 	}
 }

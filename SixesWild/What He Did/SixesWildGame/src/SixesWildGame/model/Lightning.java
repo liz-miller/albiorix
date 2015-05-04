@@ -37,16 +37,6 @@ public class Lightning extends Level{
 	}
 
 	/**
-	 *  restart() restarts the level
-	 */
-	@Override
-	public Level restart() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	/**
 	 * decreaseMovesLeft() overrides the method to do nothing 
 	 * as the lightning game type doesn't use  moves
 	 */
@@ -81,5 +71,9 @@ public class Lightning extends Level{
 	 */
 	public boolean endGame(){
 		return time == 0;
+	}
+	
+	public String getType(){
+		return "Lightning";
 	}
 }

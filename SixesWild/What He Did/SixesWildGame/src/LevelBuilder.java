@@ -6,7 +6,12 @@ import SixesWildGame.model.Puzzle;
 import SixesWildGame.model.Release;
 import SixesWildGame.model.Square;
 
-
+/**
+ * Creates a generic level for Sixes' Wild West.
+ *  
+ * 
+ * @author npmahowald
+ */
 public class LevelBuilder {
 
 	private static Level l;
