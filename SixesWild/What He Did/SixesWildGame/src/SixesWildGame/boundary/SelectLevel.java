@@ -26,15 +26,15 @@ import java.awt.GridLayout;
 public class SelectLevel extends JPanel {
 
 	Application app;
-<<<<<<< Updated upstream:SixesWild/What He Did/SixesWildGame/src/SixesWildGame/boundary/SelectLevel.java
+
 	/**
 	 * Constructor for SelectLevel uses the application class
 	 * @param app The application class which handles going through the different screens
 	 */
-=======
+	
 	private ScoreRecord[] records;
 
->>>>>>> Stashed changes:SixesWild/What He Did/SixesWildGame/src/SixesWildGame/boundary/selectLevel.java
+
 	public SelectLevel(Application app) {
 		super();
 		this.app = app;
