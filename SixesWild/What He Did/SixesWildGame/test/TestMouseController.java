@@ -1,6 +1,7 @@
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
 import java.io.Serializable;
 import java.io.File;
 
@@ -87,10 +88,48 @@ public class TestMouseController extends TestCase implements Serializable{
 				gui.revalidate(); 
 				app.repaint();
 				
-				MouseController mc = new MouseController(app, gui.getBoardView(), lvl.getBoard());
-				//gui.getBoardView().re
-				//.addMouseListener(mc);
-				//bv.addMouseMotionListener(mc);
+				
+				
+				
+				gui.getMouseController().mousePressed(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				boolean b = false;
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+						if(lvl.getBoard().getTile(i,j) != null && lvl.getBoard().getTile(i, j).getSelected()) b = true;
+						
+					}
+				}
+				assertTrue(b);
+				gui.getMouseController().mouseReleased(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				 b = false;
+					for(int i = 0; i < 9; i++){
+						for(int j = 0; j < 9; j++){
+							if(lvl.getBoard().getTile(i,j) != null && lvl.getBoard().getTile(i, j).getSelected()) b = true;
+							
+						}
+					}
+				assertFalse(b);	
+				gui.getMouseController().mouseDragged(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+						if(lvl.getBoard().getTile(i,j) != null && lvl.getBoard().getTile(i, j).getSelected()) b = true;
+						
+					}
+				}
+				assertTrue(b);
+				gui.getMouseController().mouseExited(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				 b = false;
+					for(int i = 0; i < 9; i++){
+						for(int j = 0; j < 9; j++){
+							if(lvl.getBoard().getTile(i,j) != null && lvl.getBoard().getTile(i, j).getSelected()) b = true;
+							
+						}
+					}
+				assertFalse(b);	
+				
+				
+				
+				
 				
 			}
 	
