@@ -15,12 +15,19 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 /**
- * 
+ * ScoreLoad - This boundary class is used to load levels using
+ * the score record to determine the stars, score and locked/unlocked
+ * status from the score record.
  * @author Sean
  *
  */
 public class ScoreLoad{
-	
+	/**
+	 * deserializeScore(int lvlnum) is used
+	 * to get the score record at a given level
+	 * @param lvlnum The number of the level
+	 * @return victory
+	 */
 	public ScoreRecord deserializeScore(int lvlnum){
  
 		try{

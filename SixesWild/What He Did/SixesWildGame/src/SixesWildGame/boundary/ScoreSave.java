@@ -16,12 +16,19 @@ import SixesWildGame.model.Level;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 /**
- *  
+ * ScoreSave - This boundary class class is used to save to the score 
+ * record to indicate that a level has been succesfully completed.
  * @author Sean
  *
  */
 public class ScoreSave implements Serializable{
-  
+	/**
+	 * serializeScore(ScoreRecord victory, int lvlnum) is used
+	 * to store the level's information in the score record at
+	 * a given level number
+	 * @param victory The level's score record
+	 * @param lvlnum The number of the level
+	 */
 	public void serializeScore(ScoreRecord victory, int lvlnum){
  
 		try{

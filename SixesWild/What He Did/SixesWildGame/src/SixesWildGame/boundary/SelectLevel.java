@@ -18,11 +18,18 @@ import SixesWildGame.boundary.Deserializer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
-
+/**
+ * SelectLevel - This is the Boundary class which displays the level select menu
+ * @author Sean
+ *
+ */
 public class SelectLevel extends JPanel {
 
 	Application app;
-
+	/**
+	 * Constructor for SelectLevel uses the application class
+	 * @param app The application class which handles going through the different screens
+	 */
 	public SelectLevel(Application app) {
 		super();
 		this.app = app;

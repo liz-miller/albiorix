@@ -21,7 +21,7 @@ public class LevelBuilder {
 		int[] multWeight = {20,40,40};
 		int[] valWeight = {30,20,20, 10, 10, 10};
 		int type = 1;
-		int num = 1;
+		int num = 2;
 		
 		if (type == 2){
 			l = new Lightning(30, starThresholds, valWeight, multWeight, 3, 3, num);
@@ -40,10 +40,10 @@ public class LevelBuilder {
 			l.getBoard().setSquare(new Square(8,i,1));
 		}
 		for(int i = 0; i < 9; i++){
-			l.getBoard().setSquare(new Square(1,i,1));
+			l.getBoard().setSquare(new Square(0,i,1));
 		}
 		for(int i = 0; i < 9; i++){
-			l.getBoard().setSquare(new Square(7,i,1));
+			l.getBoard().setSquare(new Square(8,i,1));
 		}
 		
 		
