@@ -2,9 +2,11 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.io.Serializable;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 
 import SixesWildGame.boundary.Application;
 import SixesWildGame.boundary.ScoreRecord;
@@ -12,6 +14,7 @@ import SixesWildGame.boundary.ScoreSave;
 import SixesWildGame.boundary.SelectionMenu;
 import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.boundary.SplashScreen;
+import SixesWildGame.boundary.SelectLevel;
 import SixesWildGame.model.Elimination;
 import SixesWildGame.model.Level;
 import SixesWildGame.model.Lightning;
@@ -66,11 +69,135 @@ public class TestMouseController extends TestCase implements Serializable{
 		assertTrue(app.getContentPane() instanceof SelectionMenu);
 	}
 	
+	//test the Splash Screen and its transition
+			public void testBoardView() {
+				
+				
+				int[] starThresholds = {1000,1500,2000};
+				int[] multWeight = {40,40,20};
+				int[] valWeight = {100,0,0, 0, 0, 0};
+				int num = 1;
+	
+				
+				Level lvl = new Puzzle(30, starThresholds, valWeight, multWeight, 3, 3, num);
+				SixesWildGUI gui = new SixesWildGUI(app, lvl);
+				
+				app.setContentPane(gui);
+				app.setGame(gui);
+				
+				gui.revalidate(); 
+				app.repaint();
+				
+				assertTrue(app.getContentPane() instanceof SixesWildGUI);
+				
+				assertTrue(lvl.getMovesLeft() == 30);
+				lvl.decreaseMovesLeft();
+				assertTrue(lvl.getMovesLeft() == 29);
+				assertFalse(lvl.endGame());
+				assertTrue(lvl.getType().equals("Puzzle"));
+				
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+							assertFalse(lvl.getBoard().getTile(i,j).getSelected());
+							assertFalse(lvl.getBoard().getSquare(i,j).isMarked());
+						
+					}
+				}
+				lvl = new Lightning(30, starThresholds, valWeight, multWeight, 3, 3, num);
+				gui = new SixesWildGUI(app, lvl);
+				
+				app.setContentPane(gui);
+				app.setGame(gui);
+				
+				gui.revalidate(); 
+				app.repaint();
+				
+				assertTrue(app.getContentPane() instanceof SixesWildGUI);
+				
+				assertTrue(((Lightning) lvl).getTime() == 30);
+				try{Thread.sleep(1500);}catch(InterruptedException e){}
+				assertTrue(((Lightning) lvl).getTime() == 29);
+				assertFalse(lvl.endGame());
+				assertTrue(lvl.getType().equals("Lightning"));
+				
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+							assertFalse(lvl.getBoard().getTile(i,j).getSelected());
+							assertFalse(lvl.getBoard().getSquare(i,j).isMarked());
+					}
+				}
+				
+				
+				lvl = new Elimination(starThresholds, valWeight, multWeight, 3, 3, num);
+				gui = new SixesWildGUI(app, lvl);
+				
+				app.setContentPane(gui);
+				app.setGame(gui);
+				
+				gui.revalidate(); 
+				app.repaint();
+				
+				assertTrue(app.getContentPane() instanceof SixesWildGUI);
+				
+				assertTrue(lvl.getMovesLeft() == 0);
+				lvl.decreaseMovesLeft();
+				assertTrue(lvl.getMovesLeft() == 1);
+				assertFalse(lvl.endGame());
+				assertTrue(lvl.getType().equals("Elimination"));
+				
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+							assertFalse(lvl.getBoard().getTile(i,j).getSelected());
+							assertTrue(lvl.getBoard().getSquare(i,j).isMarked());
+					}
+				}
+				
+				lvl = new Release(30, starThresholds, valWeight, multWeight, 3, 3, num);
+				gui = new SixesWildGUI(app, lvl);
+				
+				app.setContentPane(gui);
+				app.setGame(gui);
+				
+				gui.revalidate(); 
+				app.repaint();
+				
+				assertTrue(app.getContentPane() instanceof SixesWildGUI);
+				
+				assertTrue(lvl.getMovesLeft() == 30);
+				lvl.decreaseMovesLeft();
+				assertTrue(lvl.getMovesLeft() == 29);
+				
+				lvl.getBoard().setSquare(new Square(8,0,2));
+				assertFalse(lvl.endGame());
+				
+				
+				
+				assertTrue(lvl.getType().equals("Release"));
+				
+				for(int i = 0; i < 9; i++){
+					for(int j = 0; j < 9; j++){
+							assertFalse(lvl.getBoard().getTile(i,j).getSelected());
+							assertFalse(lvl.getBoard().getSquare(i,j).isMarked());
+					}
+				}
+				
+				
+				
+				
+			}
+	 
+	 
+	
 	public void testSelectLevel(){
+		
+
+
 		app.toMenu(2);
 		
-		//((SelectLevel) app.getContentPane()).
+		ScoreRecord[] screc = new ScoreRecord[17];
+		screc = ((SelectLevel) app.getContentPane()).getScoreRecords();
 		
+		assertTrue(screc[0] == null);
 		
 		app.toMenu(1);
 		
@@ -81,7 +208,17 @@ public class TestMouseController extends TestCase implements Serializable{
 		
 		
 		app.toMenu(2);
-		assertTrue(app.getComponent(0).isVisible());
+		screc = ((SelectLevel) app.getContentPane()).getScoreRecords();
+		
+		for(int i = 0; i < 16; i++) assertTrue(screc[0] != null);
+		
+		// Taken from http://examples.javacodegeeks.com/core-java/io/file/delete-file-in-java-example/
+		
+				File file;
+				for(int i = 1; i <= 16; i++){
+					file = new File("./score/score"+ i +".ser");
+					file.delete();
+				}
 		
 		
 	}

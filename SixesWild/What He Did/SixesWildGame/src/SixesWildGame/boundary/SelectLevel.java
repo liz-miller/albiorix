@@ -26,15 +26,27 @@ import java.awt.GridLayout;
 public class SelectLevel extends JPanel {
 
 	Application app;
+<<<<<<< Updated upstream:SixesWild/What He Did/SixesWildGame/src/SixesWildGame/boundary/SelectLevel.java
 	/**
 	 * Constructor for SelectLevel uses the application class
 	 * @param app The application class which handles going through the different screens
 	 */
+=======
+	private ScoreRecord[] records;
+
+>>>>>>> Stashed changes:SixesWild/What He Did/SixesWildGame/src/SixesWildGame/boundary/selectLevel.java
 	public SelectLevel(Application app) {
 		super();
 		this.app = app;
 
 		initialize();
+	}
+	
+	/**
+	 * For Testing purposes only, gets the ScoreRecord array
+	 */
+	public ScoreRecord[] getScoreRecords(){
+		return records;
 	}
 
 	/**
@@ -48,7 +60,7 @@ public class SelectLevel extends JPanel {
 		add(lblSelectYourLevel);
 
 		int i = 0;
-		ScoreRecord[] records = new ScoreRecord[17];
+		records = new ScoreRecord[17];
 		ScoreLoad scoreLoad = new ScoreLoad();
 		for(i=0; i<16; i++){
 			records[i] = scoreLoad.deserializeScore(i+1);
