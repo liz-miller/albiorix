@@ -1,7 +1,10 @@
 import SixesWildGame.model.*;
 import junit.framework.TestCase;
 
-
+/**
+ * Classes which test puzzle
+ * @author Alex & nmpahowald
+ */
 public class TestPuzzle extends TestCase{
 	
 	Puzzle thisPuzzle;
@@ -44,7 +47,7 @@ public class TestPuzzle extends TestCase{
 		
 		assertEquals(2, thisPuzzle.getEliminateTilesLeft());
 		assertEquals(2, thisPuzzle.getSwapTilesLeft());
-		
+	
 		thisPuzzle.decreaseEliminateTilesLeft();
 		thisPuzzle.decreaseSwapTilesLeft();
 		

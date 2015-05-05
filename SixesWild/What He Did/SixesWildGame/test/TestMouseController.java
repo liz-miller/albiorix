@@ -183,6 +183,12 @@ public class TestMouseController extends TestCase implements Serializable{
 				lvl.decreaseMovesLeft();
 				assertTrue(lvl.getMovesLeft() == 29);
 				assertFalse(lvl.endGame());
+				assertTrue(lvl.getEliminateTilesLeft() == 3);
+				lvl.decreaseEliminateTilesLeft();
+				assertTrue(lvl.getEliminateTilesLeft() == 2);
+				assertTrue(lvl.getSwapTilesLeft() == 3);
+				lvl.decreaseSwapTilesLeft();
+				assertTrue(lvl.getSwapTilesLeft() == 2);
 				assertTrue(lvl.getType().equals("Puzzle"));
 				
 				for(int i = 0; i < 9; i++){
