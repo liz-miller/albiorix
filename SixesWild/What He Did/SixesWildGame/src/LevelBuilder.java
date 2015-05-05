@@ -20,7 +20,7 @@ public class LevelBuilder {
 		int[] starThresholds = {250,500,1000};
 		int[] multWeight = {20,40,40};
 		int[] valWeight = {30,20,20, 10, 10, 10};
-		int type = 4;
+		int type = 1;
 		int num = 1;
 		
 		if (type == 2){
@@ -46,8 +46,8 @@ public class LevelBuilder {
 			l.getBoard().setSquare(new Square(8,i,1));
 		}
 		
-		l.getBoard().setSquare(new Square(8,0,2));
-		l.getBoard().setSquare(new Square(7, 0, 6, 1));
+		//l.getBoard().setSquare(new Square(8,0,2));
+		//l.getBoard().setSquare(new Square(7, 0, 6, 1));
 		
 		
 		

@@ -59,7 +59,6 @@ public class Release extends Level{
 					
 					if(almostGoal.peekTile().getValue() == 6 
 							&& square.peekTile() == null){
-						System.err.println("Cool");
 						
 						super.getBoard().pushToSelected(almostGoal.peekTile());
 						super.getBoard().eliminateSwipedTiles();
