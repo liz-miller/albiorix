@@ -16,6 +16,7 @@ import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.boundary.SplashScreen;
 import SixesWildGame.boundary.SelectLevel;
 import SixesWildGame.controller.MouseController;
+import SixesWildGame.controller.ResetButtonController;
 import SixesWildGame.model.Elimination;
 import SixesWildGame.model.Level;
 import SixesWildGame.model.Lightning;
@@ -108,7 +109,9 @@ public class TestMouseController extends TestCase implements Serializable{
 							
 						}
 					}
-				assertFalse(b);	
+				assertFalse(b);
+				
+				
 				gui.getMouseController().mouseDragged(new MouseEvent(gui,0,0,0,200,200, 0, false));
 				for(int i = 0; i < 9; i++){
 					for(int j = 0; j < 9; j++){
@@ -128,6 +131,28 @@ public class TestMouseController extends TestCase implements Serializable{
 				assertFalse(b);	
 				
 				
+				//Elim tile state tests
+				lvl.setEliminateTileState(true);
+				
+				gui.getMouseController().mousePressed(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				
+				assertFalse(lvl.getEliminateTileState());
+				
+				
+				
+				//Swap tile state tests
+				lvl.setSwapTileState(true);
+				gui.getMouseController().mousePressed(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				
+				assertTrue(lvl.getSwapTileState());
+				
+				gui.getMouseController().mousePressed(new MouseEvent(gui,0,0,0,200,300, 0, false));
+				
+				assertFalse(lvl.getSwapTileState());
+				
+				gui.getMouseController().mouseReleased(new MouseEvent(gui,0,0,0,200,200, 0, false));
+				
+			
 				
 				
 				
@@ -290,6 +315,32 @@ public class TestMouseController extends TestCase implements Serializable{
 					file.delete();
 				}
 		
+		
+	}
+	
+	public void testResetButtonController(){
+		int[] starThresholds = {1000,1500,2000};
+		int[] multWeight = {40,40,20};
+		int[] valWeight = {100,0,0, 0, 0, 0};
+		int num = 1;
+
+		
+		Level lvl = new Puzzle(30, starThresholds, valWeight, multWeight, 3, 3, num);
+		SixesWildGUI gui = new SixesWildGUI(app, lvl);
+		
+		app.setContentPane(gui);
+		app.setGame(gui);
+		
+		gui.revalidate(); 
+		app.repaint();
+		
+		ResetButtonController rbc = new ResetButtonController(lvl, gui.getBoardView(), gui);
+		assertTrue(lvl.getMovesLeft() == 30);
+		
+		rbc.actionPerformed(null);
+		
+		assertTrue(lvl.getMovesLeft() == 29);
+
 		
 	}
 

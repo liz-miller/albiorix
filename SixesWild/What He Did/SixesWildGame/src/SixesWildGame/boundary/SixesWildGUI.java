@@ -142,6 +142,13 @@ public class SixesWildGUI extends JPanel {
 	 * getBoardView is a getter which returns the boardView for testing purposes only
 	 * @return  BoardView
 	 */
+	public BoardView getBoardView() {
+		return bv;
+	}
+	/**
+	 * getMouseController is a getter which returns the mouse controller for testing purposes only
+	 * @return  MouseController
+	 */
 	public MouseController getMouseController() {
 		return mc;
 	}
