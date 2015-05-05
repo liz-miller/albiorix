@@ -26,7 +26,11 @@ import junit.framework.TestCase;
 
 import javax.swing.JPanel;
 
-
+/**
+ * Tests the endgames of the different level types
+ * @author nathanielmhld
+ *
+ */
 public class TestEndGames extends TestCase{
 
 	Application app;

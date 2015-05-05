@@ -3,7 +3,7 @@ import junit.framework.TestCase;
 
 /**
  * Classes which test puzzle
- * @author Alex & nmpahowald
+ * @author Alex
  */
 public class TestPuzzle extends TestCase{
 	
