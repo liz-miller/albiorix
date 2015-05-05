@@ -68,72 +68,22 @@ public class TestMouseController extends TestCase implements Serializable{
 	
 	public void testSelectLevel(){
 		app.toMenu(2);
-			//System.out.println(((JPanel) app.getComponent(0)).getComponentAt(0, 0).);
+		
+		//((SelectLevel) app.getContentPane()).
 		
 		
 		app.toMenu(1);
 		
 		ScoreSave scsv = new ScoreSave();
-		scsv.serializeScore(new ScoreRecord(50, 1, 1), 1);
-		scsv.serializeScore(new ScoreRecord(50, 1, 2), 2);
-		scsv.serializeScore(new ScoreRecord(50, 1, 3), 3);
 		
-		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 1), 1);
-		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 2), 2);
-		//scsv.serializeScore(new ScoreRecord(app, 50, 1, 3), 3);
+		for(int i = 1; i <= 16; i++) scsv.serializeScore(new ScoreRecord(50, 1, i), i);
+
+		
+		
 		app.toMenu(2);
 		assertTrue(app.getComponent(0).isVisible());
 		
 		
 	}
-	
-	//test the Splash Screen and its transition
-		public void testBoardView() {
-			
-			
-			int[] starThresholds = {1000,1500,2000};
-			int[] multWeight = {40,40,20};
-			int[] valWeight = {100,0,0, 0, 0, 0};
-			int num = 1;
-
-			
-			Level lvl = new Puzzle(30, starThresholds, valWeight, multWeight, 3, 3, num);
-			SixesWildGUI gui = new SixesWildGUI(app, lvl);
-			
-			app.setContentPane(gui);
-			app.setGame(gui);
-			
-			gui.revalidate(); 
-			app.repaint();
-			
-			assertTrue(app.getContentPane() instanceof SixesWildGUI);
-			
-			int windowX = app.getLocationOnScreen().x;
-			int windowY = app.getLocationOnScreen().y;
-			
-			bot.mouseMove(windowX + 80,windowY + 190);
-			bot.mousePress(InputEvent.BUTTON1_MASK);
-			
-			//add time between press and release or the input event system may 
-			//not think it is a click
-			
-			for(int i = 1; i < 6; i++){
-				
-			try{Thread.sleep(250);}catch(InterruptedException e){}
-
-			assertTrue(lvl.getBoard().getTile(0,i-1).getSelected());
-			
-			try{Thread.sleep(250);}catch(InterruptedException e){}
-			
-			bot.mouseMove(windowX + 80 + i*50, windowY + 190);
-			
-			}
-			try{Thread.sleep(250);}catch(InterruptedException e){}
-			
-			bot.mouseRelease(InputEvent.BUTTON1_MASK);
-			
-			
-			
-		}
 
 }

@@ -24,7 +24,7 @@ public class Application extends JFrame {
 
 	private static SplashScreen splsh;
 	private static SelectionMenu selmen;
-	private static selectLevel slvl;
+	private static SelectLevel slvl;
 	private static SixesWildGUI game;
 	private static VictoryScreen Vs;
 	private static DefeatScreen Ds;
@@ -73,7 +73,7 @@ public class Application extends JFrame {
 			selmen.revalidate(); 
 			repaint();
 		} else if (selection == 2) {
-			slvl = new selectLevel(this);
+			slvl = new SelectLevel(this);
 			setContentPane(slvl);
 			slvl.revalidate(); 
 			repaint();
