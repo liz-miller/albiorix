@@ -67,6 +67,7 @@ public class SixesWildGUI extends JPanel {
 	Level level;
 	BoardView bv;
 	Application app;
+	MouseController mc;
 /**
  * Constructor for SixesWildGUI which loads in the application class and level
  * @param app The application class which handles going through the different screens
@@ -131,11 +132,18 @@ public class SixesWildGUI extends JPanel {
 
 	// setter variable and method
 	/**
-	 * getScoreBoard() is a setter which returns the scoreBoard
+	 * getScoreBoard() is a getter which returns the scoreBoard
 	 * @return  scoreBoard
 	 */
 	public JLabel getScoreBoard() {
 		return scoreBoard;
+	}
+	/**
+	 * getBoardView is a getter which returns the boardView for testing purposes only
+	 * @return  BoardView
+	 */
+	public BoardView getBoardView() {
+		return bv;
 	}
 /**
  * initialize() will create the SixesWildGUI
@@ -229,7 +237,7 @@ public class SixesWildGUI extends JPanel {
 		add(starLabel);
 
 		
-		MouseController mc = new MouseController(app, bv, level.getBoard());
+		mc = new MouseController(app, bv, level.getBoard());
 		bv.addMouseListener(mc);
 		bv.addMouseMotionListener(mc);
 		bv.setBounds(43, 131, 600, 520);

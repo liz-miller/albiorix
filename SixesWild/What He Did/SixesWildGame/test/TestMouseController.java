@@ -7,7 +7,6 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 import SixesWildGame.boundary.Application;
 import SixesWildGame.boundary.ScoreRecord;
 import SixesWildGame.boundary.ScoreSave;
@@ -15,6 +14,7 @@ import SixesWildGame.boundary.SelectionMenu;
 import SixesWildGame.boundary.SixesWildGUI;
 import SixesWildGame.boundary.SplashScreen;
 import SixesWildGame.boundary.SelectLevel;
+import SixesWildGame.controller.MouseController;
 import SixesWildGame.model.Elimination;
 import SixesWildGame.model.Level;
 import SixesWildGame.model.Lightning;
@@ -22,6 +22,7 @@ import SixesWildGame.model.Puzzle;
 import SixesWildGame.model.Release;
 import SixesWildGame.model.Square;
 import junit.framework.TestCase;
+
 import javax.swing.JPanel;
 
 
@@ -69,7 +70,31 @@ public class TestMouseController extends TestCase implements Serializable{
 		assertTrue(app.getContentPane() instanceof SelectionMenu);
 	}
 	
-	//test the Splash Screen and its transition
+			public void testMouseController(){
+				int[] starThresholds = {1000,1500,2000};
+				int[] multWeight = {40,40,20};
+				int[] valWeight = {100,0,0, 0, 0, 0};
+				int num = 1;
+	
+				
+				Level lvl = new Puzzle(30, starThresholds, valWeight, multWeight, 3, 3, num);
+				SixesWildGUI gui = new SixesWildGUI(app, lvl);
+				
+				app.setContentPane(gui);
+				app.setGame(gui);
+				
+				
+				gui.revalidate(); 
+				app.repaint();
+				
+				MouseController mc = new MouseController(app, gui.getBoardView(), lvl.getBoard());
+				//gui.getBoardView().re
+				//.addMouseListener(mc);
+				//bv.addMouseMotionListener(mc);
+				
+			}
+	
+	//test the BoardView and the SixesWildGUI as well as the level entities
 			public void testBoardView() {
 				
 				
@@ -176,7 +201,7 @@ public class TestMouseController extends TestCase implements Serializable{
 				
 				for(int i = 0; i < 9; i++){
 					for(int j = 0; j < 9; j++){
-							assertFalse(lvl.getBoard().getTile(i,j).getSelected());
+							if(lvl.getBoard().getTile(i,j) != null) assertFalse(lvl.getBoard().getTile(i,j).getSelected());
 							assertFalse(lvl.getBoard().getSquare(i,j).isMarked());
 					}
 				}
@@ -190,7 +215,13 @@ public class TestMouseController extends TestCase implements Serializable{
 	
 	public void testSelectLevel(){
 		
-
+		// Taken from http://examples.javacodegeeks.com/core-java/io/file/delete-file-in-java-example/
+		
+		File file;
+		for(int i = 1; i <= 16; i++){
+			file = new File("./score/score"+ i +".ser");
+			file.delete();
+		}
 
 		app.toMenu(2);
 		
@@ -214,7 +245,7 @@ public class TestMouseController extends TestCase implements Serializable{
 		
 		// Taken from http://examples.javacodegeeks.com/core-java/io/file/delete-file-in-java-example/
 		
-				File file;
+		
 				for(int i = 1; i <= 16; i++){
 					file = new File("./score/score"+ i +".ser");
 					file.delete();
