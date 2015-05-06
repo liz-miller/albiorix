@@ -17,11 +17,11 @@ public class LevelBuilder {
 	private static Level l;
 	
 	public static void main(String[] args) {
-		int[] starThresholds = {40,30,10};
-		int[] multWeight = {40,20,40};
-		int[] valWeight = {20,20,20, 20, 10, 10};
-		int type = 3;
-		int num = 3;
+		int[] starThresholds = {1500,2000,3000};
+		int[] multWeight = {1,1,2};
+		int[] valWeight = {30,30,20, 10, 5, 5};
+		int type = 2;
+		int num = 14;
 		
 		if (type == 2){
 			l = new Lightning(30, starThresholds, valWeight, multWeight, 3, 3, num);
@@ -33,19 +33,18 @@ public class LevelBuilder {
 			l = new Puzzle(30, starThresholds, valWeight, multWeight, 3, 3, num);
 		}
 		
-		for(int i = 0; i < 3; i++){
-		l.getBoard().setSquare(new Square(0,i,1));
-		}
-		for(int i = 0; i < 3; i++){
-			l.getBoard().setSquare(new Square(8,i,1));
-		}
-		for(int i = 0; i < 3; i++){
-			l.getBoard().setSquare(new Square(i,0,1));
-		}
-		for(int i = 0; i < 3; i++){
-			l.getBoard().setSquare(new Square(i,8,1));
-		}
+
 		
+		l.getBoard().setSquare(new Square(7,8,1));
+		l.getBoard().setSquare(new Square(8,7,1));
+		l.getBoard().setSquare(new Square(8,8,1));
+		
+
+			
+		l.getBoard().setSquare(new Square(1,8,1));
+		l.getBoard().setSquare(new Square(0,8,1));
+		l.getBoard().setSquare(new Square(1,7,1));
+
 		
 		
 		//methods that generate immediate fail levels
