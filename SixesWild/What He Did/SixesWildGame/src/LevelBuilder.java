@@ -17,7 +17,7 @@ public class LevelBuilder {
 	private static Level l;
 	
 	public static void main(String[] args) {
-		int[] starThresholds = {10,15,40};
+		int[] starThresholds = {40,30,10};
 		int[] multWeight = {40,20,40};
 		int[] valWeight = {20,20,20, 20, 10, 10};
 		int type = 3;
