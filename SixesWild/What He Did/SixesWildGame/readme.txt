@@ -12,7 +12,7 @@ RUNNING THE GAME
 TESTING THE GAME
 ———————
 
-	The test cases for the game are housed in the test folder, and can be run with the ecclema code coverage plugin. IMPORTANT: test case running will clear score progress, level unlocking will not be retained after test cases are run. A “score” folder is also required to run the test cases, so make sure that exists. Also, as we use “robot” to take the mouse for one of our cases, it helps to make sure not to touch the mouse while running the test cases. 
+	The test cases for the game are housed in the test folder, and can be run with the ecclema code coverage plugin. IMPORTANT: test case running will clear score progress, level unlocking will not be retained after test cases are run. A “score” folder is also required to run the test cases, so make sure that exists. Also, as we use “robot” to take the mouse for one of our cases, it helps to make sure not to touch the mouse while running the test cases. FINALLY, 4 levelbuilder serializable files are needed in order for the test cases to run, so blank ones have been packaged with the game, which the level builder will overwrite. 
 
 ———————
 THE LEVEL BUILDER(S)
@@ -20,7 +20,7 @@ THE LEVEL BUILDER(S)
 
 	Our group had two pseudo level builders because of a divide. One, created by Liz, is included in our submission. The main method can be found in the view/LevelBuilder.java file and executed from the main method in that file. The second level builder (the one that the rest of the group used to run and test code and to build our actual gameplay levels) is code-based, in the default package of our game, in LevelBuilder.java. This builder is executed using the main method in the file. A brief guide on our level builder:
 	type determines the level type
-	num determines the level number
+	num determines the level number (should be negative of the desired level number for standard building)
 	starThresholds determines the thresholds for the stars (for 1, 2 and 3)
 	multWeight determines the probabilities for the mult weights (for 1, 2, and 3)
 	valWeight determines the probabilities for the values (for 1 through 6)
@@ -29,8 +29,14 @@ THE LEVEL BUILDER(S)
 	the l.getBoard().setSquare(new Square(i,j,1)); method is used to set an inert square at (i,j)
 	the l.getBoard().setSquare(new Square(i,j,2)); method is used to set a goal square at (i,j) in release levels
 	the l.getBoard().setSquare(new Square(i,j,6,1)); method is used to set a 6 square at (i,j) in release levels
-These changes can be used to make any level imaginable, simply compile and run LevelBuilder.java.
+These changes can be used to make any level imaginable, simply compile and run LevelBuilder.java. In order for levels to be counted as level builder levels their numbers must be negative, positive level number specification will over-write existing game levels.
 
+
+———————
+TESTING LEVEL BUILDER(S)
+———————
+
+	Our single file level builder is included in our game project, and is technically within our game tests (though it is not tested). There are no tests for Liz’s level builder.
 
 ———————
 CODE USED FROM ELSEWHERE 
