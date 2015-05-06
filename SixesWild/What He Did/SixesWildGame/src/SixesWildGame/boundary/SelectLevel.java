@@ -69,12 +69,10 @@ public class SelectLevel extends JPanel {
 		
 		int i = 0;
 		records = new ScoreRecord[17];
-<<<<<<< HEAD
 		builderScores = new ScoreRecord[5];
-=======
+		
 		Level[] playerLevels = new Level[17];
 		ScoreRecord[] builderScores = new ScoreRecord[5];
->>>>>>> origin/master
 		Level[] builderLevels = new Level[5];
 		ScoreLoad scoreLoad = new ScoreLoad();
 		Deserializer loadLevel = new Deserializer();

@@ -311,7 +311,7 @@ public class TestMouseController extends TestCase implements Serializable{
 		app.toMenu(2);
 		screc = ((SelectLevel) app.getContentPane()).getScoreRecords();
 		
-		for(int i = 0; i < 16; i++) assertTrue(screc[0] != null);
+		for(int i = 0; i < 16; i++) assertTrue(screc[i] != null);
 		
 	
 		
@@ -322,12 +322,14 @@ public class TestMouseController extends TestCase implements Serializable{
 				}
 				
 				
-				for(int i = 1; i <= 16; i++){
+				for(int i = 1; i <= 4; i++){
 					file = new File("./score/scorebuilder"+ i +".ser");
 					file.delete();
 				}
 				
 				app.toMenu(1);
+				
+				//Test Builder Stuff
 				app.toMenu(2);
 				
 				screc = new ScoreRecord[4];
@@ -337,24 +339,23 @@ public class TestMouseController extends TestCase implements Serializable{
 				
 				app.toMenu(1);
 				
-				ScoreSave scsv = new ScoreSave();
+				scsv = new ScoreSave();
 				
-				for(int i = 1; i <= 16; i++) scsv.serializeScore(new ScoreRecord(50, 1, i), i);
+				for(int i = 1; i <= 4; i++) scsv.serializeScore(new ScoreRecord(50, 1, i), -i);
 
 				
 				
 				app.toMenu(2);
-				screc = ((SelectLevel) app.getContentPane()).getScoreRecords();
-				
-				for(int i = 0; i < 16; i++) assertTrue(screc[0] != null);
+				screc = ((SelectLevel) app.getContentPane()).getBuilderScores();
 				
 			
 				
+			
 				
-						for(int i = 1; i <= 16; i++){
-							file = new File("./score/score"+ i +".ser");
-							file.delete();
-						}
+				for(int i = 1; i <= 4; i++){
+					file = new File("./score/scorebuilder"+ i +".ser");
+					file.delete();
+				}
 		
 		
 	}
