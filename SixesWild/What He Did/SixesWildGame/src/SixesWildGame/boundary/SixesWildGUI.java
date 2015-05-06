@@ -162,7 +162,7 @@ public class SixesWildGUI extends JPanel {
 		
 		bv = new BoardView(level);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		
 		setLayout(null);
 		scoreBoard = new JLabel();
 		if (level instanceof Lightning) {
@@ -172,7 +172,7 @@ public class SixesWildGUI extends JPanel {
 			theTimer.scheduleAtFixedRate(clockTick, 1000, 1000);
 			scoreBoard.setText("Score: " + level.getScore() + ", Time Left: "
 					+ ((Lightning) level).getTime());
-
+			
 		} else if (level instanceof Puzzle) {
 			scoreBoard.setText("Score: " + level.getScore()
 					+ ", Moves Left: " + level.getMovesLeft());
@@ -182,6 +182,18 @@ public class SixesWildGUI extends JPanel {
 		}
 		scoreBoard.setBounds(33, 15, 200, 16);
 		add(scoreBoard);
+		
+		JButton btnBack = new JButton("Back to Main Menu");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (level instanceof Lightning) {
+					((Lightning) level).setTime(0);
+				}
+				app.toMenu(1);
+			}
+		});
+		btnBack.setBounds(21, 650, 162, 29);
+		add(btnBack);
 
 		btnResetBoard = new JButton("Reset Board");
 		ResetButtonController rbc = new ResetButtonController(level, bv, this);
@@ -189,16 +201,20 @@ public class SixesWildGUI extends JPanel {
 		btnResetBoard.setBounds(244, 10, 117, 29);
 		add(btnResetBoard);
 
+		/*
 		JButton btnBack = new JButton("Back to Main Menu");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				if (level instanceof Lightning) {
+					theTimer.cancel();
+				}
 				app.toMenu(1);
 
 			}
 		});
 		btnBack.setBounds(21, 650, 162, 29);
 		add(btnBack);
+		*/
 
 		btnEliminateTile = new JButton("Eliminate Tile ("
 				+ level.getEliminateTilesLeft() + " left)");

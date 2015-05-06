@@ -139,7 +139,7 @@ public class Application extends JFrame {
 			j--;
 			
 			if(i > j){
-				i=j;
+				i=j; //if campaign tries to access a level that does not exist, load highest numbered level instead
 			}
 			
 			
