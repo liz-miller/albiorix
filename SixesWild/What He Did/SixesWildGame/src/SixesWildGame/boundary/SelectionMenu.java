@@ -53,7 +53,7 @@ public class SelectionMenu extends JPanel {
 			}
 		});
 
-		JButton btnViewAchievements = new JButton("View Achievements");
+
 
 		JLabel lblSixessWildWest = new JLabel("Sixes Wild West");
 		lblSixessWildWest.setFont(new Font("Stencil Std", Font.PLAIN, 17));
@@ -102,11 +102,7 @@ public class SelectionMenu extends JPanel {
 																groupLayout
 																		.createSequentialGroup()
 																		.addGap(145)
-																		.addComponent(
-																				btnViewAchievements,
-																				GroupLayout.PREFERRED_SIZE,
-																				160,
-																				GroupLayout.PREFERRED_SIZE))
+																		)
 														.addGroup(
 																groupLayout
 																		.createSequentialGroup()
@@ -122,8 +118,7 @@ public class SelectionMenu extends JPanel {
 						.addComponent(lblSelectionMenu).addGap(54)
 						.addComponent(btnCampaignMode).addGap(12)
 						.addComponent(btnChooseLevel)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(btnViewAchievements).addGap(48)));
+						.addPreferredGap(ComponentPlacement.UNRELATED)));
 		setLayout(groupLayout);
 
 	}
