@@ -285,7 +285,7 @@ public class TestMouseController extends TestCase implements Serializable{
 	
 	public void testSelectLevel(){
 		
-		// Taken from http://examples.javacodegeeks.com/core-java/io/file/delete-file-in-java-example/
+		
 		
 		File file;
 		for(int i = 1; i <= 16; i++){
@@ -313,13 +313,48 @@ public class TestMouseController extends TestCase implements Serializable{
 		
 		for(int i = 0; i < 16; i++) assertTrue(screc[0] != null);
 		
-		// Taken from http://examples.javacodegeeks.com/core-java/io/file/delete-file-in-java-example/
+	
 		
 		
 				for(int i = 1; i <= 16; i++){
 					file = new File("./score/score"+ i +".ser");
 					file.delete();
 				}
+				
+				
+				for(int i = 1; i <= 16; i++){
+					file = new File("./score/scorebuilder"+ i +".ser");
+					file.delete();
+				}
+				
+				app.toMenu(1);
+				app.toMenu(2);
+				
+				screc = new ScoreRecord[4];
+				screc = ((SelectLevel) app.getContentPane()).getBuilderScores();
+				
+				assertTrue(screc[0] == null);
+				
+				app.toMenu(1);
+				
+				ScoreSave scsv = new ScoreSave();
+				
+				for(int i = 1; i <= 16; i++) scsv.serializeScore(new ScoreRecord(50, 1, i), i);
+
+				
+				
+				app.toMenu(2);
+				screc = ((SelectLevel) app.getContentPane()).getScoreRecords();
+				
+				for(int i = 0; i < 16; i++) assertTrue(screc[0] != null);
+				
+			
+				
+				
+						for(int i = 1; i <= 16; i++){
+							file = new File("./score/score"+ i +".ser");
+							file.delete();
+						}
 		
 		
 	}

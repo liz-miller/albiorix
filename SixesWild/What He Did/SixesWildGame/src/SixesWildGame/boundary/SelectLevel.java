@@ -33,6 +33,7 @@ public class SelectLevel extends JPanel {
 	 */
 	
 	private ScoreRecord[] records;
+	private ScoreRecord[] builderScores;
 
 
 	public SelectLevel(Application app) {
@@ -48,6 +49,13 @@ public class SelectLevel extends JPanel {
 	public ScoreRecord[] getScoreRecords(){
 		return records;
 	}
+	/**
+	 * For Testing purposes only, gets the Board ScoreRecord array
+	 */
+	public ScoreRecord[] getBuilderScores(){
+		return builderScores;
+	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -58,10 +66,10 @@ public class SelectLevel extends JPanel {
 		JLabel lblSelectYourLevel = new JLabel("Select Your Level");
 		lblSelectYourLevel.setBounds(5, 9, 137, 14);
 		add(lblSelectYourLevel);
-
+		
 		int i = 0;
 		records = new ScoreRecord[17];
-		ScoreRecord[] builderScores = new ScoreRecord[5];
+		builderScores = new ScoreRecord[5];
 		Level[] builderLevels = new Level[5];
 		ScoreLoad scoreLoad = new ScoreLoad();
 		Deserializer loadLevel = new Deserializer();
