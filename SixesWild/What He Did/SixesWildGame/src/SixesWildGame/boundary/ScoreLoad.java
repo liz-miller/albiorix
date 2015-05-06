@@ -23,7 +23,7 @@ import java.io.Serializable;
  */
 public class ScoreLoad{
 	/**
-	 * deserializeScore(int lvlnum) is used
+	 * deserializeScore(String lvlnum) is used
 	 * to get the score record at a given level
 	 * @param lvlnum The number of the level
 	 * @return victory

@@ -15,7 +15,7 @@ import SixesWildGame.boundary.Deserializer;
 /**
  * Application - This is the main boundary class, it runs the GUI for the game and switches between panes, as well as acting 
  * as the mediator for elements of the game that want access to GUI classes
- * @author nmpahowald
+ * @author nmpahowald & Sean
  */
 // This object IS the window that pops up
 public class Application extends JFrame {
@@ -39,7 +39,6 @@ public class Application extends JFrame {
 	public Application() {
 		super("Sixes Wild");
 		setSize(800, 800);
-		//this.model = m;
 		toMenu(0);
 	}
 	/**
@@ -58,7 +57,7 @@ public class Application extends JFrame {
 	 * toMenu(int selection) navigates between menus
 	 * @param selection The selection of which level to go to
 	 */
-	// Navigates between menus, he didn't seem to have major problem with this
+	// Navigates between menus
 	public void toMenu(int selection) {
 		Deserializer deserializer = new Deserializer();
 		if (selection == 0) {
@@ -76,35 +75,7 @@ public class Application extends JFrame {
 			setContentPane(slvl);
 			slvl.revalidate(); 
 			repaint();
-		
-		}/* else if (selection == 3) {
-			game = new SixesWildGUI(this, model.getLevel(1)); //-- getlevel takes int
-			setContentPane(game);
-			game.revalidate(); 
-			repaint();
-
-			//-- play a lightning level
-		} else if (selection == 4) {
-			game = new SixesWildGUI(this, model.getLevel(2)); //-- getlevel takes int
-			setContentPane(game);
-			game.revalidate(); 
-			repaint();
-
-			//-- play an Elimination level
-		} else if (selection == 5) {
-			game = new SixesWildGUI(this, model.getLevel(3)); //-- getlevel takes int				
-			setContentPane(game);
-			game.revalidate(); 
-			repaint();
-
-			//-- play a release level
-		} else if (selection == 6) {
-			game = new SixesWildGUI(this, model.getLevel(4)); //-- getlevel takes int
-
-			setContentPane(game);
-			game.revalidate(); 
-			repaint();
-		}*/
+		}
 		else if (selection == 3) {
 			Vs = new VictoryScreen(this, currentscore, currentstars, levelNum);
 			setContentPane(Vs);
@@ -118,9 +89,8 @@ public class Application extends JFrame {
 			repaint();
 		} 
 		else if (selection == 5) {
-			//-- campaign now takes you to whatever level you were on
+			//campaign mode loads from disk
 			int i = 0;
-			//levelNum MUST be 0, other values are placeholder
 			ScoreRecord score = new ScoreRecord(0, 0, 0);
 			ScoreLoad scoreLoad = new ScoreLoad();
 			while(score != null){
@@ -141,14 +111,6 @@ public class Application extends JFrame {
 			if(i > j){
 				i=j; //if campaign tries to access a level that does not exist, load highest numbered level instead
 			}
-			
-			
-			/*
-			//-- will need to change when we put in more levels, set keep i from exceeding number of levels
-			if(i > 3){
-				i=3;
-			}
-			*/
 			
 			game = new SixesWildGUI(this, deserializer.deserializeLevel(Integer.toString(i)));
 			setContentPane(game);
