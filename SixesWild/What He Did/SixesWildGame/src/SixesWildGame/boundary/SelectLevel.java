@@ -61,13 +61,30 @@ public class SelectLevel extends JPanel {
 
 		int i = 0;
 		records = new ScoreRecord[17];
+		ScoreRecord[] builderScores = new ScoreRecord[5];
+		Level[] builderLevels = new Level[5];
 		ScoreLoad scoreLoad = new ScoreLoad();
+		Deserializer loadLevel = new Deserializer();
+		//load score sheets for provided levels
 		for(i=0; i<16; i++){
-			records[i] = scoreLoad.deserializeScore(i+1);
+			records[i] = scoreLoad.deserializeScore(Integer.toString(i+1));
 		}
+		//load score sheets for builder levels
+		builderScores[0] = scoreLoad.deserializeScore("builder1");
+		builderScores[1] = scoreLoad.deserializeScore("builder2");
+		builderScores[2] = scoreLoad.deserializeScore("builder3");
+		builderScores[3] = scoreLoad.deserializeScore("builder4");
+		
+		//load builder levels
+		builderLevels[0] = loadLevel.deserializeLevel("builder1");
+		builderLevels[1] = loadLevel.deserializeLevel("builder2");
+		builderLevels[2] = loadLevel.deserializeLevel("builder3");
+		builderLevels[3] = loadLevel.deserializeLevel("builder4");
+		
+		
 		
 		int level_unlocked = 0;
-		ScoreRecord score = new ScoreRecord(/*app,*/ 0, 0, 0);
+		ScoreRecord score = new ScoreRecord(0, 0, 0);
 		while(score != null){
 			score = records[level_unlocked];
 			level_unlocked++;
@@ -106,7 +123,7 @@ public class SelectLevel extends JPanel {
 			button.setText("1");
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(6);
+					app.toMenu(10);
 				}
 			});
 		}
@@ -141,7 +158,7 @@ public class SelectLevel extends JPanel {
 			button_1.setText("2");
 			button_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(7);
+					app.toMenu(11);
 				}
 			});
 		}
@@ -176,7 +193,7 @@ public class SelectLevel extends JPanel {
 			button_2.setText("3");
 			button_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(8);
+					app.toMenu(12);
 				}
 			});
 		}
@@ -211,7 +228,7 @@ public class SelectLevel extends JPanel {
 			button_3.setText("4");
 			button_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(9);
+					app.toMenu(13);
 				}
 			});
 		}
@@ -246,7 +263,7 @@ public class SelectLevel extends JPanel {
 			button_4.setText("5");
 			button_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(10);
+					app.toMenu(14);
 				}
 			});
 		}
@@ -281,7 +298,7 @@ public class SelectLevel extends JPanel {
 			button_5.setText("6");
 			button_5.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(11);
+					app.toMenu(15);
 				}
 			});
 		}
@@ -318,7 +335,7 @@ public class SelectLevel extends JPanel {
 			button_6.setText("7");
 			button_6.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(12);
+					app.toMenu(16);
 				}
 			});
 		}
@@ -353,7 +370,7 @@ public class SelectLevel extends JPanel {
 			button_7.setText("8");
 			button_7.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(13);
+					app.toMenu(17);
 				}
 			});
 		}
@@ -388,7 +405,7 @@ public class SelectLevel extends JPanel {
 			button_8.setText("9");
 			button_8.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(14);
+					app.toMenu(18);
 				}
 			});
 		}
@@ -423,7 +440,7 @@ public class SelectLevel extends JPanel {
 			button_9.setText("10");
 			button_9.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(15);
+					app.toMenu(19);
 				}
 			});
 		}
@@ -458,7 +475,7 @@ public class SelectLevel extends JPanel {
 			button_10.setText("11");
 			button_10.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(16);
+					app.toMenu(20);
 				}
 			});
 		}
@@ -493,7 +510,7 @@ public class SelectLevel extends JPanel {
 			button_11.setText("12");
 			button_11.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(17);
+					app.toMenu(21);
 				}
 			});
 		}
@@ -530,7 +547,7 @@ public class SelectLevel extends JPanel {
 			button_12.setText("13");
 			button_12.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(18);
+					app.toMenu(22);
 				}
 			});
 		}
@@ -565,7 +582,7 @@ public class SelectLevel extends JPanel {
 			button_13.setText("14");
 			button_13.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(19);
+					app.toMenu(23);
 				}
 			});
 		}
@@ -600,7 +617,7 @@ public class SelectLevel extends JPanel {
 			button_14.setText("15");
 			button_14.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(20);
+					app.toMenu(24);
 				}
 			});
 		}
@@ -635,12 +652,154 @@ public class SelectLevel extends JPanel {
 			button_15.setText("16");
 			button_15.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					app.toMenu(21);
+					app.toMenu(25);
 				}
 			});
 		}
 		add(button_15);
 		//end third row	
+		
+		//start row 4 (builder levels)
+		JLabel builderLabel_0 = new JLabel();
+		builderLabel_0.setBounds(5, 289, 150, 23);
+		JLabel s_builderLabel_0 = new JLabel();
+		s_builderLabel_0.setBounds(5, 302, 150, 23);
+		if(builderScores[0] == null){
+			builderLabel_0.setText(" ");
+			s_builderLabel_0.setText(" ");
+		}
+		else{
+			builderLabel_0.setText("Score: " + builderScores[0].getScore());
+			if(builderScores[0].getStars() == 3){
+				s_builderLabel_0.setText("\u2606 \u2606 \u2606");
+			}
+			else if(builderScores[0].getStars() == 2){
+				s_builderLabel_0.setText("\u2606 \u2606");
+			}
+			else if(builderScores[0].getStars() == 1){
+				s_builderLabel_0.setText("\u2606");
+			}
+		}
+		add(builderLabel_0);
+		add(s_builderLabel_0);
+		
+		JButton builderButton0 = new JButton("Builder 1 - Locked");
+		builderButton0.setBounds(5, 266, 150, 23);
+		if(builderLevels[0] != null){
+			builderButton0.setText("Builder 1");
+		}
+		builderButton0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				app.toMenu(6);
+			}
+		});
+		add(builderButton0);
+		
+		JLabel builderLabel_1 = new JLabel();
+		builderLabel_1.setBounds(165, 289, 150, 23);
+		JLabel s_builderLabel_1 = new JLabel();
+		s_builderLabel_1.setBounds(165, 302, 150, 23);
+		if(builderScores[1] == null){
+			builderLabel_1.setText(" ");
+			s_builderLabel_1.setText(" ");
+		}
+		else{
+			builderLabel_1.setText("Score: " + builderScores[1].getScore());
+			if(builderScores[1].getStars() == 3){
+				s_builderLabel_1.setText("\u2606 \u2606 \u2606");
+			}
+			else if(builderScores[1].getStars() == 2){
+				s_builderLabel_1.setText("\u2606 \u2606");
+			}
+			else if(builderScores[1].getStars() == 1){
+				s_builderLabel_1.setText("\u2606");
+			}
+		}
+		add(builderLabel_1);
+		add(s_builderLabel_1);
+		
+		JButton builderButton1 = new JButton("Builder 2 - Locked");
+		builderButton1.setBounds(165, 266, 150, 23);
+		if(builderLevels[1] != null){
+			builderButton1.setText("Builder 2");
+			builderButton1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					app.toMenu(7);
+				}
+			});
+		}
+		add(builderButton1);
+
+		JLabel builderLabel_2 = new JLabel();
+		builderLabel_2.setBounds(325, 289, 150, 23);
+		JLabel s_builderLabel_2 = new JLabel();
+		s_builderLabel_2.setBounds(325, 302, 150, 23);
+		if(builderScores[2] == null){
+			builderLabel_2.setText(" ");
+			s_builderLabel_2.setText(" ");
+		}
+		else{
+			builderLabel_2.setText("Score: " + builderScores[2].getScore());
+			if(builderScores[2].getStars() == 3){
+				s_builderLabel_2.setText("\u2606 \u2606 \u2606");
+			}
+			else if(builderScores[2].getStars() == 2){
+				s_builderLabel_2.setText("\u2606 \u2606");
+			}
+			else if(builderScores[2].getStars() == 1){
+				s_builderLabel_2.setText("\u2606");
+			}
+		}
+		add(builderLabel_2);
+		add(s_builderLabel_2);
+		
+		JButton builderButton2 = new JButton("Builder 3 - Locked");
+		builderButton2.setBounds(325, 266, 150, 23);
+		if(builderLevels[2] != null){
+			builderButton2.setText("Builder 3");
+			builderButton2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					app.toMenu(8);
+				}
+			});
+		}
+		add(builderButton2);
+		
+		JLabel builderLabel_3 = new JLabel();
+		builderLabel_3.setBounds(485, 289, 150, 23);
+		JLabel s_builderLabel_3 = new JLabel();
+		s_builderLabel_3.setBounds(485, 302, 150, 23);
+		if(builderScores[3] == null){
+			builderLabel_3.setText(" ");
+			s_builderLabel_3.setText(" ");
+		}
+		else{
+			builderLabel_3.setText("Score: " + builderScores[2].getScore());
+			if(builderScores[3].getStars() == 3){
+				s_builderLabel_3.setText("\u2606 \u2606 \u2606");
+			}
+			else if(builderScores[3].getStars() == 2){
+				s_builderLabel_3.setText("\u2606 \u2606");
+			}
+			else if(builderScores[3].getStars() == 1){
+				s_builderLabel_3.setText("\u2606");
+			}
+		}
+		add(builderLabel_3);
+		add(s_builderLabel_3);
+		
+		JButton builderButton3 = new JButton("Builder 4 - Locked");
+		builderButton3.setBounds(485, 266, 150, 23);
+		if(builderLevels[3] != null){
+			builderButton3.setText("Builder 4");
+			builderButton3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					app.toMenu(9); 
+				}
+			});
+		}
+		add(builderButton3);
+		//end row 4 (builder levels)
 		
 		//return to main menu
 		JButton btnBack = new JButton("Back to Main Menu");

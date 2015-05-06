@@ -29,9 +29,9 @@ public class Deserializer{
    	}
 	*/
 	/**
-	 *  deserializeLevel(int lvlnum) loads the level indicated by the lvlnum
+	 *  deserializeLevel(String lvlnum) loads the level indicated by the lvlnum
 	 */  
-	public Level deserializeLevel(int lvlnum){
+	public Level deserializeLevel(String lvlnum){
  
 		try{
  

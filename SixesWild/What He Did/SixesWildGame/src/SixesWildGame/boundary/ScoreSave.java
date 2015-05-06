@@ -1,7 +1,6 @@
 package SixesWildGame.boundary;
 
 import java.io.FileOutputStream;
-
 import java.awt.event.*;
 
 import SixesWildGame.boundary.Application;
@@ -32,12 +31,28 @@ public class ScoreSave implements Serializable{
 	public void serializeScore(ScoreRecord victory, int lvlnum){
  
 		try{
- 
+			if(lvlnum < 0){
+				lvlnum*=-1;
+				FileOutputStream fout = new FileOutputStream("./score/scorebuilder"+lvlnum+".ser");
+				ObjectOutputStream oos = new ObjectOutputStream(fout);   
+				oos.writeObject(victory);
+				oos.close();
+				System.out.println("Done");
+			}
+			else{
+				FileOutputStream fout = new FileOutputStream("./score/score"+lvlnum+".ser");
+				ObjectOutputStream oos = new ObjectOutputStream(fout);   
+				oos.writeObject(victory);
+				oos.close();
+				System.out.println("Done");
+			}
+			/*
 			FileOutputStream fout = new FileOutputStream("./score/score"+lvlnum+".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(victory);
 			oos.close();
 			System.out.println("Done");
+			*/
  
 		}catch(Exception ex){
 			ex.printStackTrace();

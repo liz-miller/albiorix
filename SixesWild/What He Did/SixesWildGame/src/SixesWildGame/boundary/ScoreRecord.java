@@ -29,7 +29,6 @@ import SixesWildGame.boundary.VictoryScreen;
 public class ScoreRecord implements Serializable{
 
 	private JPanel contentPane;
-	//Application app;
 	int score;
 	int stars;
 	int levelNum;
@@ -39,8 +38,7 @@ public class ScoreRecord implements Serializable{
 	 * @param star The number of stars in the level
 	 * @param levelNum The number of the level
 	 */
-	public ScoreRecord(/*Application app,*/ int scoring, int star, int levelNum) {
-		//this.app = app;
+	public ScoreRecord(int scoring, int star, int levelNum) {
 		this.score = scoring;
 		this.stars = star;
         this.levelNum = levelNum;

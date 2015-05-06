@@ -37,13 +37,22 @@ public class Serializer {
 	public void serializeLevel(Level level, int lvlnum){
  
 		try{
- 
-			FileOutputStream fout = new FileOutputStream("./level/level"+lvlnum+".ser");
-			ObjectOutputStream oos = new ObjectOutputStream(fout);   
-			oos.writeObject(level);
-			oos.close();
-			System.out.println("Done");
- 
+			if(lvlnum < 0){
+				lvlnum*=-1;
+				FileOutputStream fout = new FileOutputStream("./level/levelbuilder"+lvlnum+".ser");
+				ObjectOutputStream oos = new ObjectOutputStream(fout);   
+				oos.writeObject(level);
+				oos.close();
+				System.out.println("Done");
+			}
+			else{
+				FileOutputStream fout = new FileOutputStream("./level/level"+lvlnum+".ser");
+				ObjectOutputStream oos = new ObjectOutputStream(fout);   
+				oos.writeObject(level);
+				oos.close();
+				System.out.println("Done");
+			}
+			
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

@@ -122,11 +122,11 @@ public class Application extends JFrame {
 			//-- campaign now takes you to whatever level you were on
 			int i = 0;
 			//levelNum MUST be 0, other values are placeholder
-			ScoreRecord score = new ScoreRecord(/*this,*/ 0, 0, 0);
+			ScoreRecord score = new ScoreRecord(0, 0, 0);
 			ScoreLoad scoreLoad = new ScoreLoad();
 			while(score != null){
 				i++;
-				score = scoreLoad.deserializeScore(i);
+				score = scoreLoad.deserializeScore(Integer.toString(i));
 			}
 			
 			/*
@@ -149,14 +149,38 @@ public class Application extends JFrame {
 				i=3;
 			}
 			
-			game = new SixesWildGUI(this, deserializer.deserializeLevel(i));
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(Integer.toString(i)));
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}
+		else if (selection == 6) {
+			game = new SixesWildGUI(this, deserializer.deserializeLevel("builder" + Integer.toString(1)));
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}
+		else if (selection == 7) {
+			game = new SixesWildGUI(this, deserializer.deserializeLevel("builder" + Integer.toString(2)));
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}
+		else if (selection == 8) {
+			game = new SixesWildGUI(this, deserializer.deserializeLevel("builder" + Integer.toString(3)));
+			setContentPane(game);
+			game.revalidate(); 
+			repaint();
+		}
+		else if (selection == 9) {
+			game = new SixesWildGUI(this, deserializer.deserializeLevel("builder" + Integer.toString(4)));
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();
 		}
 		else{
 			
-			game = new SixesWildGUI(this, deserializer.deserializeLevel(selection - 5));
+			game = new SixesWildGUI(this, deserializer.deserializeLevel(Integer.toString(selection - 9)));
 			setContentPane(game);
 			game.revalidate(); 
 			repaint();

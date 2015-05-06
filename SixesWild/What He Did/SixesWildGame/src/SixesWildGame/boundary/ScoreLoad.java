@@ -28,7 +28,7 @@ public class ScoreLoad{
 	 * @param lvlnum The number of the level
 	 * @return victory
 	 */
-	public ScoreRecord deserializeScore(int lvlnum){
+	public ScoreRecord deserializeScore(String lvlnum){
  
 		try{
  
