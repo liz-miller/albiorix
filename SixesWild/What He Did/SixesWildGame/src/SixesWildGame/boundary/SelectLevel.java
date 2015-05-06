@@ -120,12 +120,14 @@ public class SelectLevel extends JPanel {
 		JButton button = new JButton("1 - Locked");
 		button.setBounds(5, 34, 100, 23);
 		if(level_unlocked > 0){
-			button.setText("1");
-			button.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(10);
-				}
-			});
+			if(records[0] != null){
+				button.setText("1");
+				button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(10);
+					}
+				});
+			}
 		}
 		add(button);
 				
@@ -155,12 +157,14 @@ public class SelectLevel extends JPanel {
 		JButton button_1 = new JButton("2 - Locked");
 		button_1.setBounds(115, 34, 100, 23);
 		if(level_unlocked > 1){
-			button_1.setText("2");
-			button_1.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(11);
-				}
-			});
+			if(records[1] != null){
+				button_1.setText("2");
+				button_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(11);
+					}
+				});
+			}
 		}
 		add(button_1);
 		
@@ -190,12 +194,14 @@ public class SelectLevel extends JPanel {
 		JButton button_2 = new JButton("3 - Locked");
 		button_2.setBounds(225, 34, 100, 23);
 		if(level_unlocked > 2){
-			button_2.setText("3");
-			button_2.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(12);
-				}
-			});
+			if(records[2] != null){
+				button_2.setText("3");
+				button_2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(12);
+					}
+				});
+			}
 		}
 		add(button_2);
 		
@@ -225,12 +231,14 @@ public class SelectLevel extends JPanel {
 		JButton button_3 = new JButton("4 - Locked");
 		button_3.setBounds(335, 34, 100, 23);
 		if(level_unlocked > 3){
-			button_3.setText("4");
-			button_3.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(13);
-				}
-			});
+			if(records[3] != null){
+				button_3.setText("4");
+				button_3.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(13);
+					}
+				});
+			}
 		}
 		add(button_3);
 
@@ -260,12 +268,14 @@ public class SelectLevel extends JPanel {
 		JButton button_4 = new JButton("5 - Locked");
 		button_4.setBounds(445, 34, 100, 23);
 		if(level_unlocked > 4){
-			button_4.setText("5");
-			button_4.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(14);
-				}
-			});
+			if(records[4] != null){
+				button_4.setText("5");
+				button_4.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(14);
+					}
+				});
+			}
 		}
 		add(button_4);
 						
@@ -295,12 +305,14 @@ public class SelectLevel extends JPanel {
 		JButton button_5 = new JButton("6 - Locked");
 		button_5.setBounds(555, 34, 100, 23);
 		if(level_unlocked > 5){
-			button_5.setText("6");
-			button_5.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(15);
-				}
-			});
+			if(records[5] != null){
+				button_5.setText("6");
+				button_5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(15);
+					}
+				});
+			}
 		}
 		add(button_5);
 		//end first row
@@ -332,12 +344,14 @@ public class SelectLevel extends JPanel {
 		JButton button_6 = new JButton("7 - Locked");
 		button_6.setBounds(5, 108, 100, 23);
 		if(level_unlocked > 6){
-			button_6.setText("7");
-			button_6.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(16);
-				}
-			});
+			if(records[6] != null){
+				button_6.setText("7");
+				button_6.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(16);
+					}
+				});
+			}
 		}
 		add(button_6);
 		
@@ -367,12 +381,14 @@ public class SelectLevel extends JPanel {
 		JButton button_7 = new JButton("8 - Locked");
 		button_7.setBounds(115, 108, 100, 23);
 		if(level_unlocked > 7){
-			button_7.setText("8");
-			button_7.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(17);
-				}
-			});
+			if(records[7] != null){
+				button_7.setText("8");
+				button_7.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(17);
+					}
+				});
+			}
 		}
 		add(button_7);
 		
@@ -402,12 +418,14 @@ public class SelectLevel extends JPanel {
 		JButton button_8 = new JButton("9 - Locked");
 		button_8.setBounds(225, 108, 100, 23);
 		if(level_unlocked > 8){
-			button_8.setText("9");
-			button_8.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(18);
-				}
-			});
+			if(records[8] != null){
+				button_8.setText("9");
+				button_8.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(18);
+					}
+				});
+			}
 		}
 		add(button_8);
 		
@@ -437,12 +455,14 @@ public class SelectLevel extends JPanel {
 		JButton button_9 = new JButton("10 - Locked");
 		button_9.setBounds(335, 108, 100, 23);
 		if(level_unlocked > 9){
-			button_9.setText("10");
-			button_9.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(19);
-				}
-			});
+			if(records[9] != null){
+				button_9.setText("10");
+				button_9.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(19);
+					}
+				});
+			}
 		}
 		add(button_9);
 		
@@ -472,12 +492,14 @@ public class SelectLevel extends JPanel {
 		JButton button_10 = new JButton("11 - Locked");
 		button_10.setBounds(445, 108, 100, 23);
 		if(level_unlocked > 10){
-			button_10.setText("11");
-			button_10.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(20);
-				}
-			});
+			if(records[10] != null){
+				button_10.setText("11");
+				button_10.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(20);
+					}
+				});
+			}
 		}
 		add(button_10);
 				
@@ -507,12 +529,14 @@ public class SelectLevel extends JPanel {
 		JButton button_11 = new JButton("12 - Locked");
 		button_11.setBounds(555, 108, 100, 23);
 		if(level_unlocked > 11){
-			button_11.setText("12");
-			button_11.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(21);
-				}
-			});
+			if(records[11] != null){
+				button_11.setText("12");
+				button_11.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(21);
+					}
+				});
+			}
 		}
 		add(button_11);
 		//end second row
@@ -544,12 +568,14 @@ public class SelectLevel extends JPanel {
 		JButton button_12 = new JButton("13 - Locked");
 		button_12.setBounds(5, 187, 100, 23);
 		if(level_unlocked > 12){
-			button_12.setText("13");
-			button_12.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(22);
-				}
-			});
+			if(records[12] != null){
+				button_12.setText("13");
+				button_12.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(22);
+					}
+				});
+			}
 		}
 		add(button_12);	
 		
@@ -579,12 +605,14 @@ public class SelectLevel extends JPanel {
 		JButton button_13 = new JButton("14 - Locked");
 		button_13.setBounds(115, 187, 100, 23);
 		if(level_unlocked > 13){
-			button_13.setText("14");
-			button_13.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(23);
-				}
-			});
+			if(records[13] != null){
+				button_13.setText("14");
+				button_13.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(23);
+					}
+				});
+			}
 		}
 		add(button_13);		
 		
@@ -614,12 +642,14 @@ public class SelectLevel extends JPanel {
 		JButton button_14 = new JButton("15 - Locked");
 		button_14.setBounds(225, 187, 100, 23);
 		if(level_unlocked > 14){
-			button_14.setText("15");
-			button_14.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(24);
-				}
-			});
+			if(records[14] != null){
+				button_14.setText("15");
+				button_14.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(24);
+					}
+				});
+			}
 		}
 		add(button_14);
 		
@@ -649,12 +679,14 @@ public class SelectLevel extends JPanel {
 		JButton button_15 = new JButton("16 - Locked");
 		button_15.setBounds(335, 187, 100, 23);
 		if(level_unlocked > 15){
-			button_15.setText("16");
-			button_15.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					app.toMenu(25);
-				}
-			});
+			if(records[15] != null){
+				button_15.setText("16");
+				button_15.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						app.toMenu(25);
+					}
+				});
+			}
 		}
 		add(button_15);
 		//end third row	

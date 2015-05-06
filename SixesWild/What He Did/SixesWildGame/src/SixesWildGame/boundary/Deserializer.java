@@ -44,7 +44,7 @@ public class Deserializer{
 			return level;
  
 		}catch(Exception ex){
-			ex.printStackTrace();
+			//ex.printStackTrace();
 			return null;
 		} 
 	} 

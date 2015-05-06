@@ -60,7 +60,6 @@ public class Application extends JFrame {
 	 */
 	// Navigates between menus, he didn't seem to have major problem with this
 	public void toMenu(int selection) {
-		//-- load a level configuration from disk for testing
 		Deserializer deserializer = new Deserializer();
 		if (selection == 0) {
 			splsh = new SplashScreen(this);
@@ -129,25 +128,27 @@ public class Application extends JFrame {
 				score = scoreLoad.deserializeScore(Integer.toString(i));
 			}
 			
-			/*
-			int j = 1; //j will equal number of levels in the game
+			//check for the presence of the next level
+			int j = 1; //j equals the number of levels in the game
 			deserializer = new Deserializer();
-			Level maxLevel = deserializer.deserializeLevel(j);
+			Level maxLevel = deserializer.deserializeLevel(Integer.toString(j));
 			while(maxLevel != null){
 				j++;
-				maxLevel = deserializer.deserializeLevel(j);
+				maxLevel = deserializer.deserializeLevel(Integer.toString(j));
 			}
 			j--;
 			
 			if(i > j){
 				i=j;
 			}
-			*/
 			
+			
+			/*
 			//-- will need to change when we put in more levels, set keep i from exceeding number of levels
 			if(i > 3){
 				i=3;
 			}
+			*/
 			
 			game = new SixesWildGUI(this, deserializer.deserializeLevel(Integer.toString(i)));
 			setContentPane(game);
