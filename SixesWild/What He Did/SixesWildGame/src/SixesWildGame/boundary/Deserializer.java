@@ -19,15 +19,7 @@ import java.io.Serializable;
  *  @author Sean
  */  
 public class Deserializer{
- 
-	/*
-   	public static void main (String args[]) {
- 
-	   Deserializer deserializer = new Deserializer();
-	   Level level = deserializer.deserialzeLevel();
-	   System.out.println(level);
-   	}
-	*/
+
 	/**
 	 *  deserializeLevel(String lvlnum) loads the level indicated by the lvlnum
 	 */  

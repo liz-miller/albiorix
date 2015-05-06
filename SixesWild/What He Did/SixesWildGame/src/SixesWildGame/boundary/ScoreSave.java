@@ -46,13 +46,6 @@ public class ScoreSave implements Serializable{
 				oos.close();
 				System.out.println("Done");
 			}
-			/*
-			FileOutputStream fout = new FileOutputStream("./score/score"+lvlnum+".ser");
-			ObjectOutputStream oos = new ObjectOutputStream(fout);   
-			oos.writeObject(victory);
-			oos.close();
-			System.out.println("Done");
-			*/
  
 		}catch(Exception ex){
 			ex.printStackTrace();

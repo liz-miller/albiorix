@@ -81,17 +81,7 @@ public class SixesWildGUI extends JPanel {
 		initialize();
 	}
 	
-	//-- save a level configuration to disk for testing
-	//public void saveToDisk(){
-	//	Serializer serializer = new Serializer();
-	//	serializer.serializeLevel(level, 10);
-	//}
-	
-	//-- load a level configuration from disk for testing
-	//public void loadFromDisk(){
-	//	Deserializer deserializer = new Deserializer();
-	//	level = deserializer.deserializeLevel(1);
-	//}
+
 /**
  * updateStatViews() will check if the level is older as well as updating the score, moves or time left 
  * and special moves 
@@ -130,7 +120,6 @@ public class SixesWildGUI extends JPanel {
 	}
 
 
-	// setter variable and method
 	/**
 	 * getScoreBoard() is a getter which returns the scoreBoard
 	 * @return  scoreBoard
@@ -157,9 +146,6 @@ public class SixesWildGUI extends JPanel {
  */
 	void initialize() {
 	
-		//-- pull up saved level
-		//this.loadFromDisk();
-		
 		bv = new BoardView(level);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -201,21 +187,6 @@ public class SixesWildGUI extends JPanel {
 		btnResetBoard.setBounds(244, 10, 117, 29);
 		add(btnResetBoard);
 
-		/*
-		JButton btnBack = new JButton("Back to Main Menu");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (level instanceof Lightning) {
-					theTimer.cancel();
-				}
-				app.toMenu(1);
-
-			}
-		});
-		btnBack.setBounds(21, 650, 162, 29);
-		add(btnBack);
-		*/
-
 		btnEliminateTile = new JButton("Eliminate Tile ("
 				+ level.getEliminateTilesLeft() + " left)");
 
@@ -236,7 +207,6 @@ public class SixesWildGUI extends JPanel {
 
 		btnSwapTile = new JButton("Swap Tiles (" + level.getSwapTilesLeft()
 				+ " left)");
-		// and this one
 		btnSwapTile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (level.getSwapTilesLeft() > 0) {
@@ -265,9 +235,6 @@ public class SixesWildGUI extends JPanel {
 		bv.addMouseMotionListener(mc);
 		bv.setBounds(43, 131, 600, 520);
 		add(bv);
-		
-		//-- end of initialize. Save level to disk
-		//this.saveToDisk();
 
 	}
 

@@ -22,13 +22,6 @@ import java.io.Serializable;
  */
 public class Serializer {
  
-	/*
-   	public static void main (String args[]) {
- 
-	   Serializer serializer = new Serializer();
-	   serializer.serializeLevel(levelName);
-   	}
-	*/
  /**
   * serializeLevel(int lvlnum) saves the level indicated by the level to the given lvlnum
   * @param level The level to save
