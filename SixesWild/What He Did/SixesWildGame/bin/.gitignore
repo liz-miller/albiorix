@@ -1,2 +1,14 @@
+/.DS_Store
+/Images/
+/LaunchGUI.class
+/LevelBuilder.class
 /SixesWildGame/
+/TestApplication.class
+/TestBoard.class
 /TestEndGames.class
+/TestMouseController.class
+/TestPuzzle.class
+/TestSquare.class
+/TestTile.class
+/levelSplashImg.png
+/splashImg.png

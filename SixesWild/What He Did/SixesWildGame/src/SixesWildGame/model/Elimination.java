@@ -64,4 +64,13 @@ public class Elimination extends Level {
 	public String getType(){
 		return "Elimination";
 	}
+	@Override
+	public int numStars(){
+		if(movesLeft < starThreshold[2]) return 3;
+		if(movesLeft < starThreshold[1]) return 2;
+		if(movesLeft < starThreshold[0]) return 1;
+		
+		return 0;
+
+	}
 }
